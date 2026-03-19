@@ -1,0 +1,417 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────────────────
+   CSS CUSTOM PROPERTIES — Edit here to retheme the site
+   These map to the Tailwind config values
+   ───────────────────────────────────────────────────────── */
+:root {
+  /*
+   * FONTS — change these two lines to retheme the entire typography.
+   * Must match the Google Fonts URL in app/layout.tsx <head>.
+   *
+   * Current:  display = Instrument Serif | body = DM Sans
+   * Swap to:  display = "Playfair Display" | body = "Inter"  — etc.
+   */
+  --font-display: "Instrument Serif", Georgia, serif;
+  --font-body:    "DM Sans", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", "Fira Code", monospace;
+
+  /* Colors (mirrors tailwind config for non-utility usage) */
+  --color-bg-base:      #07070A;
+  --color-bg-surface:   #0F0F14;
+  --color-bg-elevated:  #161620;
+  --color-text-primary: #F5EDD6;
+  --color-text-muted:   #999898;
+  --color-accent:       #FF5C00;
+  --color-accent-hover: #FF7A2E;
+  --color-teal:         #00D4A8;
+
+  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-expo:  cubic-bezier(0.87, 0, 0.13, 1);
+  --ease-bounce:   cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Scroll padding for anchor links */
+  scroll-padding-top: 80px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   BASE STYLES
+   ───────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+  font-family: var(--font-body), "DM Sans", system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Heading defaults — display serif */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), "Georgia", serif;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(255, 92, 0, 0.25);
+  color: #fff;
+}
+
+/* Smooth focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar        { width: 6px; }
+::-webkit-scrollbar-track  { background: var(--color-bg-base); }
+::-webkit-scrollbar-thumb  { background: rgba(255,255,255,0.1); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.18); }
+
+/* ─────────────────────────────────────────────────────────
+   GRAIN TEXTURE OVERLAY
+   ───────────────────────────────────────────────────────── */
+.grain-overlay {
+  position: fixed;
+  inset: -200%;
+  width: 400%;
+  height: 400%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 0.4s steps(1) infinite;
+}
+
+/* ─────────────────────────────────────────────────────────
+   SECTION LAYOUT
+   ───────────────────────────────────────────────────────── */
+.section-container {
+  @apply max-w-6xl mx-auto px-6 lg:px-8;
+}
+
+.section-padding {
+  @apply py-24 lg:py-32;
+}
+
+/* ─────────────────────────────────────────────────────────
+   TYPOGRAPHY COMPONENTS
+   ───────────────────────────────────────────────────────── */
+.badge {
+  @apply inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full
+         text-xs font-body font-medium tracking-wider uppercase
+         border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.04)]
+         text-text-secondary;
+  font-family: var(--font-body);
+}
+
+.badge-accent {
+  @apply badge border-accent/30 bg-accent/10 text-accent;
+}
+
+.badge-teal {
+  @apply badge border-teal/30 bg-teal/10 text-teal;
+}
+
+.section-headline {
+  @apply font-display text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-text-primary;
+}
+
+.section-subheadline {
+  @apply font-body text-base md:text-lg text-text-secondary leading-relaxed;
+}
+
+/* ─────────────────────────────────────────────────────────
+   CARD STYLES
+   ───────────────────────────────────────────────────────── */
+.card {
+  @apply bg-bg-surface border border-bg-border rounded-2xl p-6
+         transition-all duration-300 ease-out;
+  box-shadow: var(--tw-shadow, 0 1px 0 rgba(255,255,255,0.05) inset);
+}
+
+.card-hover {
+  @apply hover:-translate-y-1 hover:border-[rgba(255,255,255,0.12)];
+}
+
+/* ─────────────────────────────────────────────────────────
+   BUTTON COMPONENTS
+   ───────────────────────────────────────────────────────── */
+.btn {
+  @apply inline-flex items-center justify-center gap-2.5
+         px-6 py-3.5 rounded-xl font-body font-medium text-sm
+         transition-all duration-200 ease-out cursor-pointer
+         select-none whitespace-nowrap;
+  font-family: var(--font-body);
+}
+
+.btn-primary {
+  @apply btn bg-accent text-white hover:bg-accent-hover;
+  box-shadow: 0 2px 12px rgba(255,92,0,0.35);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 4px 24px rgba(255,92,0,0.55);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  @apply btn bg-bg-elevated text-text-primary border border-bg-border
+         hover:border-[rgba(255,255,255,0.16)] hover:bg-[rgba(255,255,255,0.05)];
+}
+
+.btn-ghost {
+  @apply btn text-text-secondary hover:text-text-primary;
+}
+
+.btn-lg {
+  @apply px-8 py-4 text-base rounded-xl;
+}
+
+.btn-sm {
+  @apply px-4 py-2.5 text-xs rounded-lg;
+}
+
+/* ─────────────────────────────────────────────────────────
+   DIVIDER
+   ───────────────────────────────────────────────────────── */
+.section-divider {
+  @apply border-0 border-t border-bg-border;
+}
+
+/* ─────────────────────────────────────────────────────────
+   GRADIENT TEXT
+   ───────────────────────────────────────────────────────── */
+.gradient-text-accent {
+  background: linear-gradient(135deg, #FF5C00 0%, #FF9A5C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-teal {
+  background: linear-gradient(135deg, #00D4A8 0%, #5EEAD4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─────────────────────────────────────────────────────────
+   HIGHLIGHT / GLOW EFFECTS
+   ───────────────────────────────────────────────────────── */
+.glow-accent {
+  filter: drop-shadow(0 0 24px rgba(255,92,0,0.4));
+}
+
+.glow-dot {
+  @apply relative;
+}
+.glow-dot::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,92,0,0.5), transparent 70%);
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+/* ─────────────────────────────────────────────────────────
+   SCROLL REVEAL — base state for JS animations
+   ───────────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ─────────────────────────────────────────────────────────
+   MARQUEE (logo bar)
+   ───────────────────────────────────────────────────────── */
+.marquee-wrapper {
+  @apply overflow-hidden;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 4rem;
+  animation: marquee 20s linear infinite;
+  width: max-content;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ─────────────────────────────────────────────────────────
+   OFFER CARD FEATURED GLOW
+   ───────────────────────────────────────────────────────── */
+.offer-featured-glow {
+  position: relative;
+}
+.offer-featured-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255,92,0,0.5) 0%, rgba(255,92,0,0.1) 50%, rgba(0,212,168,0.2) 100%);
+  z-index: -1;
+}
+
+/* ─────────────────────────────────────────────────────────
+   NUMBER STEP
+   ───────────────────────────────────────────────────────── */
+.step-number {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  line-height: 1;
+  color: rgba(255,255,255,0.04);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  user-select: none;
+}
+
+/* ─────────────────────────────────────────────────────────
+   FAQ ACCORDION
+   ───────────────────────────────────────────────────────── */
+.faq-item {
+  @apply border-b border-bg-border last:border-b-0;
+}
+
+/* ─────────────────────────────────────────────────────────
+   TESTIMONIAL CARD
+   ───────────────────────────────────────────────────────── */
+.testimonial-card {
+  @apply card p-8;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+}
+
+/* ─────────────────────────────────────────────────────────
+   HORIZONTAL LINE DECORATION
+   ───────────────────────────────────────────────────────── */
+.line-accent {
+  @apply inline-block h-px bg-accent;
+  width: 40px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   CHECK LIST
+   ───────────────────────────────────────────────────────── */
+.check-list li {
+  @apply flex items-start gap-3 py-2.5 text-sm border-b border-bg-border last:border-b-0;
+}
+.check-list li::before {
+  content: '→';
+  @apply text-teal font-medium flex-shrink-0 mt-0.5;
+}
+
+.cross-list li {
+  @apply flex items-start gap-3 py-2 text-sm text-text-secondary;
+}
+.cross-list li::before {
+  content: '—';
+  @apply text-text-tertiary flex-shrink-0;
+}
+
+/* ─────────────────────────────────────────────────────────
+   FORM INPUTS
+   ───────────────────────────────────────────────────────── */
+.input {
+  @apply w-full px-4 py-3.5 rounded-xl text-sm font-body
+         bg-bg-elevated border border-bg-border
+         text-text-primary placeholder:text-text-secondary
+         focus:outline-none focus:border-accent/60 focus:bg-bg-surface
+         transition-all duration-200;
+  font-family: var(--font-body);
+}
+
+.label {
+  @apply block text-xs font-medium text-text-secondary tracking-wide uppercase mb-2;
+  font-family: var(--font-body);
+  letter-spacing: 0.08em;
+}
+
+/* ─────────────────────────────────────────────────────────
+   TAGS / PILLS
+   ───────────────────────────────────────────────────────── */
+.pill {
+  @apply inline-block px-3 py-1 rounded-full text-xs border border-bg-border
+         bg-bg-surface text-text-secondary;
+  font-family: var(--font-body);
+}
+
+/* ─────────────────────────────────────────────────────────
+   AMBIENT GLOW BACKGROUNDS
+   ───────────────────────────────────────────────────────── */
+.ambient-glow-accent {
+  background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(255,92,0,0.12), transparent);
+}
+.ambient-glow-teal {
+  background: radial-gradient(ellipse 60% 40% at 50% 100%, rgba(0,212,168,0.08), transparent);
+}
+
+/* ─────────────────────────────────────────────────────────
+   PROSE (blog)
+   ───────────────────────────────────────────────────────── */
+.prose-custom {
+  @apply text-text-secondary leading-relaxed;
+}
+
+.prose-custom h2 {
+  @apply font-display text-2xl text-text-primary mt-12 mb-4;
+}
+
+.prose-custom h3 {
+  @apply font-display text-xl text-text-primary mt-8 mb-3;
+}
+
+.prose-custom p {
+  @apply mb-5;
+}
+
+.prose-custom a {
+  @apply text-accent hover:text-accent-hover underline underline-offset-2;
+}
+
+.prose-custom ul {
+  @apply list-none space-y-2 mb-5;
+}
+
+.prose-custom ul li::before {
+  content: '→ ';
+  @apply text-teal;
+}
+
+.prose-custom blockquote {
+  @apply border-l-2 border-accent pl-5 italic text-text-secondary my-6;
+}
+
+.prose-custom code {
+  @apply font-mono text-sm bg-bg-elevated px-2 py-0.5 rounded-md text-text-primary;
+}
