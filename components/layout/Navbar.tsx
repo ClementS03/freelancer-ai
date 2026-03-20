@@ -2,19 +2,35 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import content from "@/data/content.json";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { getAlternateLocale, localePath, stripLocale, type Locale } from "@/lib/i18n";
+import type { getContent } from "@/lib/i18n";
 
-export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const { nav } = content;
+type NavContent  = ReturnType<typeof getContent>["nav"];
+type MetaContent = ReturnType<typeof getContent>["meta"];
+
+interface NavbarProps {
+  content: NavContent;
+  locale: Locale;
+  meta: MetaContent;
+}
+
+export function Navbar({ content, locale, meta }: NavbarProps) {
+  const [scrolled,  setScrolled]  = useState(false);
+  const [menuOpen,  setMenuOpen]  = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Build the alternate-locale URL preserving the current sub-path
+  const alternateLang = getAlternateLocale(locale);
+  const currentSubPath = stripLocale(pathname);
+  const alternateHref  = localePath(alternateLang, currentSubPath);
 
   return (
     <header
@@ -26,23 +42,23 @@ export function Navbar() {
       )}
     >
       <nav className="section-container flex items-center justify-between h-16 lg:h-[70px]">
+
         {/* Logo */}
         <Link
-          href="/"
+          href={`/${locale}`}
           className="font-display text-xl text-text-primary hover:text-accent transition-colors duration-200"
         >
-          {nav.logo}
+          {content.logo}
         </Link>
 
         {/* Desktop links */}
         <ul className="hidden lg:flex items-center gap-1">
-          {nav.links.map((link) => (
+          {content.links.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
                 className="px-4 py-2 rounded-lg text-sm font-body text-text-secondary
-                           hover:text-text-primary hover:bg-bg-surface
-                           transition-all duration-200"
+                           hover:text-text-primary hover:bg-bg-surface transition-all duration-200"
               >
                 {link.label}
               </Link>
@@ -50,10 +66,26 @@ export function Navbar() {
           ))}
         </ul>
 
-        {/* Desktop CTA */}
+        {/* Desktop right: Lang switcher + CTA */}
         <div className="hidden lg:flex items-center gap-3">
-          <Link href={nav.cta.href} className="btn-primary btn-sm">
-            {nav.cta.label}
+          {/* ─── Language switcher ─── */}
+          <Link
+            href={alternateHref}
+            className={cn(
+              "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg",
+              "text-xs font-body font-medium tracking-wider uppercase",
+              "border border-bg-border text-text-secondary",
+              "hover:border-[rgba(255,255,255,0.18)] hover:text-text-primary",
+              "transition-all duration-200"
+            )}
+            aria-label={`Switch to ${alternateLang.toUpperCase()}`}
+          >
+            <span className="text-[10px] opacity-60">🌐</span>
+            {content.langSwitchLabel}
+          </Link>
+
+          <Link href={content.cta.href} className="btn-primary btn-sm">
+            {content.cta.label}
           </Link>
         </div>
 
@@ -77,26 +109,39 @@ export function Navbar() {
       {/* Mobile menu */}
       <div className={cn(
         "lg:hidden overflow-hidden transition-all duration-400 bg-bg-surface border-b border-bg-border",
-        menuOpen ? "max-h-96" : "max-h-0"
+        menuOpen ? "max-h-[500px]" : "max-h-0"
       )}>
         <div className="section-container py-4 flex flex-col gap-1">
-          {nav.links.map((link) => (
+          {content.links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="px-4 py-3 rounded-xl text-sm text-text-secondary hover:text-text-primary hover:bg-bg-elevated transition-all"
+              className="px-4 py-3 rounded-xl text-sm text-text-secondary hover:text-text-primary
+                         hover:bg-bg-elevated transition-all"
               onClick={() => setMenuOpen(false)}
             >
               {link.label}
             </Link>
           ))}
-          <Link
-            href={nav.cta.href}
-            className="btn-primary mt-2"
-            onClick={() => setMenuOpen(false)}
-          >
-            {nav.cta.label}
-          </Link>
+
+          <div className="flex items-center gap-3 mt-3 pt-3 border-t border-bg-border">
+            {/* Mobile lang switcher */}
+            <Link
+              href={alternateHref}
+              className="px-4 py-3 rounded-xl text-sm text-text-secondary border border-bg-border
+                         hover:text-text-primary hover:border-[rgba(255,255,255,0.18)] transition-all flex-1 text-center"
+              onClick={() => setMenuOpen(false)}
+            >
+              🌐 {content.langSwitchLabel}
+            </Link>
+            <Link
+              href={content.cta.href}
+              className="btn-primary flex-1 text-center"
+              onClick={() => setMenuOpen(false)}
+            >
+              {content.cta.label}
+            </Link>
+          </div>
         </div>
       </div>
     </header>

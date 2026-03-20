@@ -1,53 +1,38 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import content from "@/data/content.json";
 
 export const metadata: Metadata = {
-  title: `${content.meta.siteName} — ${content.meta.tagline}`,
-  description: content.meta.description,
-  openGraph: {
-    title: `${content.meta.siteName} — ${content.meta.tagline}`,
-    description: content.meta.description,
-    type: "website",
-    locale: "fr_FR",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${content.meta.siteName} — ${content.meta.tagline}`,
-    description: content.meta.description,
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  title: "Studio — Webflow + IA",
+  description: "Sites Webflow premium avec IA intégrée, livrés en 5 jours.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+/**
+ * ROOT LAYOUT — unique <html> et <body> de toute l'app.
+ * suppressHydrationWarning sur <html> car le lang="..." est
+ * mis à jour côté client par HtmlLangSetter selon la locale.
+ */
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className="scroll-smooth">
+    <html lang="fr" suppressHydrationWarning className="scroll-smooth">
       <head>
         {/*
-         * FONTS — loaded via standard Google Fonts link (works on Vercel).
-         * To swap fonts: change the family names here AND update
-         * --font-display / --font-body in globals.css :root block.
+         * FONTS — changer les noms de famille ici ET dans :
+         *   globals.css   → --font-display / --font-body
+         *   tailwind.config.ts → fontFamily
          *
-         * Current stack:
-         *   Display  → Instrument Serif  (editorial, serif)
-         *   Body/UI  → DM Sans           (clean, modern sans)
+         * Actuel : Instrument Serif (display) + DM Sans (body)
          */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="font-body antialiased bg-bg-base text-text-primary overflow-x-hidden">
-        {/* Grain texture overlay */}
+      <body
+        suppressHydrationWarning
+        className="font-body antialiased bg-bg-base text-text-primary overflow-x-hidden"
+      >
         <div className="grain-overlay" aria-hidden="true" />
         {children}
       </body>
