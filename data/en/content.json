@@ -1,8 +1,8 @@
 {
   "meta": {
     "siteName": "Your Name",
-    "tagline": "Webflow + AI Sites for Coaches & Consultants",
-    "description": "Premium Webflow websites with integrated AI, delivered in 5 days. Coaches, consultants, therapists: stop losing clients to a mediocre website.",
+    "tagline": "Premium Webflow Sites for Coaches & Consultants",
+    "description": "Premium Webflow websites delivered in 5 days. Coaches, consultants, therapists: stop losing clients to a mediocre website.",
     "domain": "yourname.com",
     "email": "hello@yourname.com",
     "calendly": "https://calendly.com/yourname/30min",
@@ -26,7 +26,7 @@
   "hero": {
     "badge": "🟢 3 slots available this month",
     "headline": ["Your expertise deserves", "a site to match."],
-    "subheadline": "Premium Webflow · Integrated AI · Delivered in 5 days flat. I build websites that bring you clients while you sleep — for coaches and consultants who are tired of losing leads.",
+    "subheadline": "Premium Webflow sites · Custom automations · Delivered in 5 days flat. I build websites that bring you clients while you sleep.",
     "ctaPrimary":   { "label": "Book my free call →", "href": "#contact" },
     "ctaSecondary": { "label": "See offers", "href": "#offres" },
     "stats": [
@@ -34,7 +34,7 @@
       { "value": "×3",   "label": "Average conversion lift" },
       { "value": "100%", "label": "Remote — zero pointless meetings" }
     ],
-    "trust": "Figma design approved before dev · AI copy included · On-page SEO · 50% upfront · Zero hidden fees"
+    "trust": "Design approved before dev · All copy included · On-page SEO · 50% upfront · Zero hidden fees"
   },
 
   "logosBar": {
@@ -53,8 +53,8 @@
       },
       {
         "icon": "💸",
-        "title": "No booking system = lost leads",
-        "desc": "Without an integrated Calendly, an AI chatbot to answer at 11pm, or a visible CTA above the fold — visitors leave and never come back. Every unconverted visit is a missed appointment."
+        "title": "No system = lost leads",
+        "desc": "Without an integrated booking page, a virtual assistant to answer at 11pm, or a visible CTA above the fold — visitors leave and never come back. Every unconverted visit is a missed appointment."
       },
       {
         "icon": "😤",
@@ -73,31 +73,31 @@
       {
         "number": "01",
         "title": "Express brief — 30 min",
-        "desc": "You fill in a Notion questionnaire at your own pace (20 min), then we have a 30-min call. I understand your positioning, ideal client, and business goals. Everything else is on me.",
+        "desc": "You fill in a questionnaire at your own pace (20 min), then we have a 30-min call. I understand your positioning, ideal client, and business goals. Everything else is on me.",
         "duration": "Day 1 morning"
       },
       {
         "number": "02",
-        "title": "Figma mockup — approved before dev",
-        "desc": "I select the premium template suited to your sector and transform it to your identity: colours, typography, structure, sections. You approve visually. Not one line of code until you say go.",
+        "title": "Mockup approved before dev",
+        "desc": "I design a custom mockup suited to your sector and identity: colours, typography, structure, sections. You approve visually. Not one line of code until you say go.",
         "duration": "Day 1–2"
       },
       {
         "number": "03",
-        "title": "AI copy optimised for conversion",
-        "desc": "I write all your site content with AI: hook, service pages, about, structured testimonials, SEO meta descriptions. Text designed to convince, not just fill space.",
+        "title": "Conversion-focused copywriting",
+        "desc": "I write all your site content: hook, service pages, about, SEO meta descriptions. Text designed to convince, not just fill space.",
         "duration": "Day 2"
       },
       {
         "number": "04",
         "title": "Webflow development",
-        "desc": "The design goes into dev. Fully responsive, optimised Core Web Vitals, AI chatbot configured (24/7 answers), Calendly integrated for direct booking. Zero fragile plugins.",
+        "desc": "The design goes into development. Fully responsive, optimised Core Web Vitals, conversion assistant configured, Calendly integrated for direct booking.",
         "duration": "Day 3–4"
       },
       {
         "number": "05",
         "title": "Launch + training",
-        "desc": "Your site goes live on your domain. I train you in 30 min on Webflow's editor so you can update your own content without touching code. You're 100% autonomous.",
+        "desc": "Your site goes live on your domain. I train you in 30 min so you can update your own content without touching code. You're 100% autonomous.",
         "duration": "Day 5"
       }
     ]
@@ -106,7 +106,7 @@
   "offers": {
     "badge": "Pricing",
     "headline": ["3 clear offers.", "0 hidden fees."],
-    "subtitle": "Every offer includes a Figma design approved before development, AI copy optimised for conversion, and on-page SEO. 50% upfront, 50% on delivery.",
+    "subtitle": "Every offer includes a custom design approved before development, full copywriting, and on-page SEO. 50% upfront, 50% on delivery.",
     "acompteNote": "50% upfront · 50% on delivery · Invoice within 24h",
     "deliveryLabel": "Delivery",
     "notIncludedLabel": "Not included in this offer",
@@ -114,95 +114,91 @@
     "items": [
       {
         "id": "starter",
-        "name": "Starter",
-        "price": "990",
+        "name": "Express Site",
+        "price": "1,500",
         "currency": "€",
         "vat": "excl. VAT",
-        "delivery": "48h",
-        "tagline": "A professional showcase in 48h flat",
+        "delivery": "72h",
+        "tagline": "A professional showcase in 72h flat",
         "featured": false,
         "badge": null,
-        "description": "You need a professional online presence quickly — something you're not ashamed to share. A complete landing page, built to convert, delivered in under 2 business days.",
+        "description": "You need a professional online presence quickly — something you're not ashamed to share. A complete Webflow site, built to convert, delivered in under 3 business days.",
         "features": [
-          "Full 1-page landing · 10 to 15 sections",
-          "Custom Figma design (premium Temlis library)",
-          "Complete Webflow development — clean, fast code",
-          "AI copy included: headline, body text, CTAs optimised",
-          "On-page SEO: title tags, meta, image alt, H structure",
+          "Webflow site — 5 pages",
+          "Custom design tailored to your sector",
+          "Full copywriting included",
+          "On-page SEO: title tags, meta, H structure",
           "Contact form + instant email notification",
           "Perfect responsive: mobile · tablet · desktop",
-          "Basic FAQ chatbot (Tidio — answers in your absence)",
-          "1 round of revisions included"
+          "Conversion assistant (answers in your absence)",
+          "1 revision included"
         ],
         "notIncluded": [
-          "Multi-page site",
-          "CMS Blog",
-          "Integrated Calendly",
-          "Email automations"
+          "Automated email sequence",
+          "CRM integration",
+          "Analytics dashboard",
+          "Monthly follow-up"
         ],
         "forWho": "Solopreneurs launching, professionals replacing a shameful site quickly, testing a new positioning.",
         "cta": "Get started →"
       },
       {
         "id": "pro",
-        "name": "Pro Site + AI",
-        "price": "2,500",
+        "name": "Site + Lead Machine",
+        "price": "3,500",
         "currency": "€",
         "vat": "excl. VAT",
-        "delivery": "5 days",
-        "tagline": "Your flagship site — premium, complete, converting",
+        "delivery": "7 days",
+        "tagline": "Your flagship site + automated lead capture system",
         "featured": true,
-        "badge": "⭐ Most chosen",
-        "description": "The complete offer for established coaches and consultants who want a multi-page site that matches their expertise. Refined design, conversion-focused journey, AI integrated to never miss a prospect again — even at 11pm.",
+        "badge": "⭐ Main offer",
+        "description": "The complete offer for established coaches and consultants who want a multi-page site that matches their expertise and a system that qualifies and captures leads automatically — even at 11pm.",
         "features": [
-          "5 to 7 pages — Home, About, Services, Pricing, Blog, Contact",
-          "Multi-page Figma design approved BEFORE development",
-          "Complete Webflow development, Core Web Vitals optimised",
-          "Complete AI copy for all pages (conversion-focused)",
-          "AI Chatbot (Tidio/Crisp) — answers and qualifies 24/7",
+          "Webflow site — 8 to 10 pages",
+          "Custom design approved before development",
+          "Full copywriting for all pages",
+          "Lead qualification assistant (answers 24/7)",
+          "Automated email sequence (Make)",
+          "Basic CRM integration",
+          "Basic analytics dashboard",
           "Technical + on-page SEO across all pages",
-          "Google Analytics 4 set up and running",
-          "Integrated Calendly — direct booking without email ping-pong",
-          "Webflow CMS Blog — ready to publish your articles",
-          "Smart forms + instant email notification",
-          "2 rounds of revisions included",
-          "Webflow Editor training 30 min — you're fully autonomous"
+          "Integrated Calendly — direct booking",
+          "2 revisions included"
         ],
         "notIncluded": [
-          "Email automation sequence (Make/Brevo)",
-          "Lead magnet funnel",
-          "Connected CRM"
+          "Multi-channel automation (SMS, WhatsApp)",
+          "Full sales funnel",
+          "Monthly follow-up included"
         ],
         "forWho": "Coaches, consultants, therapists with 3+ years of experience who want a site that works for them.",
         "cta": "I want this site →"
       },
       {
         "id": "premium",
-        "name": "Full Growth",
-        "price": "4,500",
+        "name": "Digital Transformation",
+        "price": "8,000",
         "currency": "€",
         "vat": "excl. VAT",
-        "delivery": "10 days",
-        "tagline": "Premium site + automated lead machine",
+        "delivery": "10 to 14 days",
+        "tagline": "Premium site + complete acquisition machine",
         "featured": false,
         "badge": null,
-        "description": "For established consultants and trainers who want to go beyond a great-looking site and build a real acquisition system. Every visitor enters a funnel — and exits as a qualified lead in your inbox.",
+        "description": "For established consultants and trainers who want a real multi-channel acquisition system. Every visitor enters a funnel built to convert — and exits as a qualified lead in your inbox.",
         "features": [
-          "Everything in Pro Site + AI included",
-          "Lead magnet capture funnel (PDF, mini-course, checklist...)",
-          "Email automation sequence Make + Brevo (5 to 7 emails)",
-          "Advanced AI chatbot — handles objections and books appointments",
-          "Notion or Airtable CRM configured and connected to the site",
-          "Advanced Calendly + automatic SMS/email reminder",
-          "Custom analytics dashboard (traffic, leads, conversions)",
-          "A/B test on hero section",
-          "3 rounds of revisions included",
-          "1 month priority support included",
-          "Monthly strategic follow-up call (1h)"
+          "Complete Webflow site + CMS blog",
+          "High-end custom design",
+          "Complete sales funnel",
+          "Multi-channel automation (email, SMS, WhatsApp)",
+          "Assistant trained on your specific business",
+          "CRM connection + automatic deal pipeline",
+          "Advanced analytics dashboard",
+          "Complete technical SEO",
+          "3 months monthly follow-up included",
+          "3 revisions included"
         ],
         "notIncluded": [],
         "forWho": "Established consultants and trainers who want to systematise client acquisition and stop relying solely on word-of-mouth.",
-        "cta": "Let's talk about my project →"
+        "cta": "Let's talk →"
       }
     ],
     "addon": {
@@ -232,14 +228,14 @@
         "result": "+4 clients in 3 weeks"
       },
       {
-        "quote": "I was worried speed would mean cutting corners. The Figma mockup reassured me immediately — it was exactly what I had in mind. The final result exceeded my expectations.",
+        "quote": "I was worried speed would mean cutting corners. The mockup reassured me immediately — it was exactly what I had in mind. The final result exceeded my expectations.",
         "name": "Thomas R.",
         "role": "HR Consultant",
         "location": "Paris",
         "result": "Delivered in 4 days"
       },
       {
-        "quote": "The chatbot answers my prospects when I'm in sessions. I received a signed coaching request on a Sunday morning at 9am. My old site would never have converted that.",
+        "quote": "The assistant answers my prospects when I'm in sessions. I received a signed request on a Sunday morning at 9am. My old site would never have converted that.",
         "name": "Camille D.",
         "role": "Therapist & Life Coach",
         "location": "Bordeaux",
@@ -252,18 +248,18 @@
     "badge": "About",
     "headline": "A senior freelancer. Not an agency.",
     "paragraphs": [
-      "I'm a Webflow webdesigner specialised in high-conversion sites for independent professionals. I've worked with Parisian Webflow agencies — I learned the processes, the quality standards, and above all what wastes 6 weeks unnecessarily.",
+      "I'm a Webflow webdesigner specialised in high-conversion sites for independent professionals. I've worked with Parisian agencies — I learned the processes, quality standards, and above all what wastes 6 weeks unnecessarily.",
       "Today I work directly with you. No middleman project manager, no juniors learning on your budget. From start to finish, you have one person responsible for the result.",
-      "I use AI as an acceleration tool: copy, SEO, chatbot, automations. Not to do less — to deliver more, faster, at a price agencies simply can't match."
+      "My edge: I combine design, development, copywriting and automation. Where an agency brings in 4 people, you have one contact who delivers in 5 days."
     ],
-    "skillsLabel": "Tech stack",
+    "skillsLabel": "Expertise",
     "skills": [
       "Webflow Expert",
       "Figma & UI Design",
-      "AI & Prompt Engineering",
+      "Automation & Integrations",
       "Technical SEO",
-      "Make / Automations",
-      "Brevo / Email Marketing"
+      "Conversion Copywriting",
+      "Email Marketing"
     ],
     "currently": "🚐 Preparing a nomadic lifestyle — 100% remote from day one."
   },
@@ -277,35 +273,35 @@
     "items": [
       {
         "q": "Is 5 days really achievable without cutting corners?",
-        "a": "Yes — and it's achievable precisely because I don't start from scratch. I work with a library of 80+ premium templates (Temlis) built by expert design teams. I don't 'rush' — I deploy a proven system. What takes an agency 6 weeks takes me 5 days. You can see concrete examples during our call."
+        "a": "Yes — because I deploy a process refined across dozens of projects. What takes an agency 6 weeks (meetings, cascading approvals, intermediaries) takes me 5 days working directly with you. You can see concrete examples during our call."
       },
       {
         "q": "I don't have time to brief you. How does it work in practice?",
-        "a": "The full brief happens in two steps: a Notion questionnaire you fill at your own pace (20-25 min), then a 30-min call to clarify. That's it. I don't need your copy, photos, or layout ideas — I handle all of that. The only other moment I involve you: approving the Figma mockup."
+        "a": "The full brief happens in two steps: a questionnaire you fill at your own pace (20-25 min), then a 30-min call to clarify. That's it. I don't need your copy, photos, or layout ideas — I handle all of that. The only other moment I involve you: approving the mockup."
       },
       {
-        "q": "Will the site be genuinely unique or will I recognise the template?",
-        "a": "Unique. The template is a structural and technical quality foundation — not a clone. I completely change colours, typography, illustrations, images, sections, animations and above all all the copy. If I show you two sites built on the same Temlis base, you won't be able to tell. Guaranteed, or I redo it."
+        "q": "Will the site be genuinely unique?",
+        "a": "Yes. I design every project from A to Z for your specific activity: visual identity, page structure, key messages, user journey. The result reflects who you are. Guaranteed, or I redo it."
       },
       {
         "q": "Why Webflow and not WordPress?",
-        "a": "Webflow generates clean code (no fragile plugins), excellent Core Web Vitals (Google ranks you higher), native security without monthly updates, and a visual editor to update your own content without a developer. It's the platform of choice for premium agencies and freelancers in 2025."
+        "a": "Webflow generates clean code, excellent Core Web Vitals (Google ranks you higher), native security without monthly updates, and a visual editor to update your own content without a developer. It's the platform of choice for web professionals in 2025."
       },
       {
         "q": "Can I edit the site myself after delivery?",
-        "a": "Yes — and that's one of Webflow's major advantages. The content editor is as simple as a Google Doc: click on any text and edit it. I train you on it in 30 min at delivery. For structural or design changes, monthly maintenance is there."
+        "a": "Yes — and that's one of Webflow's major advantages. The content editor is as simple as a Google Doc: click on any text and edit it. I train you on it in 30 min at delivery."
       },
       {
         "q": "What if I'm not happy with the result?",
-        "a": "I have you approve the Figma mockup before writing a single line of code. If you approve the visual direction, the final result will align. The revisions included in each offer allow fine-tuning. To date, no project has been delivered without client satisfaction."
+        "a": "I have you approve the mockup before writing a single line of code. If you approve the visual direction, the final result will align. The revisions included in each offer allow fine-tuning."
       },
       {
         "q": "What are the payment terms?",
-        "a": "50% upfront at project start, 50% on delivery. Bank transfer or Stripe. I send an invoice within 24h of your commitment. Instalment payment available on request for Full Growth offers."
+        "a": "50% upfront at project start, 50% on delivery. Bank transfer or Stripe. I send an invoice within 24h of your commitment."
       },
       {
         "q": "What are the hosting costs after delivery?",
-        "a": "Webflow CMS plan costs approximately €23/month. You manage it directly, or I handle it as part of monthly maintenance. Your domain stays with your current registrar — no lock-in, your site is 100% yours."
+        "a": "Webflow CMS plan costs approximately €23/month. You manage it directly, or I handle it as part of monthly maintenance. Your site is 100% yours — no lock-in."
       }
     ]
   },
@@ -344,9 +340,9 @@
       { "name": "offer",    "label": "Offer you're interested in",   "type": "select",   "required": true,
         "placeholder": "Select an offer...",
         "options": [
-          "Starter – €990 excl. VAT (landing page, 48h)",
-          "Pro Site + AI – €2,500 excl. VAT (full site, 5 days)",
-          "Full Growth – €4,500 excl. VAT (site + automations, 10 days)",
+          "Express Site – €1,500 excl. VAT (72h)",
+          "Site + Lead Machine – €3,500 excl. VAT (7 days)",
+          "Digital Transformation – €8,000 excl. VAT (10-14 days)",
           "Not sure yet — let's talk"
         ]
       },
@@ -356,15 +352,15 @@
 
   "footer": {
     "logo": "Studio.",
-    "tagline": "Webflow + AI Sites for Coaches & Consultants — 5-day delivery",
+    "tagline": "Premium Webflow Sites for Coaches & Consultants — 5-day delivery",
     "groups": [
       {
         "title": "Offers",
         "links": [
-          { "label": "Starter – €990 excl. VAT",         "href": "#offres" },
-          { "label": "Pro Site + AI – €2,500 excl. VAT",  "href": "#offres" },
-          { "label": "Full Growth – €4,500 excl. VAT",    "href": "#offres" },
-          { "label": "Monthly maintenance",               "href": "#offres" }
+          { "label": "Express Site – €1,500",           "href": "#offres" },
+          { "label": "Site + Lead Machine – €3,500",    "href": "#offres" },
+          { "label": "Digital Transformation – €8,000", "href": "#offres" },
+          { "label": "Monthly maintenance",             "href": "#offres" }
         ]
       },
       {
@@ -379,10 +375,10 @@
       {
         "title": "Contact",
         "links": [
-          { "label": "Book a free call",       "href": "#contact" },
-          { "label": "LinkedIn",               "href": "https://linkedin.com" },
-          { "label": "Instagram",              "href": "https://instagram.com" },
-          { "label": "hello@yourname.com",     "href": "mailto:hello@yourname.com" }
+          { "label": "Book a free call",     "href": "#contact" },
+          { "label": "LinkedIn",             "href": "https://linkedin.com" },
+          { "label": "Instagram",            "href": "https://instagram.com" },
+          { "label": "hello@yourname.com",   "href": "mailto:hello@yourname.com" }
         ]
       }
     ],
@@ -396,7 +392,7 @@
   "blog": {
     "badge": "Blog",
     "headline": ["Resources for coaches", "& consultants."],
-    "subheadline": "Practical advice on web design, AI, and strategies that turn visitors into clients.",
+    "subheadline": "Practical advice on web design, automation, and strategies that turn visitors into clients.",
     "filterAll": "All",
     "readMoreLabel": "Read article →",
     "readTimeLabel": "read",

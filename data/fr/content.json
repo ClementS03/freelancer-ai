@@ -1,8 +1,8 @@
 {
   "meta": {
     "siteName": "Votre Prénom",
-    "tagline": "Sites Webflow + IA pour coachs & consultants",
-    "description": "Je conçois des sites Webflow premium avec IA intégrée, livrés en 5 jours chrono. Coachs, consultants, thérapeutes : fini le site qui vous fait perdre des clients.",
+    "tagline": "Sites Webflow premium pour coachs & consultants",
+    "description": "Je conçois des sites Webflow premium livrés en 5 jours chrono. Coachs, consultants, thérapeutes : fini le site qui vous fait perdre des clients.",
     "domain": "votrenom.fr",
     "email": "hello@votrenom.fr",
     "calendly": "https://calendly.com/votrenom/30min",
@@ -26,7 +26,7 @@
   "hero": {
     "badge": "🟢 3 créneaux disponibles ce mois-ci",
     "headline": ["Votre expertise mérite", "un site à sa hauteur."],
-    "subheadline": "Webflow premium · IA intégrée · Livraison en 5 jours chrono. Coachs et consultants : je construis le site qui vous ramène des clients pendant que vous dormez.",
+    "subheadline": "Sites Webflow premium · Automatisations sur-mesure · Livraison en 5 jours chrono. Je construis le site qui vous ramène des clients pendant que vous dormez.",
     "ctaPrimary":   { "label": "Réserver mon appel gratuit →", "href": "#contact" },
     "ctaSecondary": { "label": "Voir les offres", "href": "#offres" },
     "stats": [
@@ -34,7 +34,7 @@
       { "value": "×3",   "label": "Taux de conversion moyen" },
       { "value": "100%", "label": "Remote — zéro réunion inutile" }
     ],
-    "trust": "Design Figma validé avant le dev · Copy IA inclus · SEO on-page · 50% à la commande · 0 frais cachés"
+    "trust": "Design validé avant le dev · Textes inclus · SEO on-page · 50% à la commande · 0 frais cachés"
   },
 
   "logosBar": {
@@ -44,7 +44,7 @@
   "problem": {
     "badge": "Le vrai problème",
     "headline": ["Votre site vous", "coûte des clients."],
-    "intro": "Vous avez mis des années à construire votre expertise. Mais chaque semaine, des prospects arrivent sur votre site, ne comprennent pas votre valeur en 5 secondes, et partent chez un concurrent moins compétent que vous. C'est de l'argent qui s'évapore en silence.",
+    "intro": "Vous avez mis des années à construire votre expertise. Mais chaque semaine, des prospects arrivent sur votre site, ne comprennent pas votre valeur en 5 secondes, et partent chez un concurrent moins compétent. C'est de l'argent qui s'évapore en silence.",
     "points": [
       {
         "icon": "⏳",
@@ -53,8 +53,8 @@
       },
       {
         "icon": "💸",
-        "title": "Visiteurs sans formulaire = leads perdus",
-        "desc": "Sans Calendly intégré, sans chatbot IA pour répondre à 23h, sans CTA visible dès le premier scroll — vos visiteurs partent et ne reviennent jamais. Chaque visite non convertie est un RDV raté."
+        "title": "Visiteurs sans système = leads perdus",
+        "desc": "Sans Calendly intégré, sans assistant virtuel pour répondre à 23h, sans CTA visible dès le premier scroll — vos visiteurs partent et ne reviennent jamais. Chaque visite non convertie est un RDV raté."
       },
       {
         "icon": "😤",
@@ -73,31 +73,31 @@
       {
         "number": "01",
         "title": "Brief express en 30 min",
-        "desc": "Vous remplissez un questionnaire Notion (20 min, à votre rythme), puis on a un appel de 30 min. Je comprends votre positionnement, votre cible idéale, vos objectifs business. Tout le reste, c'est moi.",
+        "desc": "Vous remplissez un questionnaire (20 min, à votre rythme), puis on a un appel de 30 min. Je comprends votre positionnement, votre cible idéale, vos objectifs business. Tout le reste, c'est moi.",
         "duration": "Jour 1 matin"
       },
       {
         "number": "02",
-        "title": "Maquette Figma — approuvée avant le dev",
-        "desc": "Je sélectionne le template premium adapté à votre secteur et je le transforme à votre identité : couleurs, typo, structure, sections. Vous validez visuellement. Aucune ligne de code avant votre OK.",
+        "title": "Maquette approuvée avant le dev",
+        "desc": "Je conçois une maquette sur-mesure adaptée à votre secteur et votre identité : couleurs, typo, structure, sections. Vous validez visuellement. Aucune ligne de code avant votre OK.",
         "duration": "Jour 1–2"
       },
       {
         "number": "03",
-        "title": "Copy IA optimisé conversion",
-        "desc": "Je rédige tout le contenu de votre site avec l'IA : accroche, pages de service, about, témoignages structurés, métadescriptions SEO. Du texte pensé pour convaincre, pas pour remplir.",
+        "title": "Rédaction des textes optimisés conversion",
+        "desc": "Je rédige l'ensemble du contenu de votre site : accroche, pages de service, about, métadescriptions SEO. Des textes pensés pour convaincre, pas pour remplir.",
         "duration": "Jour 2"
       },
       {
         "number": "04",
         "title": "Développement Webflow",
-        "desc": "Le design part en dev. Site responsive mobile/tablette/desktop, Core Web Vitals optimisés, chatbot IA configuré (réponses 24h/24), Calendly intégré pour prise de RDV directe. Zéro plugin fragile.",
+        "desc": "Le design part en développement. Site responsive mobile/tablette/desktop, Core Web Vitals optimisés, assistant de conversion configuré, Calendly intégré pour prise de RDV directe.",
         "duration": "Jour 3–4"
       },
       {
         "number": "05",
         "title": "Mise en ligne + formation",
-        "desc": "Votre site passe en production sur votre domaine. Je vous forme en 30 min à l'éditeur Webflow pour que vous puissiez modifier vos textes vous-même sans toucher au code. Vous êtes 100% autonome.",
+        "desc": "Votre site passe en production sur votre domaine. Je vous forme en 30 min pour que vous puissiez modifier vos textes vous-même sans toucher au code. Vous êtes 100% autonome.",
         "duration": "Jour 5"
       }
     ]
@@ -106,7 +106,7 @@
   "offers": {
     "badge": "Tarifs",
     "headline": ["3 offres claires.", "0 frais cachés."],
-    "subtitle": "Chaque offre inclut un design Figma validé avant développement, du copy IA optimisé conversion, et le SEO on-page. Acompte 50% au démarrage, solde à la livraison.",
+    "subtitle": "Chaque offre inclut un design sur-mesure validé avant développement, la rédaction de tous les textes, et le SEO on-page. Acompte 50% au démarrage, solde à la livraison.",
     "acompteNote": "50% à la commande · 50% à la livraison · Facture sous 24h",
     "deliveryLabel": "Livraison",
     "notIncludedLabel": "Non inclus dans cette offre",
@@ -114,91 +114,87 @@
     "items": [
       {
         "id": "starter",
-        "name": "Starter",
-        "price": "990",
+        "name": "Site Express",
+        "price": "1 500",
         "currency": "€",
         "vat": "HT",
-        "delivery": "48h",
-        "tagline": "Une vitrine professionnelle en 48h chrono",
+        "delivery": "72h",
+        "tagline": "Une vitrine professionnelle en 72h chrono",
         "featured": false,
         "badge": null,
-        "description": "Vous avez besoin d'exister en ligne rapidement avec quelque chose dont vous n'avez pas honte. Une landing page complète, pensée pour convertir, livrée en moins de 2 jours ouvrés.",
+        "description": "Vous avez besoin d'exister en ligne rapidement avec quelque chose dont vous n'avez pas honte. Une landing page complète, pensée pour convertir, livrée en moins de 3 jours ouvrés.",
         "features": [
-          "Landing page 1 page · 10 à 15 sections",
-          "Design Figma sur-mesure (bibliothèque premium Temlis)",
-          "Développement Webflow complet — code propre, rapide",
-          "Copy IA inclus : headline, textes, CTA optimisés",
-          "SEO on-page : balises titre, meta, alt images, structure H",
+          "Site Webflow 5 pages",
+          "Design sur-mesure adapté à votre secteur",
+          "Rédaction de tous les textes incluse",
+          "SEO on-page : balises titre, meta, structure H",
           "Formulaire de contact + notification email instantanée",
           "Responsive parfait : mobile · tablette · desktop",
-          "Chatbot FAQ basique (Tidio — répond en votre absence)",
-          "1 round de révisions inclus"
+          "Assistant de conversion (répond en votre absence)",
+          "1 révision incluse"
         ],
         "notIncluded": [
-          "Site multi-pages",
-          "Blog CMS",
-          "Calendly intégré",
-          "Automatisations email"
+          "Séquence email automatisée",
+          "Intégration CRM",
+          "Dashboard analytics",
+          "Suivi mensuel"
         ],
         "forWho": "Solopreneurs qui lancent, professionnels qui veulent remplacer un site honteux rapidement, test d'un nouveau positionnement.",
         "cta": "Je démarre →"
       },
       {
         "id": "pro",
-        "name": "Site Pro + IA",
-        "price": "2 500",
+        "name": "Site + Lead Machine",
+        "price": "3 500",
         "currency": "€",
         "vat": "HT",
-        "delivery": "5 jours",
-        "tagline": "Votre site de référence — premium, complet, converti",
+        "delivery": "7 jours",
+        "tagline": "Votre site de référence + système de capture de leads",
         "featured": true,
-        "badge": "⭐ Le plus choisi",
-        "description": "L'offre complète pour les coachs et consultants qui veulent un site multi-pages à la hauteur de leur expertise. Design soigné, parcours de conversion pensé, IA intégrée pour ne plus jamais rater une demande — même à 23h.",
+        "badge": "⭐ Offre principale",
+        "description": "L'offre complète pour les coachs et consultants qui veulent un site multi-pages à la hauteur de leur expertise et un système qui qualifie et capte des leads automatiquement — même à 23h.",
         "features": [
-          "Site 5 à 7 pages — Home, À propos, Services, Tarifs, Blog, Contact",
-          "Design Figma multi-pages validé AVANT le développement",
-          "Développement Webflow complet, optimisé Core Web Vitals",
-          "Copy IA complet pour toutes les pages (conversion-focused)",
-          "Chatbot IA (Tidio/Crisp) — répond et qualifie 24h/24, 7j/7",
+          "Site Webflow 8 à 10 pages",
+          "Design sur-mesure validé avant développement",
+          "Rédaction complète de tous les textes",
+          "Assistant de qualification de leads (répond 24h/24, 7j/7)",
+          "Séquence email automatisée (Make)",
+          "Intégration CRM simple",
+          "Dashboard analytics basique",
           "SEO technique + on-page sur toutes les pages",
-          "Google Analytics 4 configuré et opérationnel",
-          "Calendly intégré — prise de RDV directe sans échanges d'emails",
-          "Blog CMS Webflow opérationnel — prêt à publier vos articles",
-          "Formulaires intelligents + notification email instantanée",
-          "2 rounds de révisions inclus",
-          "Formation Webflow Editor 30 min — vous êtes autonome"
+          "Calendly intégré — prise de RDV directe",
+          "2 révisions incluses"
         ],
         "notIncluded": [
-          "Séquence email automatisée (Make/Brevo)",
-          "Funnel lead magnet",
-          "CRM connecté"
+          "Automatisation multi-canal (SMS, WhatsApp)",
+          "Funnel de vente complet",
+          "Suivi mensuel inclus"
         ],
         "forWho": "Coachs, consultants, thérapeutes avec 3+ ans d'expérience qui veulent un site qui travaille à leur place.",
         "cta": "Je veux ce site →"
       },
       {
         "id": "premium",
-        "name": "Full Growth",
-        "price": "4 500",
+        "name": "Transformation Digitale",
+        "price": "8 000",
         "currency": "€",
         "vat": "HT",
-        "delivery": "10 jours",
-        "tagline": "Site premium + machine à leads automatisée",
+        "delivery": "10 à 14 jours",
+        "tagline": "Site premium + machine d'acquisition complète",
         "featured": false,
         "badge": null,
-        "description": "Pour les consultants et formateurs établis qui veulent aller au-delà du beau site et mettre en place un vrai système d'acquisition. Chaque visiteur entre dans un tunnel — et en sort qualifié dans votre boîte mail.",
+        "description": "Pour les consultants et formateurs établis qui veulent un vrai système d'acquisition multi-canal. Chaque visiteur entre dans un tunnel pensé pour convertir — et en sort qualifié dans votre boîte mail.",
         "features": [
-          "Tout le contenu de l'offre Site Pro + IA inclus",
-          "Funnel de capture lead magnet (PDF, mini-formation, checklist...)",
-          "Séquence email automation Make + Brevo (5 à 7 emails)",
-          "Chatbot IA avancé — répond aux objections et prend les RDV",
-          "CRM Notion ou Airtable configuré et connecté au site",
-          "Calendly avancé + reminder SMS/email automatique",
-          "Dashboard analytics personnalisé (trafic, leads, conversions)",
-          "Test A/B sur la hero section",
-          "3 rounds de révisions inclus",
-          "1 mois de support prioritaire inclus",
-          "Call mensuel de suivi stratégique (1h)"
+          "Site Webflow complet + blog CMS",
+          "Design sur-mesure haut de gamme",
+          "Funnel de vente complet",
+          "Automatisation multi-canal (email, SMS, WhatsApp)",
+          "Assistant entraîné sur votre business spécifique",
+          "Connexion CRM + pipeline deals automatique",
+          "Dashboard analytics avancé",
+          "SEO technique complet",
+          "Suivi mensuel 3 mois inclus",
+          "3 révisions incluses"
         ],
         "notIncluded": [],
         "forWho": "Consultants et formateurs établis qui veulent systématiser leur acquisition et arrêter de dépendre uniquement du bouche-à-oreille.",
@@ -232,14 +228,14 @@
         "result": "+4 clients en 3 semaines"
       },
       {
-        "quote": "J'avais peur que la rapidité sacrifie la qualité. La maquette Figma m'a rassurée immédiatement — c'était exactement ce que j'avais en tête. Le résultat final a dépassé mes attentes.",
+        "quote": "J'avais peur que la rapidité sacrifie la qualité. La maquette m'a rassurée immédiatement — c'était exactement ce que j'avais en tête. Le résultat final a dépassé mes attentes.",
         "name": "Thomas R.",
         "role": "Consultant RH",
         "location": "Paris",
         "result": "Livré en 4 jours"
       },
       {
-        "quote": "Le chatbot répond à mes prospects quand je suis en séance. J'ai reçu une demande de coaching signée un dimanche matin à 9h. Mon ancien site n'aurait jamais converti ça.",
+        "quote": "L'assistant répond à mes prospects quand je suis en séance. J'ai reçu une demande signée un dimanche matin à 9h. Mon ancien site n'aurait jamais converti ça.",
         "name": "Camille D.",
         "role": "Thérapeute & Coach de vie",
         "location": "Bordeaux",
@@ -252,18 +248,18 @@
     "badge": "À propos",
     "headline": "Un freelance senior. Pas une agence.",
     "paragraphs": [
-      "Je suis webdesigner Webflow spécialisé dans les sites à haute conversion pour les indépendants. J'ai travaillé avec des agences Webflow parisiennes — j'y ai appris les process, les standards de qualité, et surtout ce qui fait perdre 6 semaines inutilement.",
+      "Je suis webdesigner Webflow spécialisé dans les sites à haute conversion pour les indépendants. J'ai travaillé avec des agences parisiennes — j'y ai appris les process, les standards de qualité, et surtout ce qui fait perdre 6 semaines inutilement.",
       "Aujourd'hui je travaille en direct avec vous. Pas de chef de projet intermédiaire, pas de juniors qui apprennent sur votre budget. Du début à la fin, vous avez une seule personne responsable du résultat.",
-      "J'utilise l'IA comme outil d'accélération : copy, SEO, chatbot, automatisations. Pas pour faire moins bien — pour faire plus, plus vite, à un tarif que les agences ne peuvent pas offrir."
+      "Mon avantage : je combine le design, le développement, la rédaction et les automatisations. Là où une agence fait intervenir 4 personnes, vous avez un interlocuteur unique qui livre en 5 jours."
     ],
-    "skillsLabel": "Stack technique",
+    "skillsLabel": "Expertises",
     "skills": [
       "Webflow Expert",
       "Figma & UI Design",
-      "IA & Prompt Engineering",
+      "Automatisations & Intégrations",
       "SEO Technique",
-      "Make / Automatisations",
-      "Brevo / Email Marketing"
+      "Rédaction conversion",
+      "Email Marketing"
     ],
     "currently": "🚐 En préparation d'une vie nomade — je travaille 100% remote depuis le premier jour."
   },
@@ -277,35 +273,35 @@
     "items": [
       {
         "q": "5 jours c'est vraiment possible sans bâcler le travail ?",
-        "a": "Oui — et c'est possible justement parce que je ne pars pas de zéro. Je travaille avec une bibliothèque de 80+ templates premium (Temlis) conçus par des équipes de designers experts. Je ne « bricole pas vite » — je déploie un système rodé. Ce qui prend 6 semaines à une agence me prend 5 jours. Vous pouvez voir des exemples concrets lors de notre appel."
+        "a": "Oui — et c'est possible parce que je déploie un process rodé sur des dizaines de projets. Ce qui prend 6 semaines à une agence (réunions, validations en cascade, intermédiaires) me prend 5 jours en travaillant en direct avec vous. Vous pouvez voir des exemples concrets lors de notre appel."
       },
       {
         "q": "Je n'ai pas le temps de vous briefer. Comment ça se passe concrètement ?",
-        "a": "Le brief complet se fait en deux étapes : un questionnaire Notion que vous remplissez à votre rythme (20-25 min), puis un appel de 30 min pour préciser. C'est tout. Je n'ai pas besoin de vos textes, de vos photos, ni de vos idées de mise en page — je gère tout ça. Le seul moment où je vous sollicite ensuite : validation de la maquette Figma."
+        "a": "Le brief complet se fait en deux étapes : un questionnaire que vous remplissez à votre rythme (20-25 min), puis un appel de 30 min pour préciser. C'est tout. Je n'ai pas besoin de vos textes ni de vos idées de mise en page — je gère tout ça. Le seul moment où je vous sollicite ensuite : validation de la maquette."
       },
       {
-        "q": "Est-ce que le site sera vraiment unique ou je vais reconnaître le template ?",
-        "a": "Unique. Le template est une base de structure et de qualité technique — pas un clone. Je rechange intégralement les couleurs, typographies, illustrations, images, sections, animations et surtout tout le texte. Si je vous montre deux sites construits sur la même base Temlis, vous ne pourrez pas le deviner. Résultat garanti ou je refais."
+        "q": "Est-ce que le site sera vraiment unique ?",
+        "a": "Oui. Je conçois chaque projet de A à Z pour votre activité : identité visuelle, structure de page, messages clés, parcours utilisateur. Le résultat reflète qui vous êtes, pas un template générique. Résultat garanti ou je refais."
       },
       {
         "q": "Pourquoi Webflow et pas WordPress ?",
-        "a": "Webflow génère un code propre (pas de plugins fragiles), des Core Web Vitals excellents (Google vous classe mieux), une sécurité native sans mises à jour mensuelles, et un éditeur visuel pour modifier vos textes vous-même sans développeur. C'est la plateforme des agences et freelances premium en 2025 — pas d'un débutant qui installe Elementor."
+        "a": "Webflow génère un code propre, des Core Web Vitals excellents (Google vous classe mieux), une sécurité native sans mises à jour mensuelles, et un éditeur visuel pour modifier vos textes vous-même sans développeur. C'est la plateforme des professionnels du web en 2025."
       },
       {
         "q": "Est-ce que je peux modifier le site moi-même une fois livré ?",
-        "a": "Oui, c'est l'un des avantages majeurs de Webflow. L'éditeur de contenu est aussi simple qu'un Google Doc — vous cliquez sur n'importe quel texte et vous l'éditez. Je vous forme dessus en 30 min lors de la livraison. Pour les modifications de structure ou design, la maintenance mensuelle est là."
+        "a": "Oui, c'est l'un des avantages majeurs de Webflow. L'éditeur de contenu est aussi simple qu'un Google Doc — vous cliquez sur n'importe quel texte et vous l'éditez. Je vous forme dessus en 30 min lors de la livraison."
       },
       {
         "q": "Que se passe-t-il si le résultat ne me convient pas ?",
-        "a": "Je fais valider la maquette Figma avant d'écrire la première ligne de code. Si vous validez le visuel, le résultat sera forcément dans la direction attendue. Les rounds de révisions inclus dans chaque offre permettent d'affiner les détails. À ce jour, aucun projet n'a été livré sans satisfaction client."
+        "a": "Je fais valider la maquette avant d'écrire la première ligne de code. Si vous validez le visuel, le résultat sera forcément dans la direction attendue. Les révisions incluses dans chaque offre permettent d'affiner les détails."
       },
       {
         "q": "Quels sont les termes de paiement ?",
-        "a": "50% d'acompte au démarrage du projet, 50% à la livraison. Virement bancaire ou Stripe. Je vous envoie une facture dans les 24h suivant votre engagement. Possibilité de mensualiser sur demande pour les offres Full Growth."
+        "a": "50% d'acompte au démarrage du projet, 50% à la livraison. Virement bancaire ou Stripe. Je vous envoie une facture dans les 24h suivant votre engagement."
       },
       {
         "q": "Quel est le coût d'hébergement après livraison ?",
-        "a": "Webflow CMS coûte environ 23€/mois (plan CMS). Vous le gérez directement, ou je m'en occupe dans le cadre de la maintenance mensuelle. Le domaine reste chez votre registrar actuel — aucune captivité, votre site vous appartient à 100%."
+        "a": "Webflow CMS coûte environ 23€/mois. Vous le gérez directement, ou je m'en occupe dans le cadre de la maintenance mensuelle. Votre site vous appartient à 100% — aucune captivité."
       }
     ]
   },
@@ -337,16 +333,16 @@
     "submittingLabel": "Envoi en cours...",
     "spamNote": "Pas de spam. Pas de relance commerciale. Réponse sous 24h.",
     "fields": [
-      { "name": "name",     "label": "Votre prénom",             "type": "text",     "required": true,  "placeholder": "Sophie" },
-      { "name": "email",    "label": "Votre email",              "type": "email",    "required": true,  "placeholder": "sophie@exemple.fr" },
-      { "name": "activity", "label": "Votre activité",           "type": "text",     "required": true,  "placeholder": "Coach business, consultant RH, thérapeute..." },
-      { "name": "site",     "label": "Votre site actuel (URL)",  "type": "url",      "required": false, "placeholder": "https://... (laissez vide si vous n'en avez pas)" },
-      { "name": "offer",    "label": "Offre qui vous intéresse", "type": "select",   "required": true,
+      { "name": "name",     "label": "Votre prénom",              "type": "text",     "required": true,  "placeholder": "Sophie" },
+      { "name": "email",    "label": "Votre email",               "type": "email",    "required": true,  "placeholder": "sophie@exemple.fr" },
+      { "name": "activity", "label": "Votre activité",            "type": "text",     "required": true,  "placeholder": "Coach business, consultant RH, thérapeute..." },
+      { "name": "site",     "label": "Votre site actuel (URL)",   "type": "url",      "required": false, "placeholder": "https://... (laissez vide si vous n'en avez pas)" },
+      { "name": "offer",    "label": "Offre qui vous intéresse",  "type": "select",   "required": true,
         "placeholder": "Sélectionner une offre...",
         "options": [
-          "Starter – 990€ HT (landing page, 48h)",
-          "Site Pro + IA – 2 500€ HT (site complet, 5 jours)",
-          "Full Growth – 4 500€ HT (site + automatisations, 10 jours)",
+          "Site Express – 1 500€ HT (72h)",
+          "Site + Lead Machine – 3 500€ HT (7 jours)",
+          "Transformation Digitale – 8 000€ HT (10-14 jours)",
           "Je ne sais pas encore — on en parle"
         ]
       },
@@ -356,15 +352,15 @@
 
   "footer": {
     "logo": "Studio.",
-    "tagline": "Sites Webflow + IA pour coachs & consultants — livraison en 5 jours",
+    "tagline": "Sites Webflow premium pour coachs & consultants — livraison en 5 jours",
     "groups": [
       {
         "title": "Offres",
         "links": [
-          { "label": "Starter – 990€ HT",        "href": "#offres" },
-          { "label": "Site Pro + IA – 2 500€ HT", "href": "#offres" },
-          { "label": "Full Growth – 4 500€ HT",   "href": "#offres" },
-          { "label": "Maintenance mensuelle",      "href": "#offres" }
+          { "label": "Site Express – 1 500€",          "href": "#offres" },
+          { "label": "Site + Lead Machine – 3 500€",   "href": "#offres" },
+          { "label": "Transformation Digitale – 8 000€","href": "#offres" },
+          { "label": "Maintenance mensuelle",           "href": "#offres" }
         ]
       },
       {
@@ -382,7 +378,7 @@
           { "label": "Réserver un appel gratuit", "href": "#contact" },
           { "label": "LinkedIn",                  "href": "https://linkedin.com" },
           { "label": "Instagram",                 "href": "https://instagram.com" },
-          { "label": "hello@votrenom.fr",          "href": "mailto:hello@votrenom.fr" }
+          { "label": "hello@votrenom.fr",         "href": "mailto:hello@votrenom.fr" }
         ]
       }
     ],
@@ -396,7 +392,7 @@
   "blog": {
     "badge": "Blog",
     "headline": ["Ressources pour coachs", "& consultants."],
-    "subheadline": "Conseils concrets sur le web, l'IA, et les stratégies qui transforment les visiteurs en clients.",
+    "subheadline": "Conseils concrets sur le web, les automatisations, et les stratégies qui transforment les visiteurs en clients.",
     "filterAll": "Tout",
     "readMoreLabel": "Lire l'article →",
     "readTimeLabel": "de lecture",
