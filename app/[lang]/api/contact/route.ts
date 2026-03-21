@@ -6,13 +6,16 @@ export async function POST(req: NextRequest) {
     const { name, email, activity, offer } = body;
 
     if (!name || !email || !activity || !offer) {
-      return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
+      return NextResponse.json(
+        { error: "Missing required fields." },
+        { status: 400 },
+      );
     }
 
     // ── Option A: Resend (recommended) ─────────────────────
     // npm install resend
     // Then uncomment:
-    //
+    //w
     // import { Resend } from "resend";
     // const resend = new Resend(process.env.RESEND_API_KEY);
     // await resend.emails.send({
