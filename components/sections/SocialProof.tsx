@@ -13,16 +13,16 @@ const TOOLS = [
 
 const STATS: Record<Locale, { value: string; label: string }[]> = {
   fr: [
-    { value: "80+",  label: "Templates premium" },
     { value: "5j",   label: "Délai de livraison" },
-    { value: "100%", label: "Satisfaction client" },
     { value: "×3",   label: "Conversion moyenne" },
+    { value: "100%", label: "Satisfaction client" },
+    { value: "1",    label: "Interlocuteur unique" },
   ],
   en: [
-    { value: "80+",  label: "Premium templates" },
     { value: "5d",   label: "Delivery time" },
-    { value: "100%", label: "Client satisfaction" },
     { value: "×3",   label: "Average conversion" },
+    { value: "100%", label: "Client satisfaction" },
+    { value: "1",    label: "Single point of contact" },
   ],
 };
 

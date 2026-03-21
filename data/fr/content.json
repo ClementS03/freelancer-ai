@@ -1,49 +1,84 @@
 {
   "meta": {
-    "siteName": "Votre Prénom",
-    "tagline": "Sites Webflow premium pour coachs & consultants",
-    "description": "Je conçois des sites Webflow premium livrés en 5 jours chrono. Coachs, consultants, thérapeutes : fini le site qui vous fait perdre des clients.",
+    "siteName": "Clément Seguin",
+    "tagline": "Webdesigner Webflow & Automatisations",
+    "description": "Clément Seguin, webdesigner Webflow freelance. Sites premium pour coachs, consultants et thérapeutes — livrés en 5 jours avec automatisations sur-mesure.",
     "domain": "votrenom.fr",
     "email": "hello@votrenom.fr",
     "calendly": "https://calendly.com/votrenom/30min",
     "linkedin": "https://linkedin.com/in/votrenom",
     "instagram": "https://instagram.com/votrenom"
   },
-
   "nav": {
-    "logo": "Studio.",
+    "logo": "CS.",
     "links": [
-      { "label": "Offres",   "href": "#offres" },
-      { "label": "Process",  "href": "#process" },
-      { "label": "À propos", "href": "#about" },
-      { "label": "FAQ",      "href": "#faq" },
-      { "label": "Blog",     "href": "/blog" }
+      {
+        "label": "Offres",
+        "href": "#offres"
+      },
+      {
+        "label": "Process",
+        "href": "#process"
+      },
+      {
+        "label": "À propos",
+        "href": "#about"
+      },
+      {
+        "label": "FAQ",
+        "href": "#faq"
+      },
+      {
+        "label": "Blog",
+        "href": "/blog"
+      }
     ],
-    "cta": { "label": "Réserver un appel gratuit", "href": "#contact" },
+    "cta": {
+      "label": "Réserver un appel gratuit",
+      "href": "#contact"
+    },
     "langSwitchLabel": "EN"
   },
-
   "hero": {
     "badge": "🟢 3 créneaux disponibles ce mois-ci",
-    "headline": ["Votre expertise mérite", "un site à sa hauteur."],
+    "headline": [
+      "Votre expertise mérite",
+      "un site à sa hauteur."
+    ],
     "subheadline": "Sites Webflow premium · Automatisations sur-mesure · Livraison en 5 jours chrono. Je construis le site qui vous ramène des clients pendant que vous dormez.",
-    "ctaPrimary":   { "label": "Réserver mon appel gratuit →", "href": "#contact" },
-    "ctaSecondary": { "label": "Voir les offres", "href": "#offres" },
+    "ctaPrimary": {
+      "label": "Réserver mon appel gratuit →",
+      "href": "#contact"
+    },
+    "ctaSecondary": {
+      "label": "Voir les offres",
+      "href": "#offres"
+    },
     "stats": [
-      { "value": "5j",   "label": "Délai de livraison garanti" },
-      { "value": "×3",   "label": "Taux de conversion moyen" },
-      { "value": "100%", "label": "Remote — zéro réunion inutile" }
+      {
+        "value": "5j",
+        "label": "Délai de livraison garanti"
+      },
+      {
+        "value": "×3",
+        "label": "Taux de conversion moyen"
+      },
+      {
+        "value": "100%",
+        "label": "Remote — zéro réunion inutile"
+      }
     ],
     "trust": "Design validé avant le dev · Textes inclus · SEO on-page · 50% à la commande · 0 frais cachés"
   },
-
   "logosBar": {
     "label": "Stack des meilleures agences web mondiales"
   },
-
   "problem": {
     "badge": "Le vrai problème",
-    "headline": ["Votre site vous", "coûte des clients."],
+    "headline": [
+      "Votre site vous",
+      "coûte des clients."
+    ],
     "intro": "Vous avez mis des années à construire votre expertise. Mais chaque semaine, des prospects arrivent sur votre site, ne comprennent pas votre valeur en 5 secondes, et partent chez un concurrent moins compétent. C'est de l'argent qui s'évapore en silence.",
     "points": [
       {
@@ -64,48 +99,52 @@
     ],
     "cta": "Voir comment ça marche →"
   },
-
   "process": {
     "badge": "Le process",
-    "headline": ["5 jours.", "Aucune surprise."],
+    "headline": [
+      "5 jours.",
+      "Aucune surprise."
+    ],
     "subtitle": "Pas de réunion de cadrage de 3h. Pas de back-and-forth sans fin. Un process en 5 étapes rodé sur des dizaines de projets — vous savez exactement où on en est chaque jour.",
     "steps": [
       {
         "number": "01",
         "title": "Brief express en 30 min",
         "desc": "Vous remplissez un questionnaire (20 min, à votre rythme), puis on a un appel de 30 min. Je comprends votre positionnement, votre cible idéale, vos objectifs business. Tout le reste, c'est moi.",
-        "duration": "Jour 1 matin"
+        "duration": "Étape 1"
       },
       {
         "number": "02",
         "title": "Maquette approuvée avant le dev",
         "desc": "Je conçois une maquette sur-mesure adaptée à votre secteur et votre identité : couleurs, typo, structure, sections. Vous validez visuellement. Aucune ligne de code avant votre OK.",
-        "duration": "Jour 1–2"
+        "duration": "Étape 2"
       },
       {
         "number": "03",
         "title": "Rédaction des textes optimisés conversion",
         "desc": "Je rédige l'ensemble du contenu de votre site : accroche, pages de service, about, métadescriptions SEO. Des textes pensés pour convaincre, pas pour remplir.",
-        "duration": "Jour 2"
+        "duration": "Étape 3"
       },
       {
         "number": "04",
         "title": "Développement Webflow",
         "desc": "Le design part en développement. Site responsive mobile/tablette/desktop, Core Web Vitals optimisés, assistant de conversion configuré, Calendly intégré pour prise de RDV directe.",
-        "duration": "Jour 3–4"
+        "duration": "Étape 4"
       },
       {
         "number": "05",
         "title": "Mise en ligne + formation",
         "desc": "Votre site passe en production sur votre domaine. Je vous forme en 30 min pour que vous puissiez modifier vos textes vous-même sans toucher au code. Vous êtes 100% autonome.",
-        "duration": "Jour 5"
+        "duration": "Étape 5"
       }
     ]
   },
-
   "offers": {
     "badge": "Tarifs",
-    "headline": ["3 offres claires.", "0 frais cachés."],
+    "headline": [
+      "3 offres claires.",
+      "0 frais cachés."
+    ],
     "subtitle": "Chaque offre inclut un design sur-mesure validé avant développement, la rédaction de tous les textes, et le SEO on-page. Acompte 50% au démarrage, solde à la livraison.",
     "acompteNote": "50% à la commande · 50% à la livraison · Facture sous 24h",
     "deliveryLabel": "Livraison",
@@ -118,8 +157,8 @@
         "price": "1 500",
         "currency": "€",
         "vat": "HT",
-        "delivery": "72h",
-        "tagline": "Une vitrine professionnelle en 72h chrono",
+        "delivery": "5 jours",
+        "tagline": "Une vitrine professionnelle livrée en 5 jours",
         "featured": false,
         "badge": null,
         "description": "Vous avez besoin d'exister en ligne rapidement avec quelque chose dont vous n'avez pas honte. Une landing page complète, pensée pour convertir, livrée en moins de 3 jours ouvrés.",
@@ -215,7 +254,6 @@
       "cta": "En savoir plus"
     }
   },
-
   "testimonials": {
     "badge": "Ils ont sauté le pas",
     "headline": "Des résultats concrets, pas des promesses.",
@@ -243,7 +281,6 @@
       }
     ]
   },
-
   "about": {
     "badge": "À propos",
     "headline": "Un freelance senior. Pas une agence.",
@@ -263,7 +300,6 @@
     ],
     "currently": "🚐 En préparation d'une vie nomade — je travaille 100% remote depuis le premier jour."
   },
-
   "faq": {
     "badge": "FAQ",
     "headline": "Vos doutes, levés.",
@@ -305,13 +341,18 @@
       }
     ]
   },
-
   "cta": {
     "badge": "Étape suivante",
     "headline": "30 min pour tout clarifier.",
     "subheadline": "On regarde ensemble votre situation actuelle, je vous montre des exemples concrets dans votre niche, et on voit si on est alignés. Sans engagement, sans pitch commercial.",
-    "primary":   { "label": "Réserver mon appel gratuit →", "href": "#contact" },
-    "secondary": { "label": "Envoyer un email directement", "href": "mailto:hello@votrenom.fr" },
+    "primary": {
+      "label": "Réserver mon appel gratuit →",
+      "href": "#contact"
+    },
+    "secondary": {
+      "label": "Envoyer un email directement",
+      "href": "mailto:hello@votrenom.fr"
+    },
     "note": "Si je pense honnêtement que vous n'avez pas besoin d'un nouveau site, je vous le dirai — et je vous dirai pourquoi.",
     "checklist": [
       "Appel de 30 min — sans engagement ni relance commerciale",
@@ -322,7 +363,6 @@
     "calendlyLabel": "Préférez-vous choisir votre créneau directement ?",
     "calendlyCta": "📅 Ouvrir Calendly →"
   },
-
   "contact": {
     "badge": "Contact",
     "headline": "Parlez-moi de votre projet.",
@@ -333,65 +373,142 @@
     "submittingLabel": "Envoi en cours...",
     "spamNote": "Pas de spam. Pas de relance commerciale. Réponse sous 24h.",
     "fields": [
-      { "name": "name",     "label": "Votre prénom",              "type": "text",     "required": true,  "placeholder": "Sophie" },
-      { "name": "email",    "label": "Votre email",               "type": "email",    "required": true,  "placeholder": "sophie@exemple.fr" },
-      { "name": "activity", "label": "Votre activité",            "type": "text",     "required": true,  "placeholder": "Coach business, consultant RH, thérapeute..." },
-      { "name": "site",     "label": "Votre site actuel (URL)",   "type": "url",      "required": false, "placeholder": "https://... (laissez vide si vous n'en avez pas)" },
-      { "name": "offer",    "label": "Offre qui vous intéresse",  "type": "select",   "required": true,
+      {
+        "name": "name",
+        "label": "Votre prénom",
+        "type": "text",
+        "required": true,
+        "placeholder": "Sophie"
+      },
+      {
+        "name": "email",
+        "label": "Votre email",
+        "type": "email",
+        "required": true,
+        "placeholder": "sophie@exemple.fr"
+      },
+      {
+        "name": "activity",
+        "label": "Votre activité",
+        "type": "text",
+        "required": true,
+        "placeholder": "Coach business, consultant RH, thérapeute..."
+      },
+      {
+        "name": "site",
+        "label": "Votre site actuel (URL)",
+        "type": "url",
+        "required": false,
+        "placeholder": "https://... (laissez vide si vous n'en avez pas)"
+      },
+      {
+        "name": "offer",
+        "label": "Offre qui vous intéresse",
+        "type": "select",
+        "required": true,
         "placeholder": "Sélectionner une offre...",
         "options": [
-          "Site Express – 1 500€ HT (72h)",
+          "Site Express – 1 500€ HT (5 jours)",
           "Site + Lead Machine – 3 500€ HT (7 jours)",
           "Transformation Digitale – 8 000€ HT (10-14 jours)",
           "Je ne sais pas encore — on en parle"
         ]
       },
-      { "name": "message",  "label": "En 2 phrases, votre projet", "type": "textarea", "required": false, "placeholder": "Décrivez votre activité, votre cible, ce que vous attendez de votre site..." }
+      {
+        "name": "message",
+        "label": "En 2 phrases, votre projet",
+        "type": "textarea",
+        "required": false,
+        "placeholder": "Décrivez votre activité, votre cible, ce que vous attendez de votre site..."
+      }
     ]
   },
-
   "footer": {
-    "logo": "Studio.",
+    "logo": "CS.",
     "tagline": "Sites Webflow premium pour coachs & consultants — livraison en 5 jours",
     "groups": [
       {
         "title": "Offres",
         "links": [
-          { "label": "Site Express – 1 500€",          "href": "#offres" },
-          { "label": "Site + Lead Machine – 3 500€",   "href": "#offres" },
-          { "label": "Transformation Digitale – 8 000€","href": "#offres" },
-          { "label": "Maintenance mensuelle",           "href": "#offres" }
+          {
+            "label": "Site Express – 1 500€",
+            "href": "#offres"
+          },
+          {
+            "label": "Site + Lead Machine – 3 500€",
+            "href": "#offres"
+          },
+          {
+            "label": "Transformation Digitale – 8 000€",
+            "href": "#offres"
+          },
+          {
+            "label": "Maintenance mensuelle",
+            "href": "#offres"
+          }
         ]
       },
       {
         "title": "Navigation",
         "links": [
-          { "label": "Process",  "href": "#process" },
-          { "label": "À propos", "href": "#about" },
-          { "label": "Blog",     "href": "/blog" },
-          { "label": "FAQ",      "href": "#faq" }
+          {
+            "label": "Process",
+            "href": "#process"
+          },
+          {
+            "label": "À propos",
+            "href": "#about"
+          },
+          {
+            "label": "Blog",
+            "href": "/blog"
+          },
+          {
+            "label": "FAQ",
+            "href": "#faq"
+          }
         ]
       },
       {
         "title": "Contact",
         "links": [
-          { "label": "Réserver un appel gratuit", "href": "#contact" },
-          { "label": "LinkedIn",                  "href": "https://linkedin.com" },
-          { "label": "Instagram",                 "href": "https://instagram.com" },
-          { "label": "hello@votrenom.fr",         "href": "mailto:hello@votrenom.fr" }
+          {
+            "label": "Réserver un appel gratuit",
+            "href": "#contact"
+          },
+          {
+            "label": "LinkedIn",
+            "href": "https://linkedin.com"
+          },
+          {
+            "label": "Instagram",
+            "href": "https://instagram.com"
+          },
+          {
+            "label": "hello@votrenom.fr",
+            "href": "mailto:hello@votrenom.fr"
+          }
         ]
       }
     ],
     "legal": [
-      { "label": "Mentions légales", "href": "/mentions-legales" },
-      { "label": "CGV",              "href": "/cgv" }
+      {
+        "label": "Mentions légales",
+        "href": "/mentions-legales"
+      },
+      {
+        "label": "CGV",
+        "href": "/cgv"
+      }
     ],
     "copyright": "© 2025 Studio. Tous droits réservés."
   },
-
   "blog": {
     "badge": "Blog",
-    "headline": ["Ressources pour coachs", "& consultants."],
+    "headline": [
+      "Ressources pour coachs",
+      "& consultants."
+    ],
     "subheadline": "Conseils concrets sur le web, les automatisations, et les stratégies qui transforment les visiteurs en clients.",
     "filterAll": "Tout",
     "readMoreLabel": "Lire l'article →",
@@ -401,7 +518,6 @@
     "authorCta": "Réserver un appel gratuit →",
     "noPostsLabel": "Premiers articles en cours de rédaction — revenez bientôt."
   },
-
   "notFound": {
     "title": "Page introuvable",
     "desc": "La page que vous cherchez n'existe pas ou a été déplacée.",

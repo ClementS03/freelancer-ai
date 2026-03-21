@@ -9,6 +9,8 @@ export function generateStaticParams() {
   return LOCALES.map((lang) => ({ lang }));
 }
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://clementseguin.fr";
+
 export async function generateMetadata({
   params,
 }: {
@@ -16,31 +18,36 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params;
   if (!isValidLocale(lang)) return {};
-  const c = getContent(lang as Locale);
+  const c    = getContent(lang as Locale);
+  const isFr = lang === "fr";
+
   return {
-    title: `${c.meta.siteName} — ${c.meta.tagline}`,
-    description: c.meta.description,
+    title: isFr
+      ? "Clément Seguin — Webdesigner Webflow | Sites premium pour coachs & consultants"
+      : "Clément Seguin — Webflow Designer | Premium sites for coaches & consultants",
+    description: isFr
+      ? "Clément Seguin, webdesigner Webflow freelance. Sites premium pour coachs, consultants et thérapeutes — livrés en 5 jours avec automatisations sur-mesure. 100% remote."
+      : "Clément Seguin, freelance Webflow designer. Premium websites for coaches, consultants and therapists — delivered in 5 days with custom automations. 100% remote.",
     alternates: {
-      canonical: `https://${c.meta.domain}/${lang}`,
+      canonical: `${SITE_URL}/${lang}`,
       languages: {
-        fr: `https://${c.meta.domain}/fr`,
-        en: `https://${c.meta.domain}/en`,
-        "x-default": `https://${c.meta.domain}/fr`,
+        fr:          `${SITE_URL}/fr`,
+        en:          `${SITE_URL}/en`,
+        "x-default": `${SITE_URL}/fr`,
       },
     },
     openGraph: {
-      title: `${c.meta.siteName} — ${c.meta.tagline}`,
+      title: isFr
+        ? "Clément Seguin — Sites Webflow premium en 5 jours"
+        : "Clément Seguin — Premium Webflow sites in 5 days",
       description: c.meta.description,
-      type: "website",
-      locale: lang === "fr" ? "fr_FR" : "en_US",
+      url:    `${SITE_URL}/${lang}`,
+      locale: isFr ? "fr_FR" : "en_US",
+      alternateLocale: isFr ? ["en_US"] : ["fr_FR"],
     },
   };
 }
 
-/**
- * Layout de langue — PAS de <html>/<body>.
- * Ces balises vivent exclusivement dans app/layout.tsx.
- */
 export default async function LangLayout({
   children,
   params,

@@ -1,0 +1,25 @@
+{
+  "name": "Clément Seguin — Webflow Designer",
+  "short_name": "C. Seguin",
+  "description": "Sites Webflow premium pour coachs & consultants — livraison en 5 jours",
+  "start_url": "/fr",
+  "display": "standalone",
+  "background_color": "#07080A",
+  "theme_color": "#07080A",
+  "orientation": "portrait-primary",
+  "lang": "fr",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "categories": ["business", "productivity"],
+  "screenshots": [
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "label": "Clément Seguin — Webflow Designer"
+    }
+  ]
+}

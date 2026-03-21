@@ -32,10 +32,7 @@ export function Hero({ content: c, locale }: { content: HeroContent; locale: Loc
             style={{ animationDelay: "80ms", animationFillMode: "both" }}
           >
             {c.headline[0]}{" "}
-            <span className="italic" style={{
-              background: "linear-gradient(135deg, #FF5C00 0%, #FF9A5C 60%, #FF5C00 100%)",
-              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"
-            }}>
+            <span className="italic text-gradient-hero">
               {c.headline[1]}
             </span>
           </h1>

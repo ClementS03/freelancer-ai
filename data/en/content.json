@@ -1,49 +1,84 @@
 {
   "meta": {
-    "siteName": "Your Name",
-    "tagline": "Premium Webflow Sites for Coaches & Consultants",
-    "description": "Premium Webflow websites delivered in 5 days. Coaches, consultants, therapists: stop losing clients to a mediocre website.",
+    "siteName": "Clément Seguin",
+    "tagline": "Webflow Designer & Automation",
+    "description": "Clément Seguin, freelance Webflow designer. Premium websites for coaches, consultants and therapists — delivered in 5 days with custom automations.",
     "domain": "yourname.com",
     "email": "hello@yourname.com",
     "calendly": "https://calendly.com/yourname/30min",
     "linkedin": "https://linkedin.com/in/yourname",
     "instagram": "https://instagram.com/yourname"
   },
-
   "nav": {
-    "logo": "Studio.",
+    "logo": "CS.",
     "links": [
-      { "label": "Offers",  "href": "#offres" },
-      { "label": "Process", "href": "#process" },
-      { "label": "About",   "href": "#about" },
-      { "label": "FAQ",     "href": "#faq" },
-      { "label": "Blog",    "href": "/blog" }
+      {
+        "label": "Offers",
+        "href": "#offres"
+      },
+      {
+        "label": "Process",
+        "href": "#process"
+      },
+      {
+        "label": "About",
+        "href": "#about"
+      },
+      {
+        "label": "FAQ",
+        "href": "#faq"
+      },
+      {
+        "label": "Blog",
+        "href": "/blog"
+      }
     ],
-    "cta": { "label": "Book a free call", "href": "#contact" },
+    "cta": {
+      "label": "Book a free call",
+      "href": "#contact"
+    },
     "langSwitchLabel": "FR"
   },
-
   "hero": {
     "badge": "🟢 3 slots available this month",
-    "headline": ["Your expertise deserves", "a site to match."],
+    "headline": [
+      "Your expertise deserves",
+      "a site to match."
+    ],
     "subheadline": "Premium Webflow sites · Custom automations · Delivered in 5 days flat. I build websites that bring you clients while you sleep.",
-    "ctaPrimary":   { "label": "Book my free call →", "href": "#contact" },
-    "ctaSecondary": { "label": "See offers", "href": "#offres" },
+    "ctaPrimary": {
+      "label": "Book my free call →",
+      "href": "#contact"
+    },
+    "ctaSecondary": {
+      "label": "See offers",
+      "href": "#offres"
+    },
     "stats": [
-      { "value": "5d",   "label": "Guaranteed delivery" },
-      { "value": "×3",   "label": "Average conversion lift" },
-      { "value": "100%", "label": "Remote — zero pointless meetings" }
+      {
+        "value": "5d",
+        "label": "Guaranteed delivery"
+      },
+      {
+        "value": "×3",
+        "label": "Average conversion lift"
+      },
+      {
+        "value": "100%",
+        "label": "Remote — zero pointless meetings"
+      }
     ],
     "trust": "Design approved before dev · All copy included · On-page SEO · 50% upfront · Zero hidden fees"
   },
-
   "logosBar": {
     "label": "Stack used by the world's best web agencies"
   },
-
   "problem": {
     "badge": "The real problem",
-    "headline": ["Your website is", "costing you clients."],
+    "headline": [
+      "Your website is",
+      "costing you clients."
+    ],
     "intro": "You've spent years building your expertise. But every week, prospects land on your site, fail to grasp your value in 5 seconds, and leave for a less qualified competitor. That's money evaporating in silence.",
     "points": [
       {
@@ -64,48 +99,52 @@
     ],
     "cta": "See how it works →"
   },
-
   "process": {
     "badge": "The process",
-    "headline": ["5 days.", "Zero surprises."],
+    "headline": [
+      "5 days.",
+      "Zero surprises."
+    ],
     "subtitle": "No 3-hour scoping meeting. No endless back-and-forth. A 5-step process refined across dozens of projects — you know exactly where we stand every day.",
     "steps": [
       {
         "number": "01",
         "title": "Express brief — 30 min",
         "desc": "You fill in a questionnaire at your own pace (20 min), then we have a 30-min call. I understand your positioning, ideal client, and business goals. Everything else is on me.",
-        "duration": "Day 1 morning"
+        "duration": "Step 1"
       },
       {
         "number": "02",
         "title": "Mockup approved before dev",
         "desc": "I design a custom mockup suited to your sector and identity: colours, typography, structure, sections. You approve visually. Not one line of code until you say go.",
-        "duration": "Day 1–2"
+        "duration": "Step 2"
       },
       {
         "number": "03",
         "title": "Conversion-focused copywriting",
         "desc": "I write all your site content: hook, service pages, about, SEO meta descriptions. Text designed to convince, not just fill space.",
-        "duration": "Day 2"
+        "duration": "Step 3"
       },
       {
         "number": "04",
         "title": "Webflow development",
         "desc": "The design goes into development. Fully responsive, optimised Core Web Vitals, conversion assistant configured, Calendly integrated for direct booking.",
-        "duration": "Day 3–4"
+        "duration": "Step 4"
       },
       {
         "number": "05",
         "title": "Launch + training",
         "desc": "Your site goes live on your domain. I train you in 30 min so you can update your own content without touching code. You're 100% autonomous.",
-        "duration": "Day 5"
+        "duration": "Step 5"
       }
     ]
   },
-
   "offers": {
     "badge": "Pricing",
-    "headline": ["3 clear offers.", "0 hidden fees."],
+    "headline": [
+      "3 clear offers.",
+      "0 hidden fees."
+    ],
     "subtitle": "Every offer includes a custom design approved before development, full copywriting, and on-page SEO. 50% upfront, 50% on delivery.",
     "acompteNote": "50% upfront · 50% on delivery · Invoice within 24h",
     "deliveryLabel": "Delivery",
@@ -118,8 +157,8 @@
         "price": "1,500",
         "currency": "€",
         "vat": "excl. VAT",
-        "delivery": "72h",
-        "tagline": "A professional showcase in 72h flat",
+        "delivery": "5 days",
+        "tagline": "A professional showcase delivered in 5 days",
         "featured": false,
         "badge": null,
         "description": "You need a professional online presence quickly — something you're not ashamed to share. A complete Webflow site, built to convert, delivered in under 3 business days.",
@@ -215,7 +254,6 @@
       "cta": "Learn more"
     }
   },
-
   "testimonials": {
     "badge": "They took the leap",
     "headline": "Concrete results, not promises.",
@@ -243,7 +281,6 @@
       }
     ]
   },
-
   "about": {
     "badge": "About",
     "headline": "A senior freelancer. Not an agency.",
@@ -263,7 +300,6 @@
     ],
     "currently": "🚐 Preparing a nomadic lifestyle — 100% remote from day one."
   },
-
   "faq": {
     "badge": "FAQ",
     "headline": "Your doubts, cleared.",
@@ -305,13 +341,18 @@
       }
     ]
   },
-
   "cta": {
     "badge": "Next step",
     "headline": "30 min to clear everything.",
     "subheadline": "We look at your current situation together, I show you concrete examples in your niche, and we see if we're aligned. No commitment, no sales pitch.",
-    "primary":   { "label": "Book my free call →", "href": "#contact" },
-    "secondary": { "label": "Send a direct email", "href": "mailto:hello@yourname.com" },
+    "primary": {
+      "label": "Book my free call →",
+      "href": "#contact"
+    },
+    "secondary": {
+      "label": "Send a direct email",
+      "href": "mailto:hello@yourname.com"
+    },
     "note": "If I honestly think you don't need a new site, I'll tell you — and explain why.",
     "checklist": [
       "30-min call — no commitment or follow-up sales",
@@ -322,7 +363,6 @@
     "calendlyLabel": "Prefer to pick your slot directly?",
     "calendlyCta": "📅 Open Calendly →"
   },
-
   "contact": {
     "badge": "Contact",
     "headline": "Tell me about your project.",
@@ -333,65 +373,142 @@
     "submittingLabel": "Sending...",
     "spamNote": "No spam. No sales follow-up. Reply within 24h.",
     "fields": [
-      { "name": "name",     "label": "Your first name",              "type": "text",     "required": true,  "placeholder": "Sophie" },
-      { "name": "email",    "label": "Your email",                   "type": "email",    "required": true,  "placeholder": "sophie@example.com" },
-      { "name": "activity", "label": "Your activity",                "type": "text",     "required": true,  "placeholder": "Business coach, HR consultant, therapist..." },
-      { "name": "site",     "label": "Your current site (URL)",      "type": "url",      "required": false, "placeholder": "https://... (leave blank if none)" },
-      { "name": "offer",    "label": "Offer you're interested in",   "type": "select",   "required": true,
+      {
+        "name": "name",
+        "label": "Your first name",
+        "type": "text",
+        "required": true,
+        "placeholder": "Sophie"
+      },
+      {
+        "name": "email",
+        "label": "Your email",
+        "type": "email",
+        "required": true,
+        "placeholder": "sophie@example.com"
+      },
+      {
+        "name": "activity",
+        "label": "Your activity",
+        "type": "text",
+        "required": true,
+        "placeholder": "Business coach, HR consultant, therapist..."
+      },
+      {
+        "name": "site",
+        "label": "Your current site (URL)",
+        "type": "url",
+        "required": false,
+        "placeholder": "https://... (leave blank if none)"
+      },
+      {
+        "name": "offer",
+        "label": "Offer you're interested in",
+        "type": "select",
+        "required": true,
         "placeholder": "Select an offer...",
         "options": [
-          "Express Site – €1,500 excl. VAT (72h)",
+          "Express Site – €1,500 excl. VAT (5 days)",
           "Site + Lead Machine – €3,500 excl. VAT (7 days)",
           "Digital Transformation – €8,000 excl. VAT (10-14 days)",
           "Not sure yet — let's talk"
         ]
       },
-      { "name": "message",  "label": "In 2 sentences, your project", "type": "textarea", "required": false, "placeholder": "Describe your activity, target audience, and what you want from your site..." }
+      {
+        "name": "message",
+        "label": "In 2 sentences, your project",
+        "type": "textarea",
+        "required": false,
+        "placeholder": "Describe your activity, target audience, and what you want from your site..."
+      }
     ]
   },
-
   "footer": {
-    "logo": "Studio.",
+    "logo": "CS.",
     "tagline": "Premium Webflow Sites for Coaches & Consultants — 5-day delivery",
     "groups": [
       {
         "title": "Offers",
         "links": [
-          { "label": "Express Site – €1,500",           "href": "#offres" },
-          { "label": "Site + Lead Machine – €3,500",    "href": "#offres" },
-          { "label": "Digital Transformation – €8,000", "href": "#offres" },
-          { "label": "Monthly maintenance",             "href": "#offres" }
+          {
+            "label": "Express Site – €1,500",
+            "href": "#offres"
+          },
+          {
+            "label": "Site + Lead Machine – €3,500",
+            "href": "#offres"
+          },
+          {
+            "label": "Digital Transformation – €8,000",
+            "href": "#offres"
+          },
+          {
+            "label": "Monthly maintenance",
+            "href": "#offres"
+          }
         ]
       },
       {
         "title": "Navigation",
         "links": [
-          { "label": "Process", "href": "#process" },
-          { "label": "About",   "href": "#about" },
-          { "label": "Blog",    "href": "/blog" },
-          { "label": "FAQ",     "href": "#faq" }
+          {
+            "label": "Process",
+            "href": "#process"
+          },
+          {
+            "label": "About",
+            "href": "#about"
+          },
+          {
+            "label": "Blog",
+            "href": "/blog"
+          },
+          {
+            "label": "FAQ",
+            "href": "#faq"
+          }
         ]
       },
       {
         "title": "Contact",
         "links": [
-          { "label": "Book a free call",     "href": "#contact" },
-          { "label": "LinkedIn",             "href": "https://linkedin.com" },
-          { "label": "Instagram",            "href": "https://instagram.com" },
-          { "label": "hello@yourname.com",   "href": "mailto:hello@yourname.com" }
+          {
+            "label": "Book a free call",
+            "href": "#contact"
+          },
+          {
+            "label": "LinkedIn",
+            "href": "https://linkedin.com"
+          },
+          {
+            "label": "Instagram",
+            "href": "https://instagram.com"
+          },
+          {
+            "label": "hello@yourname.com",
+            "href": "mailto:hello@yourname.com"
+          }
         ]
       }
     ],
     "legal": [
-      { "label": "Legal notice", "href": "/legal" },
-      { "label": "Terms",        "href": "/terms" }
+      {
+        "label": "Legal notice",
+        "href": "/legal"
+      },
+      {
+        "label": "Terms",
+        "href": "/terms"
+      }
     ],
     "copyright": "© 2025 Studio. All rights reserved."
   },
-
   "blog": {
     "badge": "Blog",
-    "headline": ["Resources for coaches", "& consultants."],
+    "headline": [
+      "Resources for coaches",
+      "& consultants."
+    ],
     "subheadline": "Practical advice on web design, automation, and strategies that turn visitors into clients.",
     "filterAll": "All",
     "readMoreLabel": "Read article →",
@@ -401,7 +518,6 @@
     "authorCta": "Book a free call →",
     "noPostsLabel": "First articles being written — check back soon."
   },
-
   "notFound": {
     "title": "Page not found",
     "desc": "The page you're looking for doesn't exist or has been moved.",
