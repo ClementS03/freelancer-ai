@@ -5,19 +5,19 @@
     "description": "Je conçois et développe des sites Webflow premium avec IA intégrée, livrés en 5 jours. Fini les sites qui vous font perdre des clients.",
     "domain": "votrenom.fr",
     "email": "hello@votrenom.fr",
-    "calendly": "https://calendly.com/votrenom/30min",
-    "linkedin": "https://linkedin.com/in/votrenom",
-    "instagram": "https://instagram.com/votrenom"
+    "calendly": "https://cal.com/clement-seguin/appel-decouvert-30-minutes",
+    "linkedin": "https://linkedin.com/in/clementseguin",
+    "instagram": "https://instagram.com/clementseguin_tyneastudio"
   },
 
   "nav": {
     "logo": "Studio.",
     "links": [
-      { "label": "Offres",     "href": "#offres" },
-      { "label": "Process",    "href": "#process" },
-      { "label": "À propos",   "href": "#about" },
-      { "label": "FAQ",        "href": "#faq" },
-      { "label": "Blog",       "href": "/blog" }
+      { "label": "Offres", "href": "#offres" },
+      { "label": "Process", "href": "#process" },
+      { "label": "À propos", "href": "#about" },
+      { "label": "FAQ", "href": "#faq" },
+      { "label": "Blog", "href": "/blog" }
     ],
     "cta": {
       "label": "Réserver un appel",
@@ -29,11 +29,14 @@
     "badge": "🟢 3 créneaux disponibles ce mois-ci",
     "headline": ["Votre expertise mérite", "un site à sa hauteur."],
     "subheadline": "Je crée des sites Webflow premium avec IA intégrée pour les coachs et consultants qui veulent convertir leurs visiteurs en clients — livré en 5 jours.",
-    "cta_primary":  { "label": "Réserver un appel gratuit →", "href": "#contact" },
+    "cta_primary": {
+      "label": "Réserver un appel gratuit →",
+      "href": "#contact"
+    },
     "cta_secondary": { "label": "Voir les offres", "href": "#offres" },
     "stats": [
-      { "value": "5j",   "label": "Délai de livraison" },
-      { "value": "×3",   "label": "Taux de conversion moyen" },
+      { "value": "5j", "label": "Délai de livraison" },
+      { "value": "×3", "label": "Taux de conversion moyen" },
       { "value": "100%", "label": "Remote & flexible" }
     ],
     "trust": "Basé sur Webflow · IA intégrée · SEO inclus · Sans engagement"
@@ -42,11 +45,11 @@
   "logosBar": {
     "label": "Construit avec les mêmes outils que les meilleures agences",
     "logos": [
-      { "name": "Webflow",    "icon": "webflow" },
-      { "name": "Figma",      "icon": "figma" },
-      { "name": "Claude AI",  "icon": "claude" },
-      { "name": "Make",       "icon": "make" },
-      { "name": "Vercel",     "icon": "vercel" }
+      { "name": "Webflow", "icon": "webflow" },
+      { "name": "Figma", "icon": "figma" },
+      { "name": "Claude AI", "icon": "claude" },
+      { "name": "Make", "icon": "make" },
+      { "name": "Vercel", "icon": "vercel" }
     ]
   },
 
@@ -322,8 +325,11 @@
     "badge": "Prêt ?",
     "headline": "Votre site en 5 jours.",
     "subheadline": "Réservez un appel de découverte gratuit de 30 min. On regarde ensemble votre situation actuelle, je vous montre des exemples dans votre niche, et on voit si on est alignés.",
-    "primary": { "label": "Réserver mon appel gratuit →",  "href": "#contact" },
-    "secondary": { "label": "M'envoyer un email", "href": "mailto:hello@votrenom.fr" },
+    "primary": { "label": "Réserver mon appel gratuit →", "href": "#contact" },
+    "secondary": {
+      "label": "M'envoyer un email",
+      "href": "mailto:hello@votrenom.fr"
+    },
     "note": "Sans engagement. Si je pense que vous n'avez pas besoin d'un nouveau site, je vous le dirai."
   },
 
@@ -332,13 +338,48 @@
     "headline": "Parlons de votre projet.",
     "desc": "Choisissez le créneau qui vous convient. L'appel dure 30 min, on y voit clair ensemble.",
     "form_fields": [
-      { "name": "name",     "label": "Votre prénom",          "type": "text",     "required": true },
-      { "name": "email",    "label": "Votre email",           "type": "email",    "required": true },
-      { "name": "activity", "label": "Votre activité",        "type": "text",     "required": true },
-      { "name": "site",     "label": "Votre site actuel (si existant)", "type": "url", "required": false },
-      { "name": "offer",    "label": "Offre qui vous intéresse", "type": "select", "required": true,
-        "options": ["Starter – 990€", "Site Pro + IA – 2 500€", "Full Growth – 4 500€", "Je ne sais pas encore"] },
-      { "name": "message",  "label": "Un mot sur votre projet", "type": "textarea", "required": false }
+      {
+        "name": "name",
+        "label": "Votre prénom",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "email",
+        "label": "Votre email",
+        "type": "email",
+        "required": true
+      },
+      {
+        "name": "activity",
+        "label": "Votre activité",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "site",
+        "label": "Votre site actuel (si existant)",
+        "type": "url",
+        "required": false
+      },
+      {
+        "name": "offer",
+        "label": "Offre qui vous intéresse",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Starter – 990€",
+          "Site Pro + IA – 2 500€",
+          "Full Growth – 4 500€",
+          "Je ne sais pas encore"
+        ]
+      },
+      {
+        "name": "message",
+        "label": "Un mot sur votre projet",
+        "type": "textarea",
+        "required": false
+      }
     ]
   },
 
@@ -349,34 +390,34 @@
       {
         "group": "Offres",
         "items": [
-          { "label": "Starter – 990€",      "href": "#offres" },
+          { "label": "Starter – 990€", "href": "#offres" },
           { "label": "Site Pro + IA – 2 500€", "href": "#offres" },
-          { "label": "Full Growth – 4 500€","href": "#offres" },
-          { "label": "Maintenance",         "href": "#offres" }
+          { "label": "Full Growth – 4 500€", "href": "#offres" },
+          { "label": "Maintenance", "href": "#offres" }
         ]
       },
       {
         "group": "Pages",
         "items": [
-          { "label": "Process",    "href": "#process" },
-          { "label": "À propos",   "href": "#about" },
-          { "label": "Blog",       "href": "/blog" },
-          { "label": "FAQ",        "href": "#faq" }
+          { "label": "Process", "href": "#process" },
+          { "label": "À propos", "href": "#about" },
+          { "label": "Blog", "href": "/blog" },
+          { "label": "FAQ", "href": "#faq" }
         ]
       },
       {
         "group": "Contact",
         "items": [
           { "label": "Réserver un appel", "href": "#contact" },
-          { "label": "LinkedIn",          "href": "https://linkedin.com" },
-          { "label": "Instagram",         "href": "https://instagram.com" },
+          { "label": "LinkedIn", "href": "https://linkedin.com" },
+          { "label": "Instagram", "href": "https://instagram.com" },
           { "label": "hello@votrenom.fr", "href": "mailto:hello@votrenom.fr" }
         ]
       }
     ],
     "legal": [
       { "label": "Mentions légales", "href": "/mentions-legales" },
-      { "label": "CGV",              "href": "/cgv" }
+      { "label": "CGV", "href": "/cgv" }
     ],
     "copyright": "© 2025 Studio. Tous droits réservés."
   }

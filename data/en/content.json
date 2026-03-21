@@ -5,9 +5,9 @@
     "description": "Clément Seguin, freelance Webflow designer. Premium websites for coaches, consultants and therapists — delivered in 5 days with custom automations.",
     "domain": "clement-seguin.fr",
     "email": "hello@clement-seguin.fr",
-    "calendly": "https://calendly.com/clement-seguin/30min",
-    "linkedin": "https://linkedin.com/in/clement-seguin",
-    "instagram": "https://instagram.com/clement.seguin"
+    "calendly": "https://cal.com/clement-seguin/appel-decouvert-30-minutes",
+    "linkedin": "https://linkedin.com/in/clementseguin",
+    "instagram": "https://instagram.com/clementseguin_tyneastudio"
   },
   "nav": {
     "logo": "CS.",
@@ -41,10 +41,7 @@
   },
   "hero": {
     "badge": "🟢 3 slots available this month",
-    "headline": [
-      "Your expertise deserves",
-      "a site to match."
-    ],
+    "headline": ["Your expertise deserves", "a site to match."],
     "subheadline": "Premium Webflow sites · Custom automations · Delivered in 5 days flat. I build websites that bring you clients while you sleep.",
     "ctaPrimary": {
       "label": "Book my free call →",
@@ -75,10 +72,7 @@
   },
   "problem": {
     "badge": "The real problem",
-    "headline": [
-      "Your website is",
-      "costing you clients."
-    ],
+    "headline": ["Your website is", "costing you clients."],
     "intro": "You've spent years building your expertise. But every week, prospects land on your site, fail to grasp your value in 5 seconds, and leave for a less qualified competitor. That's money evaporating in silence.",
     "points": [
       {
@@ -101,10 +95,7 @@
   },
   "process": {
     "badge": "The process",
-    "headline": [
-      "5 days.",
-      "Zero surprises."
-    ],
+    "headline": ["5 days.", "Zero surprises."],
     "subtitle": "No 3-hour scoping meeting. No endless back-and-forth. A 5-step process refined across dozens of projects — you know exactly where we stand every day.",
     "steps": [
       {
@@ -141,10 +132,7 @@
   },
   "offers": {
     "badge": "Pricing",
-    "headline": [
-      "3 clear offers.",
-      "0 hidden fees."
-    ],
+    "headline": ["3 clear offers.", "0 hidden fees."],
     "subtitle": "Every offer includes a custom design approved before development, full copywriting, and on-page SEO. 50% upfront, 50% on delivery.",
     "acompteNote": "50% upfront · 50% on delivery · Invoice within 24h",
     "deliveryLabel": "Delivery",
@@ -505,10 +493,7 @@
   },
   "blog": {
     "badge": "Blog",
-    "headline": [
-      "Resources for coaches",
-      "& consultants."
-    ],
+    "headline": ["Resources for coaches", "& consultants."],
     "subheadline": "Practical advice on web design, automation, and strategies that turn visitors into clients.",
     "filterAll": "All",
     "readMoreLabel": "Read article →",
