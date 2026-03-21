@@ -5,9 +5,9 @@
     "description": "Clément Seguin, webdesigner Webflow freelance. Sites premium pour coachs, consultants et thérapeutes — livrés en 5 jours avec automatisations sur-mesure.",
     "domain": "clement-seguin.fr",
     "email": "hello@clement-seguin.fr",
-    "calendly": "https://calendly.com/clement-seguin/30min",
-    "linkedin": "https://linkedin.com/in/clement-seguin",
-    "instagram": "https://instagram.com/clement.seguin"
+    "calendly": "https://cal.com/clement-seguin/appel-decouvert-30-minutes",
+    "linkedin": "https://linkedin.com/in/clementseguin",
+    "instagram": "https://instagram.com/clementseguin_tyneastudio"
   },
   "nav": {
     "logo": "CS.",
@@ -41,10 +41,7 @@
   },
   "hero": {
     "badge": "🟢 3 créneaux disponibles ce mois-ci",
-    "headline": [
-      "Votre expertise mérite",
-      "un site à sa hauteur."
-    ],
+    "headline": ["Votre expertise mérite", "un site à sa hauteur."],
     "subheadline": "Sites Webflow premium · Automatisations sur-mesure · Livraison en 5 jours chrono. Je construis le site qui vous ramène des clients pendant que vous dormez.",
     "ctaPrimary": {
       "label": "Réserver mon appel gratuit →",
@@ -75,10 +72,7 @@
   },
   "problem": {
     "badge": "Le vrai problème",
-    "headline": [
-      "Votre site vous",
-      "coûte des clients."
-    ],
+    "headline": ["Votre site vous", "coûte des clients."],
     "intro": "Vous avez mis des années à construire votre expertise. Mais chaque semaine, des prospects arrivent sur votre site, ne comprennent pas votre valeur en 5 secondes, et partent chez un concurrent moins compétent. C'est de l'argent qui s'évapore en silence.",
     "points": [
       {
@@ -101,10 +95,7 @@
   },
   "process": {
     "badge": "Le process",
-    "headline": [
-      "5 jours.",
-      "Aucune surprise."
-    ],
+    "headline": ["5 jours.", "Aucune surprise."],
     "subtitle": "Pas de réunion de cadrage de 3h. Pas de back-and-forth sans fin. Un process en 5 étapes rodé sur des dizaines de projets — vous savez exactement où on en est chaque jour.",
     "steps": [
       {
@@ -141,10 +132,7 @@
   },
   "offers": {
     "badge": "Tarifs",
-    "headline": [
-      "3 offres claires.",
-      "0 frais cachés."
-    ],
+    "headline": ["3 offres claires.", "0 frais cachés."],
     "subtitle": "Chaque offre inclut un design sur-mesure validé avant développement, la rédaction de tous les textes, et le SEO on-page. Acompte 50% au démarrage, solde à la livraison.",
     "acompteNote": "50% à la commande · 50% à la livraison · Facture sous 24h",
     "deliveryLabel": "Livraison",
@@ -505,10 +493,7 @@
   },
   "blog": {
     "badge": "Blog",
-    "headline": [
-      "Ressources pour coachs",
-      "& consultants."
-    ],
+    "headline": ["Ressources pour coachs", "& consultants."],
     "subheadline": "Conseils concrets sur le web, les automatisations, et les stratégies qui transforment les visiteurs en clients.",
     "filterAll": "Tout",
     "readMoreLabel": "Lire l'article →",
