@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
     // import { Resend } from "resend";
     // const resend = new Resend(process.env.RESEND_API_KEY);
     // await resend.emails.send({
-    //   from: "Contact <noreply@votrenom.fr>",
+    //   from: "Contact <noreply@clement-seguin.fr>",
     //   to: process.env.CONTACT_EMAIL_TO!,
     //   subject: `New request — ${offer}`,
     //   text: JSON.stringify(body, null, 2),

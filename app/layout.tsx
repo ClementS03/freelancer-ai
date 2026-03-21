@@ -7,9 +7,9 @@ import "./globals.css";
 // pour le contenu localisé. Ce fichier gère les métadonnées techniques.
 // ─────────────────────────────────────────────────────────
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://clementseguin.fr";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://clement-seguin.fr";
 const AUTHOR   = "Clément Seguin";
-const HANDLE   = "@clementseguin";
+const HANDLE   = "@clement_seguin";
 
 export const metadata: Metadata = {
   // ── Identité ──────────────────────────────────────────
@@ -185,8 +185,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     availableLanguage:   ["French", "English"],
                   },
                   sameAs: [
-                    "https://linkedin.com/in/clementseguin",
-                    "https://instagram.com/clementseguin",
+                    "https://linkedin.com/in/clement-seguin",
+                    "https://instagram.com/clement-seguin",
                   ],
                 },
                 {

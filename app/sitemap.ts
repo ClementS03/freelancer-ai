@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import { LOCALES, getPosts } from "@/lib/i18n";
 
-const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://votrenom.fr";
+const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://clement-seguin.fr";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];

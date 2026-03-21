@@ -9,7 +9,7 @@ export function generateStaticParams() {
   return LOCALES.map((lang) => ({ lang }));
 }
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://clementseguin.fr";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://clement-seguin.fr";
 
 export async function generateMetadata({
   params,

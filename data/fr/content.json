@@ -3,11 +3,11 @@
     "siteName": "Clément Seguin",
     "tagline": "Webdesigner Webflow & Automatisations",
     "description": "Clément Seguin, webdesigner Webflow freelance. Sites premium pour coachs, consultants et thérapeutes — livrés en 5 jours avec automatisations sur-mesure.",
-    "domain": "votrenom.fr",
-    "email": "hello@votrenom.fr",
-    "calendly": "https://calendly.com/votrenom/30min",
-    "linkedin": "https://linkedin.com/in/votrenom",
-    "instagram": "https://instagram.com/votrenom"
+    "domain": "clement-seguin.fr",
+    "email": "hello@clement-seguin.fr",
+    "calendly": "https://calendly.com/clement-seguin/30min",
+    "linkedin": "https://linkedin.com/in/clement-seguin",
+    "instagram": "https://instagram.com/clement.seguin"
   },
   "nav": {
     "logo": "CS.",
@@ -351,7 +351,7 @@
     },
     "secondary": {
       "label": "Envoyer un email directement",
-      "href": "mailto:hello@votrenom.fr"
+      "href": "mailto:hello@clement-seguin.fr"
     },
     "note": "Si je pense honnêtement que vous n'avez pas besoin d'un nouveau site, je vous le dirai — et je vous dirai pourquoi.",
     "checklist": [
@@ -485,8 +485,8 @@
             "href": "https://instagram.com"
           },
           {
-            "label": "hello@votrenom.fr",
-            "href": "mailto:hello@votrenom.fr"
+            "label": "hello@clement-seguin.fr",
+            "href": "mailto:hello@clement-seguin.fr"
           }
         ]
       }
