@@ -4,10 +4,15 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { getAlternateLocale, localePath, stripLocale, type Locale } from "@/lib/i18n";
+import {
+  getAlternateLocale,
+  localePath,
+  stripLocale,
+  type Locale,
+} from "@/lib/i18n";
 import type { getContent } from "@/lib/i18n";
 
-type NavContent  = ReturnType<typeof getContent>["nav"];
+type NavContent = ReturnType<typeof getContent>["nav"];
 type MetaContent = ReturnType<typeof getContent>["meta"];
 
 interface NavbarProps {
@@ -16,9 +21,20 @@ interface NavbarProps {
   meta: MetaContent;
 }
 
+/**
+ * Préfixe les ancres (#offres, #contact...) avec /{locale}
+ * pour que les liens de la navbar fonctionnent depuis n'importe quelle page.
+ * Les vrais chemins (/blog) sont laissés tels quels.
+ */
+function resolveHref(href: string, locale: Locale): string {
+  if (href.startsWith("#")) return `/${locale}${href}`;
+  if (href.startsWith("/blog")) return `/${locale}${href}`;
+  return href;
+}
+
 export function Navbar({ content, locale, meta }: NavbarProps) {
-  const [scrolled,  setScrolled]  = useState(false);
-  const [menuOpen,  setMenuOpen]  = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -30,7 +46,7 @@ export function Navbar({ content, locale, meta }: NavbarProps) {
   // Build the alternate-locale URL preserving the current sub-path
   const alternateLang = getAlternateLocale(locale);
   const currentSubPath = stripLocale(pathname);
-  const alternateHref  = localePath(alternateLang, currentSubPath);
+  const alternateHref = localePath(alternateLang, currentSubPath);
 
   return (
     <header
@@ -38,11 +54,10 @@ export function Navbar({ content, locale, meta }: NavbarProps) {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         scrolled
           ? "bg-bg-base/90 backdrop-blur-xl border-b border-bg-border shadow-[0_1px_0_rgba(255,255,255,0.04)]"
-          : "bg-transparent"
+          : "bg-transparent",
       )}
     >
       <nav className="section-container flex items-center justify-between h-16 lg:h-[70px]">
-
         {/* Logo */}
         <Link
           href={`/${locale}`}
@@ -56,7 +71,7 @@ export function Navbar({ content, locale, meta }: NavbarProps) {
           {content.links.map((link) => (
             <li key={link.href}>
               <Link
-                href={link.href}
+                href={resolveHref(link.href, locale)}
                 className="px-4 py-2 rounded-lg text-sm font-body text-text-secondary
                            hover:text-text-primary hover:bg-bg-surface transition-all duration-200"
               >
@@ -76,7 +91,7 @@ export function Navbar({ content, locale, meta }: NavbarProps) {
               "text-xs font-body font-medium tracking-wider uppercase",
               "border border-bg-border text-text-secondary",
               "hover:border-[rgba(255,255,255,0.18)] hover:text-text-primary",
-              "transition-all duration-200"
+              "transition-all duration-200",
             )}
             aria-label={`Switch to ${alternateLang.toUpperCase()}`}
           >
@@ -84,7 +99,10 @@ export function Navbar({ content, locale, meta }: NavbarProps) {
             {content.langSwitchLabel}
           </Link>
 
-          <Link href={content.cta.href} className="btn-primary btn-sm">
+          <Link
+            href={resolveHref(content.cta.href, locale)}
+            className="btn-primary btn-sm"
+          >
             {content.cta.label}
           </Link>
         </div>
@@ -96,26 +114,40 @@ export function Navbar({ content, locale, meta }: NavbarProps) {
           aria-label="Menu"
         >
           <div className="w-5 flex flex-col gap-1.5">
-            <span className={cn("block h-px bg-current transition-all duration-300",
-              menuOpen ? "rotate-45 translate-y-2" : "")} />
-            <span className={cn("block h-px bg-current transition-all duration-300",
-              menuOpen ? "opacity-0" : "")} />
-            <span className={cn("block h-px bg-current transition-all duration-300",
-              menuOpen ? "-rotate-45 -translate-y-2" : "")} />
+            <span
+              className={cn(
+                "block h-px bg-current transition-all duration-300",
+                menuOpen ? "rotate-45 translate-y-2" : "",
+              )}
+            />
+            <span
+              className={cn(
+                "block h-px bg-current transition-all duration-300",
+                menuOpen ? "opacity-0" : "",
+              )}
+            />
+            <span
+              className={cn(
+                "block h-px bg-current transition-all duration-300",
+                menuOpen ? "-rotate-45 -translate-y-2" : "",
+              )}
+            />
           </div>
         </button>
       </nav>
 
       {/* Mobile menu */}
-      <div className={cn(
-        "lg:hidden overflow-hidden transition-all duration-400 bg-bg-surface border-b border-bg-border",
-        menuOpen ? "max-h-[500px]" : "max-h-0"
-      )}>
+      <div
+        className={cn(
+          "lg:hidden overflow-hidden transition-all duration-400 bg-bg-surface border-b border-bg-border",
+          menuOpen ? "max-h-[500px]" : "max-h-0",
+        )}
+      >
         <div className="section-container py-4 flex flex-col gap-1">
           {content.links.map((link) => (
             <Link
               key={link.href}
-              href={link.href}
+              href={resolveHref(link.href, locale)}
               className="px-4 py-3 rounded-xl text-sm text-text-secondary hover:text-text-primary
                          hover:bg-bg-elevated transition-all"
               onClick={() => setMenuOpen(false)}
@@ -135,7 +167,7 @@ export function Navbar({ content, locale, meta }: NavbarProps) {
               🌐 {content.langSwitchLabel}
             </Link>
             <Link
-              href={content.cta.href}
+              href={resolveHref(content.cta.href, locale)}
               className="btn-primary flex-1 text-center"
               onClick={() => setMenuOpen(false)}
             >
