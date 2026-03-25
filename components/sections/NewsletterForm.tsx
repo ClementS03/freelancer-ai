@@ -67,6 +67,7 @@ export function NewsletterForm({ content: c }: { content: FormContent }) {
           required
           disabled={status === "submitting"}
           className="input flex-1 disabled:opacity-60"
+          suppressHydrationWarning
         />
         <button
           type="submit"

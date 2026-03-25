@@ -147,9 +147,9 @@
       {
         "id": "paw-fact-studio",
         "name": "Paw Fact Studio",
-        "category": "Studio photo animalier",
-        "description": "Site vitrine pour un studio de photographie animalière premium. Design élégant, galerie dynamique, prise de RDV en ligne et identité visuelle forte.",
-        "tags": ["Design", "Galerie", "Booking en ligne"],
+        "category": "Salon de toilettage",
+        "description": "Site vitrine pour un salon de toilettage premium. Design chaleureux et professionnel, présentation des soins proposés, prise de RDV en ligne et identité visuelle forte.",
+        "tags": ["Design", "Booking en ligne", "Pet care"],
         "url": "https://paw-fact-studio.vercel.app/"
       },
       {

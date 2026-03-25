@@ -147,9 +147,9 @@
       {
         "id": "paw-fact-studio",
         "name": "Paw Fact Studio",
-        "category": "Pet photography studio",
-        "description": "Showcase site for a premium pet photography studio. Elegant design, dynamic gallery, online booking, and a strong visual identity.",
-        "tags": ["Design", "Gallery", "Online booking"],
+        "category": "Pet grooming salon",
+        "description": "Showcase site for a premium pet grooming salon. Warm and professional design, service presentation, online booking, and a strong visual identity.",
+        "tags": ["Design", "Online booking", "Pet care"],
         "url": "https://paw-fact-studio.vercel.app/"
       },
       {
