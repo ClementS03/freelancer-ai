@@ -241,7 +241,12 @@ export function FeatureCarousel({ projects }: { projects: CarouselProject[] }) {
   const { currentNumber: step, setStep } = useNumberCycler(projects.length)
 
   return (
-    <div className="flex flex-col gap-10 w-full max-w-5xl mx-auto">
+    <div className="flex flex-col gap-6 w-full max-w-5xl mx-auto">
+      {/* Progress bar — resets via key on each slide change */}
+      <div className="h-0.5 bg-bg-elevated rounded-full overflow-hidden">
+        <div key={step} className="h-full bg-accent/50 rounded-full carousel-progress" />
+      </div>
+
       <FeatureCard project={projects[step]} step={step} />
       <ProjectsNav current={step} onChange={setStep} projects={projects} />
     </div>

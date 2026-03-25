@@ -101,6 +101,7 @@ h6 {
   pointer-events: none;
   z-index: 9999;
   opacity: 0.022;
+  will-change: transform;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   animation: grain 0.4s steps(1) infinite;
 }
@@ -295,10 +296,10 @@ h6 {
 /* ── SCROLL REVEAL ────────────────────────────────────────── */
 .reveal {
   opacity: 0;
-  transform: translateY(32px);
+  transform: translateY(20px);
   transition:
-    opacity 0.75s var(--ease-expo-out),
-    transform 0.75s var(--ease-expo-out);
+    opacity 0.55s var(--ease-expo-out),
+    transform 0.55s var(--ease-expo-out);
 }
 .reveal.revealed {
   opacity: 1;
@@ -323,10 +324,10 @@ h6 {
 /* Scale variant */
 .reveal-scale {
   opacity: 0;
-  transform: scale(0.94);
+  transform: scale(0.96);
   transition:
-    opacity 0.6s var(--ease-expo-out),
-    transform 0.6s var(--ease-expo-out);
+    opacity 0.5s var(--ease-expo-out),
+    transform 0.5s var(--ease-expo-out);
 }
 .reveal-scale.revealed {
   opacity: 1;
@@ -646,4 +647,47 @@ h6 {
   inset: 240px;
   animation-delay: 2s;
   animation-duration: 10s;
+}
+
+/* ── CAROUSEL PROGRESS BAR ────────────────────────────────── */
+@keyframes carouselProgress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+.carousel-progress {
+  transform-origin: left;
+  animation: carouselProgress 6s linear forwards;
+}
+
+/* ── PREFERS-REDUCED-MOTION ───────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  /* Grain : animation inutile et coûteuse → on la coupe */
+  .grain-overlay {
+    animation: none;
+    opacity: 0;
+  }
+  /* Reveal : on passe directement à l'état final (visible) sans transition */
+  .reveal,
+  .reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  /* Animations d'entrée : durée 0 pour apparaître instantanément */
+  .animate-fade-up,
+  .animate-fade-in,
+  .animate-scale-in {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+  }
+  /* Animations en boucle : on les stoppe */
+  .animate-float,
+  .animate-glow-pulse,
+  .marquee-track {
+    animation-play-state: paused;
+  }
+  .carousel-progress {
+    animation: none;
+    transform: scaleX(1);
+  }
 }

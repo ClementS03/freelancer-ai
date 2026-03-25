@@ -1,11 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
+function esc(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
 export async function POST(req: NextRequest) {
   try {
-    const { email } = await req.json();
+    const { email: rawEmail } = await req.json();
 
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (!rawEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(rawEmail)) {
       return NextResponse.json({ error: "Email invalide." }, { status: 400 });
     }
 
@@ -17,12 +25,16 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    const email = esc(rawEmail);
     const resend = new Resend(process.env.RESEND_API_KEY);
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://clement-seguin.fr";
+    const unsubscribeToken = Buffer.from(rawEmail).toString("base64url");
+    const unsubscribeUrl = `${siteUrl}/api/unsubscribe?email=${encodeURIComponent(rawEmail)}&token=${unsubscribeToken}`;
 
     // Ajouter à l'audience Resend si RESEND_AUDIENCE_ID est défini
     if (process.env.RESEND_AUDIENCE_ID) {
       await resend.contacts.create({
-        email,
+        email: rawEmail,
         audienceId: process.env.RESEND_AUDIENCE_ID,
         unsubscribed: false,
       });
@@ -60,7 +72,7 @@ export async function POST(req: NextRequest) {
             Réserver un appel gratuit →
           </a>
           <p style="margin-top: 32px; color: #4A574B; font-size: 13px;">
-            Désabonnement en 1 clic — pas de spam, jamais.
+            <a href="${unsubscribeUrl}" style="color: #4A574B;">Se désabonner en 1 clic</a> — pas de spam, jamais.
           </p>
         </div>
       `,

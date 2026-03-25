@@ -411,6 +411,7 @@
     "submitLabel": "Send my request →",
     "submittingLabel": "Sending...",
     "spamNote": "No spam. No sales follow-up. Reply within 24h.",
+    "errorMsg": "Send error. Please retry or contact me directly.",
     "fields": [
       {
         "name": "name",

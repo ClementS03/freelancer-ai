@@ -33,22 +33,21 @@ export function Hero({
             {c.badge}
           </div>
 
-          {/*
-           * H1 — LCP ELEMENT : PAS d'animation, PAS de delay
-           * Le LCP doit être visible immédiatement pour un bon score
-           */}
-          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[82px] leading-[1.02] tracking-tight text-text-primary mb-6">
+          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[82px] leading-[1.02] tracking-tight text-text-primary mb-6 animate-fade-up"
+            style={{ animationDelay: "0.05s" }}>
             {c.headline[0]}{" "}
             <em className="not-italic text-gradient-hero">{c.headline[1]}</em>
           </h1>
 
           {/* Sous-titre */}
-          <p className="text-lg md:text-xl text-text-secondary max-w-2xl leading-relaxed mb-10 animate-fade-up">
+          <p className="text-lg md:text-xl text-text-secondary max-w-2xl leading-relaxed mb-10 animate-fade-up"
+            style={{ animationDelay: "0.1s" }}>
             {c.subheadline}
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-16 animate-fade-up">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-16 animate-fade-up"
+            style={{ animationDelay: "0.2s" }}>
             <Link href={c.ctaPrimary.href} className="btn-primary btn-lg">
               {c.ctaPrimary.label}
             </Link>
@@ -58,7 +57,8 @@ export function Hero({
           </div>
 
           {/* Stats */}
-          <div className="flex flex-wrap items-center gap-8 pb-8 border-b border-bg-border animate-fade-up">
+          <div className="flex flex-wrap items-center gap-8 pb-8 border-b border-bg-border animate-fade-up"
+            style={{ animationDelay: "0.3s" }}>
             {c.stats.map((stat, i) => (
               <div key={i} className="flex flex-col">
                 <span className="font-display text-3xl text-text-primary tracking-tight">

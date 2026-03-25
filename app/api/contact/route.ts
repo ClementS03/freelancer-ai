@@ -1,12 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
+function esc(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, email, activity, site, offer, message } = body;
+    const { name: rawName, email: rawEmail, activity: rawActivity, site: rawSite, offer: rawOffer, message: rawMessage } = body;
+    const [name, email, activity, site, offer, message] = [rawName, rawEmail, rawActivity, rawSite, rawOffer, rawMessage].map(
+      (v: string | undefined) => (v ? esc(String(v)) : "")
+    );
 
-    if (!name || !email || !activity || !offer) {
+    if (!rawName || !rawEmail || !rawActivity || !rawOffer) {
       return NextResponse.json(
         { error: "Champs requis manquants." },
         { status: 400 },

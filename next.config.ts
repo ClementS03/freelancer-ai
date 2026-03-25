@@ -33,6 +33,22 @@ const nextConfig: NextConfig = {
           { key: "X-XSS-Protection",          value: "1; mode=block" },
           { key: "Referrer-Policy",           value: "strict-origin-when-cross-origin" },
           { key: "Permissions-Policy",        value: "camera=(), microphone=(), geolocation=()" },
+          // CSP : script unsafe-inline requis par Next.js (JSON-LD + hydration chunks)
+          // img-src https: couvre microlink et placehold.co
+          {
+            key: "Content-Security-Policy",
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+              "font-src 'self' https://fonts.gstatic.com data:",
+              "img-src 'self' data: blob: https:",
+              "connect-src 'self'",
+              "frame-ancestors 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
+            ].join("; "),
+          },
           // Pas de cache sur le HTML — le JS et CSS sont content-hashed eux-mêmes
           { key: "Cache-Control",             value: "public, max-age=0, must-revalidate" },
         ],

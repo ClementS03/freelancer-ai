@@ -19,6 +19,7 @@ export function CTA({ content: c, contactContent: cc, meta }: CTAProps) {
   const [formData,  setFormData]  = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [loading,   setLoading]   = useState(false);
+  const [formError, setFormError] = useState(false);
   const ref = useScrollReveal() as React.RefObject<HTMLElement>;
 
   const handleChange = (name: string, value: string) =>
@@ -27,14 +28,18 @@ export function CTA({ content: c, contactContent: cc, meta }: CTAProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setFormError(false);
     try {
-      await fetch("/api/contact", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-    } catch (_) { /* fail silently in demo */ }
-    setSubmitted(true);
+      if (!res.ok) throw new Error();
+      setSubmitted(true);
+    } catch {
+      setFormError(true);
+    }
     setLoading(false);
   };
 
@@ -138,6 +143,9 @@ export function CTA({ content: c, contactContent: cc, meta }: CTAProps) {
                   ) : cc.submitLabel}
                 </button>
 
+                {formError && (
+                  <p className="text-xs text-red-400 text-center">{cc.errorMsg}</p>
+                )}
                 <p className="text-2xs text-text-tertiary text-center">{cc.spamNote}</p>
               </form>
             )}

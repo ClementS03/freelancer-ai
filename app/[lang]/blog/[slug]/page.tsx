@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import {
   LOCALES,
@@ -166,7 +167,7 @@ export default async function BlogPostPage({
 
           <div className="mt-12 p-6 rounded-2xl bg-bg-surface border border-bg-border">
             <div className="flex items-start gap-4">
-              <img
+              <Image
                 src="/icon-192.png"
                 alt={c.meta.siteName}
                 width={48}

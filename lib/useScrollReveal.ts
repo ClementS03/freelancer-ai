@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 
-export function useScrollReveal(rootMargin = "-60px") {
+export function useScrollReveal(rootMargin = "-20px") {
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {

@@ -411,6 +411,7 @@
     "submitLabel": "Envoyer ma demande →",
     "submittingLabel": "Envoi en cours...",
     "spamNote": "Pas de spam. Pas de relance commerciale. Réponse sous 24h.",
+    "errorMsg": "Erreur lors de l'envoi. Réessaie ou contacte-moi directement.",
     "fields": [
       {
         "name": "name",
