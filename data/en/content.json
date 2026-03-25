@@ -4,7 +4,7 @@
     "tagline": "Webflow Designer & Automation",
     "description": "Clément Seguin, freelance Webflow designer. Premium websites for coaches, consultants and therapists — delivered in 5 days with custom automations.",
     "domain": "clement-seguin.fr",
-    "email": "hello@clement-seguin.fr",
+    "email": "contact@clement-seguin.fr",
     "calendly": "https://cal.com/clement-seguin/appel-decouvert-30-minutes",
     "linkedin": "https://linkedin.com/in/clementseguin",
     "instagram": "https://instagram.com/clementseguin_tyneastudio"
@@ -127,6 +127,46 @@
         "title": "Launch + training",
         "desc": "Your site goes live on your domain. I train you in 30 min so you can update your own content without touching code. You're 100% autonomous.",
         "duration": "Step 5"
+      }
+    ]
+  },
+  "works": {
+    "badge": "Portfolio",
+    "headline": ["Sites that actually", "do the work."],
+    "subtitle": "Each project is unique — bespoke design, built to convert, delivered in under a week.",
+    "visitLabel": "Visit project",
+    "projects": [
+      {
+        "id": "clement-seguin",
+        "name": "clement-seguin.fr",
+        "category": "Personal site & Portfolio",
+        "description": "My own dark-design showcase — single-page landing optimised for conversion, bilingual FR/EN CMS blog, Resend contact form. Stack: Next.js 15, Tailwind CSS.",
+        "tags": ["Next.js", "Tailwind", "i18n", "Blog"],
+        "url": "https://clement-seguin.fr/fr"
+      },
+      {
+        "id": "paw-fact-studio",
+        "name": "Paw Fact Studio",
+        "category": "Pet photography studio",
+        "description": "Showcase site for a premium pet photography studio. Elegant design, dynamic gallery, online booking, and a strong visual identity.",
+        "tags": ["Design", "Gallery", "Online booking"],
+        "url": "https://paw-fact-studio.vercel.app/"
+      },
+      {
+        "id": "wet-dry-cleaning",
+        "name": "Wet & Dry Cleaning",
+        "category": "Dry cleaning service — Bansko",
+        "description": "Local showcase site for a dry-cleaning service in Bansko. Clear service pages, quote form, optimised local SEO and a professional look that builds trust.",
+        "tags": ["Local SEO", "Service", "Multi-page"],
+        "url": "https://wetdrycleaningbansko.com/"
+      },
+      {
+        "id": "kinetic-infra",
+        "name": "Kinetic Infrastructure",
+        "category": "B2B Tech & Infrastructure",
+        "description": "Premium landing page for a tech infrastructure company. Sharp B2B positioning, smooth animations, modern design that establishes expertise.",
+        "tags": ["B2B", "Tech", "Animations"],
+        "url": "https://kinetic-infra.vercel.app/"
       }
     ]
   },
@@ -329,6 +369,17 @@
       }
     ]
   },
+  "newsletter": {
+    "badge": "Newsletter",
+    "headline": "Get the next article first.",
+    "subheadline": "Webflow, UX and automation tips — twice a month. Unsubscribe anytime.",
+    "placeholder": "you@email.com",
+    "submitLabel": "Notify me →",
+    "submittingLabel": "Subscribing...",
+    "successTitle": "You're in!",
+    "successDesc": "You'll be notified when the next article drops. No spam.",
+    "note": "Zero spam · Unsubscribe anytime"
+  },
   "cta": {
     "badge": "Next step",
     "headline": "30 min to clear everything.",
@@ -339,7 +390,7 @@
     },
     "secondary": {
       "label": "Send a direct email",
-      "href": "mailto:hello@clement-seguin.fr"
+      "href": "mailto:contact@clement-seguin.fr"
     },
     "note": "If I honestly think you don't need a new site, I'll tell you — and explain why.",
     "checklist": [
@@ -473,8 +524,8 @@
             "href": "https://instagram.com"
           },
           {
-            "label": "hello@clement-seguin.fr",
-            "href": "mailto:hello@clement-seguin.fr"
+            "label": "contact@clement-seguin.fr",
+            "href": "mailto:contact@clement-seguin.fr"
           }
         ]
       }

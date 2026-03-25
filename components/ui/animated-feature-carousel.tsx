@@ -1,0 +1,249 @@
+"use client"
+
+import { useCallback, useEffect, useState } from "react"
+import { ExternalLink } from "lucide-react"
+
+// ── Types ──────────────────────────────────────────────────────────────────
+
+export interface CarouselProject {
+  id: string
+  name: string
+  category: string
+  description: string
+  tags: string[]
+  url: string
+  screenshot: string
+  visitLabel?: string
+}
+
+// ── Hooks ──────────────────────────────────────────────────────────────────
+
+function useNumberCycler(totalSteps: number, interval = 6000) {
+  const [currentNumber, setCurrentNumber] = useState(0)
+
+  useEffect(() => {
+    const timerId = setTimeout(
+      () => setCurrentNumber((prev) => (prev + 1) % totalSteps),
+      interval
+    )
+    return () => clearTimeout(timerId)
+  }, [currentNumber, totalSteps, interval])
+
+  const setStep = useCallback(
+    (stepIndex: number) => setCurrentNumber(stepIndex % totalSteps),
+    [totalSteps]
+  )
+
+  return { currentNumber, setStep }
+}
+
+// ── Helpers ────────────────────────────────────────────────────────────────
+
+function IconCheck() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 256 256"
+      fill="currentColor"
+      className="h-3 w-3"
+    >
+      <path d="m229.66 77.66-128 128a8 8 0 0 1-11.32 0l-56-56a8 8 0 0 1 11.32-11.32L96 188.69 218.34 66.34a8 8 0 0 1 11.32 11.32Z" />
+    </svg>
+  )
+}
+
+// ── ScreenshotPanel ────────────────────────────────────────────────────────
+
+function ScreenshotPanel({ project }: { project: CarouselProject }) {
+  const [loaded, setLoaded] = useState(false)
+
+  useEffect(() => {
+    setLoaded(false)
+  }, [project.id])
+
+  return (
+    <div className="h-full rounded-xl overflow-hidden border border-bg-border shadow-card-hover flex flex-col">
+      {/* Browser chrome bar */}
+      <div className="flex-shrink-0 h-7 bg-bg-surface border-b border-bg-border flex items-center gap-1.5 px-3">
+        <span className="w-2.5 h-2.5 rounded-full bg-red-500/50" />
+        <span className="w-2.5 h-2.5 rounded-full bg-yellow-400/50" />
+        <span className="w-2.5 h-2.5 rounded-full bg-accent/60" />
+        <div className="ml-2 flex-1 bg-bg-elevated rounded h-3.5 flex items-center px-2 overflow-hidden">
+          <span className="text-[9px] text-text-tertiary truncate font-mono">
+            {project.url.replace("https://", "").replace(/\/$/, "")}
+          </span>
+        </div>
+      </div>
+
+      {/* Viewport */}
+      <div className="flex-1 relative overflow-hidden bg-bg-surface">
+        {/* Skeleton while loading */}
+        {!loaded && (
+          <div className="absolute inset-0 flex flex-col gap-3 p-5 animate-pulse">
+            <div className="h-5 bg-bg-elevated rounded w-2/3" />
+            <div className="h-3 bg-bg-elevated rounded w-full" />
+            <div className="h-3 bg-bg-elevated rounded w-5/6" />
+            <div className="h-28 bg-bg-elevated rounded mt-1" />
+            <div className="flex gap-2 mt-1">
+              <div className="h-8 w-20 bg-bg-elevated rounded-lg" />
+              <div className="h-8 w-24 bg-bg-elevated rounded-lg" />
+            </div>
+            <div className="h-3 bg-bg-elevated rounded w-3/4 mt-1" />
+            <div className="h-3 bg-bg-elevated rounded w-1/2" />
+          </div>
+        )}
+
+        <img
+          key={project.id}
+          src={project.screenshot}
+          alt={`Aperçu — ${project.name}`}
+          className={`w-full h-full object-cover object-top transition-opacity duration-700 ${
+            loaded ? "opacity-100" : "opacity-0"
+          }`}
+          onLoad={() => setLoaded(true)}
+          onError={(e) => {
+            e.currentTarget.src = `https://placehold.co/800x500/141A15/2D9E6B?text=${encodeURIComponent(
+              project.name
+            )}`
+            setLoaded(true)
+          }}
+        />
+      </div>
+    </div>
+  )
+}
+
+// ── FeatureCard ────────────────────────────────────────────────────────────
+// Using key={step} to remount → CSS animate-fade-up reruns on each slide change
+
+function FeatureCard({ project, step }: { project: CarouselProject; step: number }) {
+  return (
+    <div className="relative w-full overflow-hidden rounded-2xl border border-bg-border bg-bg-elevated">
+      {/* Ambient glow */}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 55% 70% at 0% 50%, rgba(45,158,107,0.07), transparent)",
+        }}
+      />
+
+      {/* Grid: text | screenshot */}
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-[46%_54%] min-h-[420px]">
+
+        {/* Left: project info — key forces remount → animation reruns */}
+        <div
+          key={step}
+          className="animate-fade-up flex flex-col justify-center gap-4 p-8 md:p-10 md:pr-6"
+        >
+          <p className="text-xs font-semibold uppercase tracking-wider text-accent">
+            {project.category}
+          </p>
+
+          <h3 className="font-display text-2xl md:text-3xl text-text-primary leading-tight tracking-tight">
+            {project.name}
+          </h3>
+
+          <p className="text-sm leading-relaxed text-text-secondary">
+            {project.description}
+          </p>
+
+          <div className="flex flex-wrap gap-2">
+            {project.tags.map((tag) => (
+              <span key={tag} className="badge-accent text-xs">
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-secondary inline-flex items-center gap-2 text-sm self-start mt-1"
+          >
+            {project.visitLabel ?? "Voir le projet"}
+            <ExternalLink className="h-3.5 w-3.5" />
+          </a>
+        </div>
+
+        {/* Right: screenshot (desktop only) — key forces remount → fade-in reruns */}
+        <div className="hidden md:block p-5 pl-0">
+          <div key={step} className="animate-scale-in h-full">
+            <ScreenshotPanel project={project} />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  )
+}
+
+// ── ProjectsNav ────────────────────────────────────────────────────────────
+
+function ProjectsNav({
+  projects,
+  current,
+  onChange,
+}: {
+  projects: CarouselProject[]
+  current: number
+  onChange: (index: number) => void
+}) {
+  return (
+    <nav aria-label="Projects" className="flex justify-center px-4">
+      <ol className="flex w-full flex-wrap items-center justify-center gap-2" role="list">
+        {projects.map((project, idx) => {
+          const isCompleted = current > idx
+          const isCurrent = current === idx
+
+          return (
+            <li
+              key={project.id}
+              className={`transition-all duration-300 ${
+                isCurrent ? "scale-100 opacity-100" : "scale-90 opacity-65"
+              }`}
+            >
+              <button
+                type="button"
+                onClick={() => onChange(idx)}
+                className={`flex items-center gap-2 rounded-full px-3.5 py-1.5 text-sm font-body font-medium transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base ${
+                  isCurrent
+                    ? "bg-accent text-white"
+                    : "bg-bg-elevated text-text-secondary hover:bg-bg-surface hover:text-text-primary border border-bg-border"
+                }`}
+              >
+                <span
+                  className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-semibold transition-colors duration-300 ${
+                    isCurrent
+                      ? "bg-white/20 text-white"
+                      : isCompleted
+                      ? "bg-accent text-white"
+                      : "bg-bg-surface text-text-secondary"
+                  }`}
+                >
+                  {isCompleted ? <IconCheck /> : idx + 1}
+                </span>
+                <span className="hidden sm:inline-block">{project.name}</span>
+              </button>
+            </li>
+          )
+        })}
+      </ol>
+    </nav>
+  )
+}
+
+// ── FeatureCarousel (main export) ──────────────────────────────────────────
+
+export function FeatureCarousel({ projects }: { projects: CarouselProject[] }) {
+  const { currentNumber: step, setStep } = useNumberCycler(projects.length)
+
+  return (
+    <div className="flex flex-col gap-10 w-full max-w-5xl mx-auto">
+      <FeatureCard project={projects[step]} step={step} />
+      <ProjectsNav current={step} onChange={setStep} projects={projects} />
+    </div>
+  )
+}

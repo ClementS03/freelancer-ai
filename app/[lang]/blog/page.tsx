@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LOCALES, isValidLocale, getContent, getPosts, type Locale } from "@/lib/i18n";
+import { Newsletter } from "@/components/sections/Newsletter";
 
 export function generateStaticParams() {
   return LOCALES.map((lang) => ({ lang }));
@@ -64,6 +65,8 @@ export default async function BlogIndexPage({ params }: { params: Promise<{ lang
         </div>
         {posts.length === 0 && <p className="text-center py-24 text-text-secondary">{t.noPostsLabel}</p>}
       </div>
+
+      <Newsletter content={getContent(locale).newsletter} />
     </div>
   );
 }

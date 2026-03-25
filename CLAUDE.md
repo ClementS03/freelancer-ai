@@ -10,7 +10,7 @@ Référence complète du projet pour Claude. À lire en priorité avant toute mo
 - **Activité :** Webdesigner Webflow freelance + automatisations
 - **Cible :** Coachs, consultants, thérapeutes francophones
 - **Domaine :** clement-seguin.fr
-- **Email :** hello@clement-seguin.fr
+- **Email :** contact@clement-seguin.fr
 - **Hébergement :** Netlify (branche `main` → déploiement auto)
 - **Repo GitHub :** ClementS03/freelancer-ai
 
@@ -87,16 +87,16 @@ tailwind.config.ts        ← Variables couleurs + fonts (sync avec globals.css)
 
 ### Couleurs (modifier dans `tailwind.config.ts` ET `app/globals.css`)
 
-| Variable | Valeur | Usage |
-|---|---|---|
-| `accent.DEFAULT` | `#2D9E6B` | CTAs, accents principaux |
-| `accent.hover` | `#35B87C` | Hover state |
-| `teal.DEFAULT` | `#4ECBA8` | Checkmarks, badges succès |
-| `bg.base` | `#07080A` | Fond de page |
-| `bg.surface` | `#0C0F0D` | Cards, panels |
-| `bg.elevated` | `#141A15` | Inputs, éléments surélevés |
-| `text.primary` | `#EDF2ED` | Texte principal |
-| `text.secondary` | `#8A9A8B` | Texte atténué |
+| Variable         | Valeur    | Usage                      |
+| ---------------- | --------- | -------------------------- |
+| `accent.DEFAULT` | `#2D9E6B` | CTAs, accents principaux   |
+| `accent.hover`   | `#35B87C` | Hover state                |
+| `teal.DEFAULT`   | `#4ECBA8` | Checkmarks, badges succès  |
+| `bg.base`        | `#07080A` | Fond de page               |
+| `bg.surface`     | `#0C0F0D` | Cards, panels              |
+| `bg.elevated`    | `#141A15` | Inputs, éléments surélevés |
+| `text.primary`   | `#EDF2ED` | Texte principal            |
+| `text.secondary` | `#8A9A8B` | Texte atténué              |
 
 ### Fonts (modifier dans `tailwind.config.ts` + `app/layout.tsx` + `app/globals.css`)
 
@@ -138,12 +138,12 @@ tailwind.config.ts        ← Variables couleurs + fonts (sync avec globals.css)
 
 ## Offres (tarifs actuels)
 
-| Offre | Prix | Délai |
-|---|---|---|
-| Site Express | 1 500€ HT | 5 jours |
-| Site + Lead Machine | 3 500€ HT | 7 jours |
-| Transformation Digitale | 8 000€ HT | 10-14 jours |
-| Maintenance mensuelle | 150-300€/mois | — |
+| Offre                   | Prix          | Délai       |
+| ----------------------- | ------------- | ----------- |
+| Site Express            | 1 500€ HT     | 5 jours     |
+| Site + Lead Machine     | 3 500€ HT     | 7 jours     |
+| Transformation Digitale | 8 000€ HT     | 10-14 jours |
+| Maintenance mensuelle   | 150-300€/mois | —           |
 
 ---
 
@@ -154,7 +154,7 @@ tailwind.config.ts        ← Variables couleurs + fonts (sync avec globals.css)
 - **From :** `onboarding@resend.dev` (temp) → à remplacer par `noreply@clement-seguin.fr` une fois le domaine vérifié dans Resend
 - **Variables d'environnement requises :**
   - `RESEND_API_KEY` — clé API Resend
-  - `CONTACT_EMAIL_TO` — email de réception (hello@clement-seguin.fr)
+  - `CONTACT_EMAIL_TO` — email de réception (contact@clement-seguin.fr)
   - `NEXT_PUBLIC_SITE_URL` — https://clement-seguin.fr
 
 ---
@@ -174,12 +174,17 @@ Ajouter un objet dans `data/fr/posts.json` ET `data/en/posts.json` :
   "featured": false,
   "tags": ["webflow", "seo"],
   "content": [
-    { "type": "intro",  "text": "Introduction accrocheuse..." },
-    { "type": "h2",     "text": "Sous-titre 1" },
-    { "type": "text",   "text": "Paragraphe..." },
-    { "type": "h2",     "text": "Sous-titre 2" },
-    { "type": "text",   "text": "Paragraphe..." },
-    { "type": "cta",    "text": "Appel à l'action", "link": "/fr#contact", "label": "Réserver un appel" }
+    { "type": "intro", "text": "Introduction accrocheuse..." },
+    { "type": "h2", "text": "Sous-titre 1" },
+    { "type": "text", "text": "Paragraphe..." },
+    { "type": "h2", "text": "Sous-titre 2" },
+    { "type": "text", "text": "Paragraphe..." },
+    {
+      "type": "cta",
+      "text": "Appel à l'action",
+      "link": "/fr#contact",
+      "label": "Réserver un appel"
+    }
   ]
 }
 ```
@@ -241,16 +246,16 @@ Règles SEO :
 
 **Idées d'articles FR (2/semaine pendant 2 mois) :**
 
-| Semaine | Article 1 | Article 2 |
-|---|---|---|
-| 1 | Pourquoi votre site Wix vous coûte des clients | 5 signes qu'il est temps de refaire votre site |
-| 2 | Webflow vs WordPress pour un coach en 2025 | Comment un chatbot peut doubler vos prises de RDV |
-| 3 | Le secret des sites de coachs qui convertissent | SEO local pour thérapeutes : guide pratique |
-| 4 | Combien coûte vraiment un site web professionnel | Site web vs réseaux sociaux : les 2 sont nécessaires |
-| 5 | Comment rédiger une page À propos qui vend | Les 5 pages indispensables sur le site d'un consultant |
-| 6 | Automatiser sa prise de RDV en 2025 | RGPD pour indépendants : ce que votre site doit avoir |
-| 7 | Pourquoi le mobile est critique pour votre site | Google Analytics pour coachs : ce qu'il faut surveiller |
-| 8 | Créer une offre irrésistible sur son site | Comment transformer les visiteurs en clients |
+| Semaine | Article 1                                        | Article 2                                               |
+| ------- | ------------------------------------------------ | ------------------------------------------------------- |
+| 1       | Pourquoi votre site Wix vous coûte des clients   | 5 signes qu'il est temps de refaire votre site          |
+| 2       | Webflow vs WordPress pour un coach en 2025       | Comment un chatbot peut doubler vos prises de RDV       |
+| 3       | Le secret des sites de coachs qui convertissent  | SEO local pour thérapeutes : guide pratique             |
+| 4       | Combien coûte vraiment un site web professionnel | Site web vs réseaux sociaux : les 2 sont nécessaires    |
+| 5       | Comment rédiger une page À propos qui vend       | Les 5 pages indispensables sur le site d'un consultant  |
+| 6       | Automatiser sa prise de RDV en 2025              | RGPD pour indépendants : ce que votre site doit avoir   |
+| 7       | Pourquoi le mobile est critique pour votre site  | Google Analytics pour coachs : ce qu'il faut surveiller |
+| 8       | Créer une offre irrésistible sur son site        | Comment transformer les visiteurs en clients            |
 
 ---
 
@@ -259,7 +264,8 @@ Règles SEO :
 ```
 NEXT_PUBLIC_SITE_URL=https://clement-seguin.fr
 RESEND_API_KEY=re_xxxxxxxxxxxx
-CONTACT_EMAIL_TO=hello@clement-seguin.fr
+RESEND_AUDIENCE_ID=XXXXXXXXXXX
+CONTACT_EMAIL_TO=contact@clement-seguin.fr
 ```
 
 ---

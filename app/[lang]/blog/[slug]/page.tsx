@@ -9,6 +9,7 @@ import {
   getPost,
   type Locale,
 } from "@/lib/i18n";
+import { Newsletter } from "@/components/sections/Newsletter";
 
 export function generateStaticParams() {
   return LOCALES.flatMap((lang) =>
@@ -189,6 +190,8 @@ export default async function BlogPostPage({
             </div>
           </div>
         </div>
+
+        <Newsletter content={c.newsletter} />
 
         {related.length > 0 && (
           <div className="mt-20 pt-12 border-t border-bg-border">

@@ -4,7 +4,7 @@
     "tagline": "Webdesigner Webflow & Automatisations",
     "description": "Clément Seguin, webdesigner Webflow freelance. Sites premium pour coachs, consultants et thérapeutes — livrés en 5 jours avec automatisations sur-mesure.",
     "domain": "clement-seguin.fr",
-    "email": "hello@clement-seguin.fr",
+    "email": "contact@clement-seguin.fr",
     "calendly": "https://cal.com/clement-seguin/appel-decouvert-30-minutes",
     "linkedin": "https://linkedin.com/in/clementseguin",
     "instagram": "https://instagram.com/clementseguin_tyneastudio"
@@ -127,6 +127,46 @@
         "title": "Mise en ligne + formation",
         "desc": "Votre site passe en production sur votre domaine. Je vous forme en 30 min pour que vous puissiez modifier vos textes vous-même sans toucher au code. Vous êtes 100% autonome.",
         "duration": "Étape 5"
+      }
+    ]
+  },
+  "works": {
+    "badge": "Réalisations",
+    "headline": ["Des sites qui font", "vraiment le travail."],
+    "subtitle": "Chaque projet est unique — design sur-mesure, développé pour convertir, livré en moins d'une semaine.",
+    "visitLabel": "Voir le projet",
+    "projects": [
+      {
+        "id": "clement-seguin",
+        "name": "clement-seguin.fr",
+        "category": "Site personnel & Portfolio",
+        "description": "Mon propre vitrine dark design — landing page one-page optimisée conversion, blog CMS multi-langue FR/EN, formulaire de contact Resend. Stack : Next.js 15, Tailwind CSS.",
+        "tags": ["Next.js", "Tailwind", "i18n", "Blog"],
+        "url": "https://clement-seguin.fr/fr"
+      },
+      {
+        "id": "paw-fact-studio",
+        "name": "Paw Fact Studio",
+        "category": "Studio photo animalier",
+        "description": "Site vitrine pour un studio de photographie animalière premium. Design élégant, galerie dynamique, prise de RDV en ligne et identité visuelle forte.",
+        "tags": ["Design", "Galerie", "Booking en ligne"],
+        "url": "https://paw-fact-studio.vercel.app/"
+      },
+      {
+        "id": "wet-dry-cleaning",
+        "name": "Wet & Dry Cleaning",
+        "category": "Service de pressing — Bansko",
+        "description": "Site vitrine local pour un pressing à Bansko. Pages service claires, formulaire de devis, SEO local optimisé et design professionnel qui inspire confiance.",
+        "tags": ["SEO local", "Service", "Multi-page"],
+        "url": "https://wetdrycleaningbansko.com/"
+      },
+      {
+        "id": "kinetic-infra",
+        "name": "Kinetic Infrastructure",
+        "category": "Tech & Infrastructure B2B",
+        "description": "Landing page premium pour une société d'infrastructure tech. Positionnement B2B affûté, animations soignées, design moderne qui crédibilise l'expertise.",
+        "tags": ["B2B", "Tech", "Animations"],
+        "url": "https://kinetic-infra.vercel.app/"
       }
     ]
   },
@@ -329,6 +369,17 @@
       }
     ]
   },
+  "newsletter": {
+    "badge": "Newsletter",
+    "headline": "Reçois le prochain article en avant-première.",
+    "subheadline": "Conseils Webflow, UX et automatisations — 2 fois par mois. Désabonnement en 1 clic.",
+    "placeholder": "ton@email.fr",
+    "submitLabel": "Me notifier →",
+    "submittingLabel": "Inscription...",
+    "successTitle": "C'est bon !",
+    "successDesc": "Tu seras notifié dès la sortie du prochain article. Zéro spam.",
+    "note": "Zéro spam · Désabonnement en 1 clic"
+  },
   "cta": {
     "badge": "Étape suivante",
     "headline": "30 min pour tout clarifier.",
@@ -339,7 +390,7 @@
     },
     "secondary": {
       "label": "Envoyer un email directement",
-      "href": "mailto:hello@clement-seguin.fr"
+      "href": "mailto:contact@clement-seguin.fr"
     },
     "note": "Si je pense honnêtement que vous n'avez pas besoin d'un nouveau site, je vous le dirai — et je vous dirai pourquoi.",
     "checklist": [
@@ -473,8 +524,8 @@
             "href": "https://instagram.com"
           },
           {
-            "label": "hello@clement-seguin.fr",
-            "href": "mailto:hello@clement-seguin.fr"
+            "label": "contact@clement-seguin.fr",
+            "href": "mailto:contact@clement-seguin.fr"
           }
         ]
       }

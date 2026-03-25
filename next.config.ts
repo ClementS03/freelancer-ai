@@ -3,6 +3,12 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   compress: true,
 
+  // ── Next.js 15.5.x dev mode bug workaround ────────────────
+  // Les nouveaux DevTools (segment-explorer-node.js) ne trouvent
+  // pas leur module dans le React Client Manifest → crash webpack.
+  // Désactiver les dev indicators règle le problème en dev.
+  devIndicators: false,
+
   // ── Optimisation images ────────────────────────────────
   images: {
     formats: ["image/avif", "image/webp"],

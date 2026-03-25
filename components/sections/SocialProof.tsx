@@ -27,7 +27,9 @@ const STATS: Record<Locale, { value: string; label: string }[]> = {
 };
 
 export function TechLogos({ label }: { label: string }) {
-  const doubled = [...TOOLS, ...TOOLS];
+  // 4 copies: ensures the track (4×) is always wider than viewport + one copy
+  // so translateX(-50%) never shows a gap on any screen width
+  const doubled = [...TOOLS, ...TOOLS, ...TOOLS, ...TOOLS];
   return (
     <section className="border-y border-bg-border bg-bg-surface/20 py-5 overflow-hidden">
       <p className="text-center text-2xs text-text-tertiary uppercase tracking-widest mb-4 font-body">{label}</p>

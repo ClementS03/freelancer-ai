@@ -4,6 +4,7 @@ import { Hero } from "@/components/sections/Hero";
 import { TechLogos, StatsStrip } from "@/components/sections/SocialProof";
 import { Problem } from "@/components/sections/Problem";
 import { Process } from "@/components/sections/Process";
+import { Works } from "@/components/sections/Works";
 import { Offers } from "@/components/sections/Offers";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { About } from "@/components/sections/About";
@@ -40,6 +41,7 @@ export default async function HomePage({
       <Problem content={c.problem} />
       <StatsStrip locale={locale} />
       <Process content={c.process} />
+      <Works content={c.works} />
       <Offers content={c.offers} />
       <Testimonials content={c.testimonials} />
       <About content={c.about} />
