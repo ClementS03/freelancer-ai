@@ -13,13 +13,6 @@ async function fetchPosts(locale: Locale) {
       console.warn("[Blog] Notion fetch failed, falling back to JSON:", err);
     }
   }
-  const posts = await fetchPosts(locale);
-  console.log(
-    "Posts count:",
-    posts.length,
-    "Source:",
-    process.env.NOTION_TOKEN ? "Notion" : "JSON",
-  );
   // Fallback: JSON files
   const { getPosts } = await import("@/lib/i18n");
   return getPosts(locale);
