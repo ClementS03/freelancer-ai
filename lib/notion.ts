@@ -27,12 +27,15 @@
  * NOTION_DB_ID      → your database ID (from the URL)
  * ─────────────────────────────────────────────────────────────
  */
-
 import { Client } from "@notionhq/client";
 import { NotionToMarkdown } from "notion-to-md";
 import type { Locale } from "./i18n";
 
 // ── Types ──────────────────────────────────────────────────────
+
+export type ContentBlock =
+  | { type: "intro" | "h2" | "h3" | "text"; text: string }
+  | { type: "cta"; text: string; link: string; label: string };
 
 export type NotionPost = {
   slug: string;
@@ -45,19 +48,6 @@ export type NotionPost = {
   tags: string[];
   content: ContentBlock[];
 };
-
-type ContentBlock =
-  | { type: "intro" | "h2" | "h3" | "text"; text: string }
-  | { type: "cta"; text: string; link: string; label: string };
-
-// ── Notion client (lazy init) ──────────────────────────────────
-
-function getClient() {
-  if (!process.env.NOTION_TOKEN) {
-    throw new Error("NOTION_TOKEN is not set");
-  }
-  return new Client({ auth: process.env.NOTION_TOKEN });
-}
 
 // ── Property helpers ───────────────────────────────────────────
 
@@ -92,33 +82,38 @@ function getCheckbox(prop: any): boolean {
 // ── Markdown → ContentBlock[] ──────────────────────────────────
 
 function markdownToBlocks(markdown: string, locale: Locale): ContentBlock[] {
-  const lines = markdown.split("\n").filter((l) => l.trim());
   const blocks: ContentBlock[] = [];
   let isFirst = true;
 
-  for (const line of lines) {
-    const trimmed = line.trim();
-    if (!trimmed) continue;
+  for (const line of markdown.split("\n")) {
+    const t = line.trim();
+    if (!t) continue;
 
-    if (trimmed.startsWith("## ")) {
-      blocks.push({ type: "h2", text: trimmed.replace(/^## /, "") });
-    } else if (trimmed.startsWith("### ")) {
-      blocks.push({ type: "h3", text: trimmed.replace(/^### /, "") });
-    } else if (trimmed.startsWith("> **CTA")) {
-      // Special callout syntax: > **CTA** Text | Label | /link
-      const inner = trimmed.replace(/^> \*\*CTA\*\*\s*/, "");
-      const parts = inner.split("|").map((p) => p.trim());
+    if (t.startsWith("## ")) {
+      blocks.push({ type: "h2", text: t.slice(3) });
+    } else if (t.startsWith("### ")) {
+      blocks.push({ type: "h3", text: t.slice(4) });
+    } else if (t.startsWith("> **CTA**")) {
+      // Format: > **CTA** Text | Button label | /fr#contact
+      const inner = t.replace(/^> \*\*CTA\*\*\s*/, "");
+      const [text, label, link] = inner.split("|").map((p) => p.trim());
       blocks.push({
         type: "cta",
-        text: parts[0] ?? "",
-        label: parts[1] ?? (locale === "fr" ? "Réserver un appel gratuit" : "Book a free call"),
-        link: parts[2] ?? `/${locale}#contact`,
+        text: text ?? "",
+        label:
+          label ??
+          (locale === "fr" ? "Réserver un appel gratuit" : "Book a free call"),
+        link: link ?? `/${locale}#contact`,
       });
     } else if (isFirst) {
-      blocks.push({ type: "intro", text: trimmed });
+      blocks.push({ type: "intro", text: t });
       isFirst = false;
     } else {
-      blocks.push({ type: "text", text: trimmed });
+      // Strip markdown bold/italic for plain text
+      const plain = t
+        .replace(/\*\*(.*?)\*\*/g, "$1")
+        .replace(/\*(.*?)\*/g, "$1");
+      blocks.push({ type: "text", text: plain });
     }
   }
 
@@ -127,83 +122,60 @@ function markdownToBlocks(markdown: string, locale: Locale): ContentBlock[] {
 
 // ── Main fetch function ────────────────────────────────────────
 
-/**
- * Fetches all published posts for a given locale from Notion.
- * Posts are published if:
- *   - "Published" checkbox is checked ✅
- *   - "Publish Date" is today or in the past
- *   - "Language" matches the requested locale
- */
 export async function getNotionPosts(locale: Locale): Promise<NotionPost[]> {
+  const token = process.env.NOTION_TOKEN;
   const dbId = process.env.NOTION_DB_ID;
-  if (!dbId) throw new Error("NOTION_DB_ID is not set");
 
-  const notion = getClient();
+  if (!token || !dbId) {
+    throw new Error("NOTION_TOKEN or NOTION_DB_ID is missing");
+  }
+
+  const notion = new Client({ auth: token });
   const n2m = new NotionToMarkdown({ notionClient: notion });
-  const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
+  const today = new Date().toISOString().split("T")[0];
 
-  // Use the search API to find pages in the database
-  // (databases.query is not available in this SDK version)
-  const response = await notion.search({
-    filter: { property: "object", value: "page" },
-    sort: { direction: "descending", timestamp: "last_edited_time" },
+  // Query the database with filters
+  const response = await notion.databases.query({
+    database_id: dbId,
+    filter: {
+      and: [
+        { property: "Published", checkbox: { equals: true } },
+        { property: "Language", select: { equals: locale } },
+        { property: "Publish Date", date: { on_or_before: today } },
+      ],
+    },
+    sorts: [{ property: "Publish Date", direction: "descending" }],
   });
 
-  // Filter pages that belong to our database manually
-  const pages = response.results.filter((r: any) => {
-    return (
-      r.object === "page" &&
-      r.parent?.type === "database_id" &&
-      r.parent.database_id?.replace(/-/g, "") === dbId.replace(/-/g, "")
-    );
-  });
-
-  // Apply filters manually (Published, Language, Publish Date)
-  const filtered = pages.filter((p: any) => {
-    const props = p.properties;
-    const isPublished = getCheckbox(props["Published"]);
-    const lang = getSelect(props["Language"]);
-    const publishDate = getDate(props["Publish Date"]);
-    return isPublished && lang === locale && publishDate <= today;
-  });
-
-  // Sort by Publish Date descending
-  filtered.sort((a: any, b: any) => {
-    const dateA = getDate(a.properties["Publish Date"]);
-    const dateB = getDate(b.properties["Publish Date"]);
-    return dateB.localeCompare(dateA);
-  });
-
-  // Process each page
   const posts: NotionPost[] = [];
 
-  for (const page of filtered) {
+  for (const page of response.results) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const p = page as any;
     const props = p.properties;
 
     const slug = getText(props["Slug"]);
-    if (!slug) continue; // Skip if no slug
+    if (!slug) continue;
 
-    // Convert page body to markdown
+    // Fetch page body and convert to markdown
     let content: ContentBlock[] = [];
     try {
       const mdBlocks = await n2m.pageToMarkdown(p.id);
       const markdown = n2m.toMarkdownString(mdBlocks).parent;
       content = markdownToBlocks(markdown, locale);
-    } catch {
-      content = [];
+    } catch (err) {
+      console.warn(`[Notion] Failed to fetch content for slug "${slug}":`, err);
     }
 
     posts.push({
       slug,
-      title:       getText(props["Title"]),
-      excerpt:     getText(props["Excerpt"]),
-      category:    getSelect(props["Category"]),
-      readTime:    getText(props["Read Time"]),
+      title: getText(props["Title"]),
+      excerpt: getText(props["Excerpt"]),
+      category: getSelect(props["Category"]),
+      readTime: getText(props["Read Time"]),
       publishedAt: getDate(props["Publish Date"]),
-      featured:    getCheckbox(props["Featured"]),
-      tags:        getMultiSelect(props["Tags"]),
+      featured: getCheckbox(props["Featured"]),
+      tags: getMultiSelect(props["Tags"]),
       content,
     });
   }
@@ -211,21 +183,10 @@ export async function getNotionPosts(locale: Locale): Promise<NotionPost[]> {
   return posts;
 }
 
-/**
- * Fetches a single post by slug.
- */
 export async function getNotionPost(
   locale: Locale,
-  slug: string
+  slug: string,
 ): Promise<NotionPost | null> {
   const posts = await getNotionPosts(locale);
   return posts.find((p) => p.slug === slug) ?? null;
-}
-
-/**
- * Returns all slugs for a given locale (used for generateStaticParams).
- */
-export async function getNotionSlugs(locale: Locale): Promise<string[]> {
-  const posts = await getNotionPosts(locale);
-  return posts.map((p) => p.slug);
 }
