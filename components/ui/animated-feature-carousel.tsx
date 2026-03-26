@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import { ExternalLink } from "lucide-react"
 
 // ── Types ──────────────────────────────────────────────────────────────────
@@ -56,10 +56,12 @@ function IconCheck() {
 
 function ScreenshotPanel({ project }: { project: CarouselProject }) {
   const [loaded, setLoaded] = useState(false)
+  const prevIdRef = useRef(project.id)
 
-  useEffect(() => {
+  if (prevIdRef.current !== project.id) {
+    prevIdRef.current = project.id
     setLoaded(false)
-  }, [project.id])
+  }
 
   return (
     <div className="h-full rounded-xl overflow-hidden border border-bg-border shadow-card-hover flex flex-col">
@@ -168,9 +170,9 @@ function FeatureCard({ project, step }: { project: CarouselProject; step: number
           </a>
         </div>
 
-        {/* Right: screenshot (desktop only) — key forces remount → fade-in reruns */}
+        {/* Right: screenshot (desktop only) */}
         <div className="hidden md:block p-5 pl-0">
-          <div key={step} className="animate-scale-in h-full">
+          <div className="h-full">
             <ScreenshotPanel project={project} />
           </div>
         </div>
@@ -239,6 +241,14 @@ function ProjectsNav({
 
 export function FeatureCarousel({ projects }: { projects: CarouselProject[] }) {
   const { currentNumber: step, setStep } = useNumberCycler(projects.length)
+
+  // Preload all screenshots so they're cached before the carousel auto-advances
+  useEffect(() => {
+    projects.forEach((p) => {
+      const img = new Image()
+      img.src = p.screenshot
+    })
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="flex flex-col gap-6 w-full max-w-5xl mx-auto">
