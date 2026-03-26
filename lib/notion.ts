@@ -89,6 +89,10 @@ function markdownToBlocks(markdown: string, locale: Locale): ContentBlock[] {
     const t = line.trim();
     if (!t) continue;
 
+    // Skip horizontal rules and H1 (title is already shown in the page header)
+    if (t === "---" || t === "***" || t === "___") continue;
+    if (t.startsWith("# ") && !t.startsWith("## ")) continue;
+
     if (t.startsWith("## ")) {
       blocks.push({ type: "h2", text: t.slice(3) });
     } else if (t.startsWith("### ")) {

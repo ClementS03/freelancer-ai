@@ -85,13 +85,13 @@ export default async function BlogPostPage({
   const post = await fetchPost(locale, slug);
   if (!post) notFound();
 
-  // Related posts
+  // Related posts — by shared tags, fallback to recent posts
   const allPosts = await fetchPosts(locale);
-  const related = allPosts
-    .filter(
-      (p) => p.slug !== slug && p.tags?.some((tag) => post.tags?.includes(tag)),
-    )
-    .slice(0, 3);
+  const otherPosts = allPosts.filter((p) => p.slug !== slug);
+  const byTags = otherPosts.filter((p) =>
+    p.tags?.some((tag) => post.tags?.includes(tag)),
+  );
+  const related = (byTags.length > 0 ? byTags : otherPosts).slice(0, 3);
 
   return (
     <div className="pt-28 pb-24">
@@ -101,7 +101,7 @@ export default async function BlogPostPage({
           href={`/${locale}/blog`}
           className="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-text-primary transition-colors mb-10"
         >
-          ← {t.backLabel}
+          {t.backLabel}
         </Link>
 
         {/* Header */}
