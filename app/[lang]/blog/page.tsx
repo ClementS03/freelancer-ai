@@ -1,25 +1,28 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LOCALES, isValidLocale, getContent, type Locale } from "@/lib/i18n";
+import { Newsletter } from "@/components/sections/Newsletter";
+
+// Force SSR — always fetch fresh data from Notion on each request
+export const dynamic = "force-dynamic";
 
 // ── Fetch posts from Notion OR JSON fallback ──────────────────
 async function fetchPosts(locale: Locale) {
-  // Use Notion if token is configured
   if (process.env.NOTION_TOKEN && process.env.NOTION_DB_ID) {
     try {
       const { getNotionPosts } = await import("@/lib/notion");
-      return await getNotionPosts(locale);
+      const posts = await getNotionPosts(locale);
+      console.log(`[Blog] Notion returned ${posts.length} posts for locale "${locale}"`);
+      return posts;
     } catch (err) {
-      console.warn("[Blog] Notion fetch failed, falling back to JSON:", err);
+      console.error("[Blog] Notion fetch failed, falling back to JSON:", err);
     }
+  } else {
+    console.warn("[Blog] NOTION_TOKEN or NOTION_DB_ID missing — using JSON fallback");
   }
   // Fallback: JSON files
   const { getPosts } = await import("@/lib/i18n");
   return getPosts(locale);
-}
-
-export function generateStaticParams() {
-  return LOCALES.map((lang) => ({ lang }));
 }
 
 export default async function BlogListPage({
@@ -120,6 +123,9 @@ export default async function BlogListPage({
             )}
           </>
         )}
+
+        {/* Newsletter */}
+        <Newsletter content={c.newsletter} />
       </div>
     </div>
   );

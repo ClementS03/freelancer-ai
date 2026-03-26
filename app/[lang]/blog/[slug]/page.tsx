@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LOCALES, isValidLocale, getContent, type Locale } from "@/lib/i18n";
+import { Newsletter } from "@/components/sections/Newsletter";
+
+// Force SSR — always fetch fresh data from Notion on each request
+export const dynamic = "force-dynamic";
 
 // ── Fetch helpers ─────────────────────────────────────────────
 
@@ -252,6 +256,9 @@ export default async function BlogPostPage({
             </div>
           </div>
         )}
+
+        {/* Newsletter */}
+        <Newsletter content={c.newsletter} />
       </div>
     </div>
   );
