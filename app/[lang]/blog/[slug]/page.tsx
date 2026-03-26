@@ -1,3 +1,4 @@
+import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LOCALES, isValidLocale, getContent, type Locale } from "@/lib/i18n";
@@ -71,6 +72,17 @@ type ContentBlock =
   | { type: "intro" | "h2" | "h3" | "text"; text: string }
   | { type: "cta"; text: string; link: string; label: string };
 
+function renderInline(text: string): React.ReactNode {
+  const parts = text.split(/(\*\*.*?\*\*|\*.*?\*)/g);
+  return parts.map((part, i) => {
+    if (part.startsWith("**") && part.endsWith("**"))
+      return <strong key={i}>{part.slice(2, -2)}</strong>;
+    if (part.startsWith("*") && part.endsWith("*"))
+      return <em key={i}>{part.slice(1, -1)}</em>;
+    return part;
+  });
+}
+
 export default async function BlogPostPage({
   params,
 }: {
@@ -141,7 +153,7 @@ export default async function BlogPostPage({
                   key={i}
                   className="text-lg text-text-secondary leading-relaxed mb-8 font-medium"
                 >
-                  {block.text}
+                  {renderInline(block.text)}
                 </p>
               );
             }
@@ -171,7 +183,7 @@ export default async function BlogPostPage({
                   key={i}
                   className="text-base text-text-secondary leading-relaxed mb-5"
                 >
-                  {block.text}
+                  {renderInline(block.text)}
                 </p>
               );
             }

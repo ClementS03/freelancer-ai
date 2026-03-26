@@ -113,11 +113,7 @@ function markdownToBlocks(markdown: string, locale: Locale): ContentBlock[] {
       blocks.push({ type: "intro", text: t });
       isFirst = false;
     } else {
-      // Strip markdown bold/italic for plain text
-      const plain = t
-        .replace(/\*\*(.*?)\*\*/g, "$1")
-        .replace(/\*(.*?)\*/g, "$1");
-      blocks.push({ type: "text", text: plain });
+      blocks.push({ type: "text", text: t });
     }
   }
 
