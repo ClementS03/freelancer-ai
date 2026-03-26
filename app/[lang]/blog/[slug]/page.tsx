@@ -1,82 +1,71 @@
-import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
-import type { Metadata } from "next";
-import {
-  LOCALES,
-  isValidLocale,
-  getContent,
-  getPosts,
-  getPost,
-  type Locale,
-} from "@/lib/i18n";
-import { Newsletter } from "@/components/sections/Newsletter";
+import { notFound } from "next/navigation";
+import { LOCALES, isValidLocale, getContent, type Locale } from "@/lib/i18n";
 
-export function generateStaticParams() {
-  return LOCALES.flatMap((lang) =>
-    getPosts(lang).map((post) => ({ lang, slug: post.slug })),
-  );
+// ── Fetch helpers ─────────────────────────────────────────────
+
+async function fetchPosts(locale: Locale) {
+  if (process.env.NOTION_TOKEN && process.env.NOTION_DB_ID) {
+    try {
+      const { getNotionPosts } = await import("@/lib/notion");
+      return await getNotionPosts(locale);
+    } catch {
+      // fallback
+    }
+  }
+  const { getPosts } = await import("@/lib/i18n");
+  return getPosts(locale);
 }
+
+async function fetchPost(locale: Locale, slug: string) {
+  if (process.env.NOTION_TOKEN && process.env.NOTION_DB_ID) {
+    try {
+      const { getNotionPost } = await import("@/lib/notion");
+      return await getNotionPost(locale, slug);
+    } catch {
+      // fallback
+    }
+  }
+  const { getPost } = await import("@/lib/i18n");
+  return getPost(locale, slug);
+}
+
+// ── Static params ─────────────────────────────────────────────
+
+export async function generateStaticParams() {
+  const params: { lang: string; slug: string }[] = [];
+  for (const lang of LOCALES) {
+    const posts = await fetchPosts(lang as Locale);
+    for (const post of posts) {
+      params.push({ lang, slug: post.slug });
+    }
+  }
+  return params;
+}
+
+// ── Metadata ──────────────────────────────────────────────────
 
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ lang: string; slug: string }>;
-}): Promise<Metadata> {
+}) {
   const { lang, slug } = await params;
   if (!isValidLocale(lang)) return {};
-  const post = getPost(lang as Locale, slug);
-  if (!post) return {};
   const c = getContent(lang as Locale);
+  const post = await fetchPost(lang as Locale, slug);
+  if (!post) return {};
   return {
     title: `${post.title} — ${c.meta.siteName}`,
     description: post.excerpt,
   };
 }
 
-type Block = { type: string; text?: string; link?: string; label?: string };
+// ── Page ──────────────────────────────────────────────────────
 
-function Block({ block }: { block: Block }) {
-  switch (block.type) {
-    case "intro":
-      return (
-        <p className="text-lg text-text-secondary leading-relaxed mb-8 font-display italic">
-          {block.text}
-        </p>
-      );
-    case "h2":
-      return (
-        <h2 className="font-display text-2xl lg:text-3xl text-text-primary mt-12 mb-4">
-          {block.text}
-        </h2>
-      );
-    case "h3":
-      return (
-        <h3 className="font-display text-xl text-text-primary mt-8 mb-3">
-          {block.text}
-        </h3>
-      );
-    case "text":
-      return (
-        <p className="text-base text-text-secondary leading-relaxed mb-5">
-          {block.text}
-        </p>
-      );
-    case "cta":
-      return (
-        <div className="my-10 p-6 rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/8 to-bg-surface">
-          <p className="text-base text-text-primary mb-4">{block.text}</p>
-          {block.link && (
-            <Link href={block.link} className="btn-primary">
-              {block.label} →
-            </Link>
-          )}
-        </div>
-      );
-    default:
-      return null;
-  }
-}
+type ContentBlock =
+  | { type: "intro" | "h2" | "h3" | "text"; text: string }
+  | { type: "cta"; text: string; link: string; label: string };
 
 export default async function BlogPostPage({
   params,
@@ -85,135 +74,178 @@ export default async function BlogPostPage({
 }) {
   const { lang, slug } = await params;
   if (!isValidLocale(lang)) notFound();
+
   const locale = lang as Locale;
-  const post = getPost(locale, slug);
-  if (!post) notFound();
   const c = getContent(locale);
   const t = c.blog;
-  const related = getPosts(locale)
-    .filter((p) => p.slug !== slug)
+  const post = await fetchPost(locale, slug);
+  if (!post) notFound();
+
+  // Related posts
+  const allPosts = await fetchPosts(locale);
+  const related = allPosts
+    .filter(
+      (p) => p.slug !== slug && p.tags?.some((tag) => post.tags?.includes(tag)),
+    )
     .slice(0, 3);
-  const dateLocale = locale === "fr" ? "fr-FR" : "en-US";
 
   return (
-    <div className="section-padding">
-      <div className="section-container">
-        <div className="max-w-2xl mx-auto">
-          <nav className="flex items-center gap-2 text-xs text-text-tertiary mb-8">
-            <Link
-              href={`/${locale}`}
-              className="hover:text-text-secondary transition-colors"
-            >
-              {locale === "fr" ? "Accueil" : "Home"}
-            </Link>
-            <span>/</span>
-            <Link
-              href={`/${locale}/blog`}
-              className="hover:text-text-secondary transition-colors"
-            >
-              Blog
-            </Link>
-            <span>/</span>
-            <span className="text-text-secondary truncate max-w-[200px]">
-              {post.title}
-            </span>
-          </nav>
+    <div className="pt-28 pb-24">
+      <div className="section-container max-w-3xl">
+        {/* Back */}
+        <Link
+          href={`/${locale}/blog`}
+          className="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-text-primary transition-colors mb-10"
+        >
+          ← {t.backLabel}
+        </Link>
 
-          <div className="flex flex-wrap items-center gap-3 mb-6">
-            <span className="badge-accent">{post.category}</span>
+        {/* Header */}
+        <div className="mb-10">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="badge-accent text-xs">{post.category}</span>
             <span className="text-xs text-text-tertiary">
               {post.readTime} {t.readTimeLabel}
             </span>
-            <span className="text-xs text-text-tertiary">·</span>
-            <time className="text-xs text-text-tertiary">
-              {new Date(post.publishedAt).toLocaleDateString(dateLocale, {
-                day: "numeric",
-                month: "long",
-                year: "numeric",
-              })}
-            </time>
+            <span className="text-xs text-text-tertiary">
+              {new Date(post.publishedAt).toLocaleDateString(
+                locale === "fr" ? "fr-FR" : "en-US",
+                {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                },
+              )}
+            </span>
           </div>
-
-          <h1 className="font-display text-4xl lg:text-5xl text-text-primary tracking-tight mb-6">
+          <h1 className="font-display text-4xl md:text-5xl tracking-tight text-text-primary leading-[1.1] mb-6">
             {post.title}
           </h1>
-          <p className="text-lg text-text-secondary leading-relaxed mb-10 pb-10 border-b border-bg-border">
+          <p className="text-lg text-text-secondary leading-relaxed">
             {post.excerpt}
           </p>
+        </div>
 
-          {post.content && post.content.length > 0 ? (
-            <article>
-              {post.content.map((block, i) => (
-                <Block key={i} block={block} />
-              ))}
-            </article>
-          ) : (
-            <div className="text-center py-16 text-text-secondary">
-              <p>
-                {locale === "fr"
-                  ? "Article complet bientôt disponible."
-                  : "Full article coming soon."}
-              </p>
-            </div>
-          )}
+        <div className="glow-line mb-10" />
 
-          <div className="flex flex-wrap gap-2 mt-12 pt-8 border-t border-bg-border">
+        {/* Content */}
+        <article className="prose-custom">
+          {(post.content as ContentBlock[]).map((block, i) => {
+            if (block.type === "intro") {
+              return (
+                <p
+                  key={i}
+                  className="text-lg text-text-secondary leading-relaxed mb-8 font-medium"
+                >
+                  {block.text}
+                </p>
+              );
+            }
+            if (block.type === "h2") {
+              return (
+                <h2
+                  key={i}
+                  className="font-display text-2xl md:text-3xl text-text-primary mt-12 mb-4"
+                >
+                  {block.text}
+                </h2>
+              );
+            }
+            if (block.type === "h3") {
+              return (
+                <h3
+                  key={i}
+                  className="font-body font-semibold text-xl text-text-primary mt-8 mb-3"
+                >
+                  {block.text}
+                </h3>
+              );
+            }
+            if (block.type === "text") {
+              return (
+                <p
+                  key={i}
+                  className="text-base text-text-secondary leading-relaxed mb-5"
+                >
+                  {block.text}
+                </p>
+              );
+            }
+            if (block.type === "cta") {
+              return (
+                <div
+                  key={i}
+                  className="my-10 p-6 rounded-2xl bg-accent/8 border border-accent/20"
+                >
+                  <p className="text-base text-text-primary mb-4 font-medium">
+                    {block.text}
+                  </p>
+                  <Link href={block.link} className="btn-primary inline-flex">
+                    {block.label}
+                  </Link>
+                </div>
+              );
+            }
+            return null;
+          })}
+        </article>
+
+        {/* Tags */}
+        {post.tags?.length > 0 && (
+          <div className="flex flex-wrap gap-2 mt-10">
             {post.tags.map((tag) => (
-              <span key={tag} className="pill">
+              <span key={tag} className="pill text-xs">
                 #{tag}
               </span>
             ))}
           </div>
+        )}
 
-          <div className="mt-12 p-6 rounded-2xl bg-bg-surface border border-bg-border">
-            <div className="flex items-start gap-4">
-              <Image
-                src="/icon-192.png"
-                alt={c.meta.siteName}
-                width={48}
-                height={48}
-                className="w-12 h-12 rounded-xl flex-shrink-0 object-cover"
-              />
-              <div>
-                <p className="font-body font-semibold text-text-primary mb-1">
-                  {c.meta.siteName}
-                </p>
-                <p className="text-xs text-text-secondary mb-3">
-                  {c.meta.tagline}
-                </p>
-                <Link
-                  href={`/${locale}#contact`}
-                  className="btn-primary btn-sm inline-flex"
-                >
-                  {t.authorCta}
-                </Link>
-              </div>
+        {/* Author CTA */}
+        <div className="mt-12 p-6 rounded-2xl bg-bg-surface border border-bg-border">
+          <div className="flex items-start gap-4">
+            <img
+              src="/icon-192.png"
+              alt={c.meta.siteName}
+              width={48}
+              height={48}
+              className="w-12 h-12 rounded-xl flex-shrink-0 object-cover"
+            />
+            <div>
+              <p className="font-body font-semibold text-text-primary mb-1">
+                {c.meta.siteName}
+              </p>
+              <p className="text-xs text-text-secondary mb-3">
+                {c.meta.tagline}
+              </p>
+              <Link
+                href={`/${locale}#contact`}
+                className="btn-primary btn-sm inline-flex"
+              >
+                {t.authorCta}
+              </Link>
             </div>
           </div>
         </div>
 
-        <Newsletter content={c.newsletter} />
-
+        {/* Related */}
         {related.length > 0 && (
           <div className="mt-20 pt-12 border-t border-bg-border">
-            <h2 className="font-display text-2xl text-text-primary mb-8">
+            <h3 className="font-body font-semibold text-text-primary mb-6">
               {t.relatedTitle}
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              {related.map((rp) => (
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {related.map((p) => (
                 <Link
-                  key={rp.slug}
-                  href={`/${locale}/blog/${rp.slug}`}
-                  className="group card card-hover p-5"
+                  key={p.slug}
+                  href={`/${locale}/blog/${p.slug}`}
+                  className="card card-hover group block p-5"
                 >
-                  <span className="badge text-2xs mb-3 inline-block">
-                    {rp.category}
+                  <span className="badge text-xs mb-3 inline-block">
+                    {p.category}
                   </span>
-                  <h3 className="font-display text-lg text-text-primary group-hover:text-accent/90 transition-colors leading-tight mb-2">
-                    {rp.title}
-                  </h3>
-                  <p className="text-xs text-text-tertiary">
-                    {rp.readTime} · {t.readMoreLabel}
+                  <p className="text-sm font-medium text-text-primary group-hover:text-accent transition-colors leading-snug">
+                    {p.title}
                   </p>
                 </Link>
               ))}

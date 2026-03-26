@@ -15,7 +15,9 @@
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "resend": "^6.9.4",
-    "tailwind-merge": "^2.5.4"
+    "tailwind-merge": "^2.5.4",
+    "@notionhq/client": "^2.2.15",
+    "notion-to-md": "^3.1.1"
   },
   "devDependencies": {
     "@types/node": "^20",

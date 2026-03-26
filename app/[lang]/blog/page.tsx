@@ -1,72 +1,126 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { LOCALES, isValidLocale, getContent, getPosts, type Locale } from "@/lib/i18n";
-import { Newsletter } from "@/components/sections/Newsletter";
+import { LOCALES, isValidLocale, getContent, type Locale } from "@/lib/i18n";
+
+// ── Fetch posts from Notion OR JSON fallback ──────────────────
+async function fetchPosts(locale: Locale) {
+  // Use Notion if token is configured
+  if (process.env.NOTION_TOKEN && process.env.NOTION_DB_ID) {
+    try {
+      const { getNotionPosts } = await import("@/lib/notion");
+      return await getNotionPosts(locale);
+    } catch (err) {
+      console.warn("[Blog] Notion fetch failed, falling back to JSON:", err);
+    }
+  }
+  // Fallback: JSON files
+  const { getPosts } = await import("@/lib/i18n");
+  return getPosts(locale);
+}
 
 export function generateStaticParams() {
   return LOCALES.map((lang) => ({ lang }));
 }
 
-export default async function BlogIndexPage({ params }: { params: Promise<{ lang: string }> }) {
+export default async function BlogListPage({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
   const { lang } = await params;
   if (!isValidLocale(lang)) notFound();
+
   const locale = lang as Locale;
-  const t = getContent(locale).blog;
-  const posts = getPosts(locale);
-  const featured = posts.filter((p) => p.featured);
-  const rest = posts.filter((p) => !p.featured);
-  const dateLocale = locale === "fr" ? "fr-FR" : "en-US";
+  const c = getContent(locale);
+  const t = c.blog;
+  const posts = await fetchPosts(locale);
+
+  // Filter to only published + past-date posts
+  const today = new Date().toISOString().split("T")[0];
+  const visible = posts.filter((p) => p.publishedAt <= today);
+  const featured = visible.filter((p) => p.featured);
+  const rest = visible.filter((p) => !p.featured);
 
   return (
-    <div className="section-padding">
+    <div className="pt-28 pb-24">
       <div className="section-container">
+        {/* Header */}
         <div className="max-w-2xl mb-16">
-          <div className="badge mb-6">{t.badge}</div>
-          <h1 className="font-display text-5xl lg:text-6xl tracking-tight text-text-primary mb-4">
-            {t.headline[0]} <em className="not-italic gradient-text-accent">{t.headline[1]}</em>
+          <div className="badge-accent mb-6">{t.badge}</div>
+          <h1 className="section-headline mb-4">
+            {t.headline[0]}
+            <br />
+            <em className="not-italic gradient-text-teal">{t.headline[1]}</em>
           </h1>
           <p className="section-subheadline">{t.subheadline}</p>
         </div>
 
-        {featured.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
-            {featured.map((post) => (
-              <Link key={post.slug} href={`/${locale}/blog/${post.slug}`} className="group card card-hover p-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="badge-accent text-2xs">{post.category}</span>
-                  <span className="text-2xs text-text-tertiary">{post.readTime} {t.readTimeLabel}</span>
-                </div>
-                <h2 className="font-display text-2xl lg:text-3xl text-text-primary group-hover:text-accent/90 transition-colors mb-3 leading-tight">{post.title}</h2>
-                <p className="text-sm text-text-secondary leading-relaxed mb-5 line-clamp-2">{post.excerpt}</p>
-                <div className="flex items-center justify-between pt-4 border-t border-bg-border">
-                  <time className="text-xs text-text-tertiary">{new Date(post.publishedAt).toLocaleDateString(dateLocale, { day:"numeric",month:"long",year:"numeric" })}</time>
-                  <span className="text-xs text-accent group-hover:translate-x-1 transition-transform inline-block">{t.readMoreLabel}</span>
-                </div>
-              </Link>
-            ))}
-          </div>
+        {visible.length === 0 ? (
+          <p className="text-text-secondary text-sm">{t.noPostsLabel}</p>
+        ) : (
+          <>
+            {/* Featured posts */}
+            {featured.length > 0 && (
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
+                {featured.map((post) => (
+                  <Link
+                    key={post.slug}
+                    href={`/${locale}/blog/${post.slug}`}
+                    className="card card-hover group block p-8"
+                  >
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="badge-accent text-xs">
+                        {post.category}
+                      </span>
+                      <span className="text-xs text-text-tertiary">
+                        {post.readTime} {t.readTimeLabel}
+                      </span>
+                    </div>
+                    <h2 className="font-body font-semibold text-xl text-text-primary mb-3 group-hover:text-accent transition-colors">
+                      {post.title}
+                    </h2>
+                    <p className="text-sm text-text-secondary leading-relaxed mb-4">
+                      {post.excerpt}
+                    </p>
+                    <span className="text-sm text-accent font-medium">
+                      {t.readMoreLabel}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            )}
+
+            {/* All other posts */}
+            {rest.length > 0 && (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {rest.map((post) => (
+                  <Link
+                    key={post.slug}
+                    href={`/${locale}/blog/${post.slug}`}
+                    className="card card-hover group block p-6"
+                  >
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="badge text-xs">{post.category}</span>
+                      <span className="text-xs text-text-tertiary">
+                        {post.readTime} {t.readTimeLabel}
+                      </span>
+                    </div>
+                    <h2 className="font-body font-semibold text-base text-text-primary mb-2 group-hover:text-accent transition-colors leading-snug">
+                      {post.title}
+                    </h2>
+                    <p className="text-xs text-text-secondary leading-relaxed mb-4 line-clamp-3">
+                      {post.excerpt}
+                    </p>
+                    <span className="text-xs text-accent font-medium">
+                      {t.readMoreLabel}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            )}
+          </>
         )}
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {rest.map((post) => (
-            <Link key={post.slug} href={`/${locale}/blog/${post.slug}`} className="group card card-hover p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="badge text-2xs">{post.category}</span>
-                <span className="text-2xs text-text-tertiary">{post.readTime}</span>
-              </div>
-              <h2 className="font-display text-xl text-text-primary group-hover:text-accent/90 transition-colors mb-3 leading-tight">{post.title}</h2>
-              <p className="text-sm text-text-secondary line-clamp-2 mb-5">{post.excerpt}</p>
-              <div className="flex items-center justify-between pt-4 border-t border-bg-border">
-                <time className="text-xs text-text-tertiary">{new Date(post.publishedAt).toLocaleDateString(dateLocale, { day:"numeric",month:"long",year:"numeric" })}</time>
-                <span className="text-xs text-accent group-hover:translate-x-1 transition-transform inline-block">{t.readMoreLabel}</span>
-              </div>
-            </Link>
-          ))}
-        </div>
-        {posts.length === 0 && <p className="text-center py-24 text-text-secondary">{t.noPostsLabel}</p>}
       </div>
-
-      <Newsletter content={getContent(locale).newsletter} />
     </div>
   );
 }

@@ -10,7 +10,7 @@ Référence complète du projet pour Claude. À lire en priorité avant toute mo
 - **Activité :** Webdesigner Webflow freelance + automatisations
 - **Cible :** Coachs, consultants, thérapeutes francophones
 - **Domaine :** clement-seguin.fr
-- **Email :** contact@clement-seguin.fr
+- **Email :** hello@clement-seguin.fr
 - **Hébergement :** Netlify (branche `main` → déploiement auto)
 - **Repo GitHub :** ClementS03/freelancer-ai
 
@@ -22,8 +22,9 @@ Référence complète du projet pour Claude. À lire en priorité avant toute mo
 - **CSS :** Tailwind CSS v3 + classes custom dans `app/globals.css`
 - **Fonts :** Instrument Serif (display) + DM Sans (body) via `next/font/google`
 - **Email :** Resend (`app/api/contact/route.ts`)
+- **CMS Blog :** Notion (via `lib/notion.ts`) — fallback JSON si token absent
 - **i18n :** Routing `[lang]` manuel (fr/en) — middleware + JSON
-- **Déploiement :** Netlify, région auto
+- **Déploiement :** Netlify, rebuild automatique chaque jour à 8h
 
 ---
 
@@ -67,6 +68,7 @@ data/
 
 lib/
   i18n.ts                 ← getContent(locale), getPosts(), localePath()
+  notion.ts               ← Fetch articles depuis Notion (CMS blog)
   useScrollReveal.ts      ← Hook IntersectionObserver pour animations scroll
   utils.ts                ← cn() helper
 
@@ -154,108 +156,197 @@ tailwind.config.ts        ← Variables couleurs + fonts (sync avec globals.css)
 - **From :** `onboarding@resend.dev` (temp) → à remplacer par `noreply@clement-seguin.fr` une fois le domaine vérifié dans Resend
 - **Variables d'environnement requises :**
   - `RESEND_API_KEY` — clé API Resend
-  - `CONTACT_EMAIL_TO` — email de réception (contact@clement-seguin.fr)
+  - `CONTACT_EMAIL_TO` — email de réception (hello@clement-seguin.fr)
   - `NEXT_PUBLIC_SITE_URL` — https://clement-seguin.fr
 
 ---
 
-## Blog — Ajouter un article
+## Blog — Workflow Notion (CMS)
 
-Ajouter un objet dans `data/fr/posts.json` ET `data/en/posts.json` :
+Le blog est géré depuis **Notion**. Plus besoin de toucher aux JSON pour les articles.
+Si `NOTION_TOKEN` n'est pas défini, le site utilise les fichiers `data/[lang]/posts.json` en fallback.
 
-```json
-{
-  "slug": "mon-article-url",
-  "title": "Titre de l'article",
-  "excerpt": "Description courte (155 chars max pour SEO)",
-  "category": "Stratégie web",
-  "readTime": "5 min",
-  "publishedAt": "2025-04-01",
-  "featured": false,
-  "tags": ["webflow", "seo"],
-  "content": [
-    { "type": "intro", "text": "Introduction accrocheuse..." },
-    { "type": "h2", "text": "Sous-titre 1" },
-    { "type": "text", "text": "Paragraphe..." },
-    { "type": "h2", "text": "Sous-titre 2" },
-    { "type": "text", "text": "Paragraphe..." },
-    {
-      "type": "cta",
-      "text": "Appel à l'action",
-      "link": "/fr#contact",
-      "label": "Réserver un appel"
-    }
-  ]
-}
+### Structure de la base Notion
+
+**Nom des colonnes (à respecter exactement) :**
+
+| Property name  | Type         | Notes                                |
+| -------------- | ------------ | ------------------------------------ |
+| `Title`        | Title        | Titre de l'article                   |
+| `Slug`         | Text         | URL : `mon-article-seo`              |
+| `Language`     | Select       | `fr` ou `en`                         |
+| `Published`    | Checkbox     | ✅ = visible sur le site             |
+| `Publish Date` | Date         | Publication automatique à cette date |
+| `Excerpt`      | Text         | Description courte, 150-155 chars    |
+| `Category`     | Select       | ex : `Stratégie web`, `Design & UX`  |
+| `Read Time`    | Text         | ex : `5 min`                         |
+| `Featured`     | Checkbox     | Affiche en grand en haut du blog     |
+| `Tags`         | Multi-select | ex : `webflow`, `seo`, `coaching`    |
+
+**Corps de l'article :** rédigé directement dans la page Notion avec des titres H2/H3 et des paragraphes.
+
+**CTA spécial :** pour ajouter un bloc CTA dans l'article, utilise un **Callout** avec ce format exact :
+
+```
+> **CTA** Texte de l'appel à l'action | Label du bouton | /fr#contact
 ```
 
-**Types de blocs disponibles :** `intro`, `h2`, `h3`, `text`, `cta`
+### Comment publier un article
+
+1. Créer une nouvelle page dans la base Notion
+2. Remplir toutes les colonnes (Title, Slug, Language, Excerpt, Category, Read Time, Tags)
+3. Écrire le contenu avec des H2 et paragraphes
+4. Mettre **Publish Date** à la date souhaitée
+5. Cocher **Published** ✅
+6. Le site rebuild automatiquement chaque matin à 8h → l'article apparaît le jour J
+
+### Rebuild manuel
+
+Si tu veux publier immédiatement : **Netlify dashboard → Deploys → Trigger deploy**
 
 ---
 
 ## SEO — Checklist par article
 
-- [ ] `slug` : kebab-case, inclut le mot-clé principal
-- [ ] `title` : 50-60 caractères, mot-clé en début
-- [ ] `excerpt` : 150-155 caractères, inclut le mot-clé
-- [ ] `content` : minimum 800 mots, 1 `h2` toutes les 300 mots
-- [ ] `tags` : 3-5 tags pertinents
-- [ ] `featured: true` pour les articles piliers
-- [ ] Bloc `cta` en fin d'article obligatoire
-- [ ] Article EN avec slug traduit dans `data/en/posts.json`
+- [ ] `Slug` : kebab-case, contient le mot-clé principal
+- [ ] `Title` : 50-60 caractères, mot-clé en début
+- [ ] `Excerpt` : 150-155 caractères, inclut le mot-clé
+- [ ] Corps : minimum 800 mots, 1 H2 toutes les 300 mots environ
+- [ ] `Tags` : 3-5 tags pertinents
+- [ ] `Featured` coché pour les articles piliers
+- [ ] Bloc CTA en fin d'article obligatoire
+- [ ] Article EN créé séparément avec `Language = en` et slug traduit
 
 ---
 
 ## Workflow blog automatisé (2 articles/semaine)
 
-**Prompt Claude à utiliser** (dans une nouvelle conversation) :
+**Lundi + Jeudi, 15 min par article :**
+
+1. Ouvrir une **nouvelle conversation Claude**
+2. Coller le prompt ci-dessous avec le sujet du tableau
+3. Claude génère le contenu structuré
+4. Créer la page dans Notion, coller le contenu, remplir les champs
+5. Cocher Published + mettre la Publish Date → c'est tout
+
+---
+
+### Prompt FR (nouvelle conversation Claude)
 
 ```
-Tu es un expert SEO et webdesign. Rédige un article de blog pour Clément Seguin,
-webdesigner Webflow freelance spécialisé pour coachs et consultants.
+Tu es un expert SEO et copywriter spécialisé en webdesign pour indépendants.
+Tu rédiges pour Clément Seguin, webdesigner Webflow freelance qui crée des sites
+premium pour coachs, consultants et thérapeutes en France.
 
 Sujet : [SUJET]
 Mot-clé principal : [MOT-CLÉ]
 Longueur cible : 900-1100 mots
 
-Format de réponse : JSON valide uniquement, respectant exactement cette structure :
-{
-  "slug": "...",
-  "title": "...",
-  "excerpt": "...",
-  "category": "...",
-  "readTime": "X min",
-  "publishedAt": "YYYY-MM-DD",
-  "featured": false,
-  "tags": [...],
-  "content": [
-    { "type": "intro", "text": "..." },
-    { "type": "h2", "text": "..." },
-    { "type": "text", "text": "..." },
-    ...
-    { "type": "cta", "text": "...", "link": "/fr#contact", "label": "Réserver un appel gratuit" }
-  ]
-}
+Rédige l'article directement en Markdown avec cette structure :
+- Un paragraphe d'introduction accrocheur (le mot-clé dans la 1ère phrase)
+- 4 à 5 sections avec titres ## H2
+- Un paragraphe de conclusion
+- Un appel à l'action final au format : > **CTA** [texte] | Réserver un appel gratuit | /fr#contact
 
-Règles SEO :
-- Le mot-clé principal dans le titre, l'excerpt et le premier paragraphe
-- Structure : intro + 4-5 h2 + cta final
-- Ton : direct, expert, sans jargon inutile
-- Parle à la cible (coach/consultant) pas à des développeurs
+Donne-moi aussi, AVANT le contenu Markdown, ces métadonnées sur une seule ligne chacune :
+SLUG: mon-slug-seo
+EXCERPT: (150-155 caractères avec le mot-clé)
+CATEGORY: (une parmi : Stratégie web / Design & UX / SEO / Automatisation / Business)
+READ_TIME: X min
+TAGS: tag1, tag2, tag3
+
+Règles :
+- Ton direct, expert, sans condescendance
+- Tu parles AU coach/consultant, pas d'eux
+- Pas de jargon technique
+- Chaque H2 apporte une valeur concrète
+- Le CTA final doit être naturel, pas agressif
 ```
 
-**Idées d'articles FR (2/semaine pendant 2 mois) :**
+---
 
-| Semaine | Article 1                                        | Article 2                                               |
-| ------- | ------------------------------------------------ | ------------------------------------------------------- |
-| 1       | Pourquoi votre site Wix vous coûte des clients   | 5 signes qu'il est temps de refaire votre site          |
-| 2       | Webflow vs WordPress pour un coach en 2025       | Comment un chatbot peut doubler vos prises de RDV       |
-| 3       | Le secret des sites de coachs qui convertissent  | SEO local pour thérapeutes : guide pratique             |
-| 4       | Combien coûte vraiment un site web professionnel | Site web vs réseaux sociaux : les 2 sont nécessaires    |
-| 5       | Comment rédiger une page À propos qui vend       | Les 5 pages indispensables sur le site d'un consultant  |
-| 6       | Automatiser sa prise de RDV en 2025              | RGPD pour indépendants : ce que votre site doit avoir   |
-| 7       | Pourquoi le mobile est critique pour votre site  | Google Analytics pour coachs : ce qu'il faut surveiller |
-| 8       | Créer une offre irrésistible sur son site        | Comment transformer les visiteurs en clients            |
+### Prompt EN (traduire + adapter)
+
+```
+You are an SEO expert and copywriter specialized in web design for freelancers.
+You write for Clément Seguin, a Webflow web designer who creates premium websites
+for coaches, consultants and therapists.
+
+Topic: [TOPIC]
+Main keyword: [KEYWORD]
+Target length: 900-1100 words
+
+Write the article in Markdown with this structure:
+- An engaging intro paragraph (keyword in the first sentence)
+- 4 to 5 sections with ## H2 headings
+- A conclusion paragraph
+- A final CTA in this format: > **CTA** [text] | Book a free call | /en#contact
+
+Also provide these metadata BEFORE the Markdown content, one per line:
+SLUG: my-seo-slug
+EXCERPT: (150-155 chars with the keyword)
+CATEGORY: (one of: Web Strategy / Design & UX / SEO / Automation / Business)
+READ_TIME: X min
+TAGS: tag1, tag2, tag3
+
+Rules:
+- Direct, expert tone — no jargon
+- Speak TO the coach/consultant, not about them
+- Each H2 provides concrete value
+- Natural CTA, not pushy
+```
+
+---
+
+### Prompt : Générer des idées d'articles (mensuel)
+
+À utiliser dans une nouvelle conversation Claude **une fois par mois** pour renouveler le planning éditorial.
+
+```
+Tu es un expert en content marketing et SEO pour les indépendants français.
+
+Je suis Clément Seguin, webdesigner Webflow freelance. Je crée des sites premium
+pour coachs, consultants et thérapeutes en France. Mon site : clement-seguin.fr
+
+Génère-moi 8 idées d'articles de blog (4 FR + 4 EN) pour le mois prochain.
+
+Contexte :
+- Cible : coachs, consultants, thérapeutes indépendants en France
+- Objectif : attirer du trafic SEO qualifié et convertir en demande de site web
+- Sujets à couvrir : webdesign, SEO, automatisation, business en ligne, présence digitale
+- Éviter les sujets trop techniques (lecteur non développeur)
+- Tenir compte de la saison / actualité du mois : [MOIS ET ANNÉE]
+
+Articles déjà publiés à ne pas répéter :
+[LISTE DES SLUGS DÉJÀ EN LIGNE]
+
+Pour chaque idée, donne-moi :
+1. Titre FR (60 chars max)
+2. Titre EN traduit
+3. Mot-clé principal
+4. Angle différenciateur (pourquoi cet article est meilleur que ce qui existe)
+5. Type : Evergreen / Saisonnier / Actualité
+
+Format : tableau Markdown, 8 lignes.
+```
+
+**Fréquence :** 1 fois par mois, en début de mois.
+**Durée :** 5 min — copie le tableau dans Notion comme planning éditorial du mois.
+
+---
+
+### Idées de départ (8 semaines, 2/semaine)
+
+| Semaine | Article FR                                       | Article EN                                   |
+| ------- | ------------------------------------------------ | -------------------------------------------- |
+| 1       | Pourquoi votre site Wix vous coûte des clients   | Why your Wix site is costing you clients     |
+| 2       | Webflow vs WordPress pour un coach en 2025       | Webflow vs WordPress for coaches in 2025     |
+| 3       | Le secret des sites de coachs qui convertissent  | The secret of coaching websites that convert |
+| 4       | Combien coûte vraiment un site web professionnel | What does a professional website really cost |
+| 5       | Comment rédiger une page À propos qui vend       | How to write an About page that sells        |
+| 6       | Automatiser sa prise de RDV en 2025              | Automate your booking process in 2025        |
+| 7       | Pourquoi le mobile est critique pour votre site  | Why mobile is critical for your website      |
+| 8       | Comment transformer les visiteurs en clients     | How to turn website visitors into clients    |
 
 ---
 
@@ -264,9 +355,16 @@ Règles SEO :
 ```
 NEXT_PUBLIC_SITE_URL=https://clement-seguin.fr
 RESEND_API_KEY=re_xxxxxxxxxxxx
-RESEND_AUDIENCE_ID=XXXXXXXXXXX
-CONTACT_EMAIL_TO=contact@clement-seguin.fr
+CONTACT_EMAIL_TO=hello@clement-seguin.fr
+NOTION_TOKEN=secret_xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+NOTION_DB_ID=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
+
+**Comment obtenir les valeurs Notion :**
+
+- `NOTION_TOKEN` → [notion.so/my-integrations](https://www.notion.so/my-integrations) → New integration → copier l'Internal Integration Token
+- `NOTION_DB_ID` → URL de ta base Notion : `notion.so/**ABC123...**?v=...` → la partie avant le `?`
+- Dans Notion : connecter l'intégration à la base via `...` → Connections
 
 ---
 

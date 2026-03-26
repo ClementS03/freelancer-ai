@@ -1,0 +1,26 @@
+# ─────────────────────────────────────────────────────────────
+# Netlify configuration
+# ─────────────────────────────────────────────────────────────
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# ── Scheduled builds ──────────────────────────────────────────
+# Rebuilds the site every day at 8:00 AM Paris time (7:00 UTC)
+# This allows articles with today's "Publish Date" to go live
+# automatically without any manual action.
+#
+# To change the schedule, edit the cron expression below:
+# Format: minute hour day month weekday
+# Examples:
+#   "0 7 * * *"     → every day at 7:00 UTC (8h Paris winter, 9h summer)
+#   "0 7 * * 1,4"   → every Monday and Thursday at 7:00 UTC (for 2x/week)
+# ─────────────────────────────────────────────────────────────
+
+[[scheduled-functions]]
+  name = "daily-rebuild"
+  schedule = "@daily"
