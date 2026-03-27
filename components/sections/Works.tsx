@@ -7,8 +7,9 @@ import type { getContent } from "@/lib/i18n"
 type WorksContent = ReturnType<typeof getContent>["works"]
 
 // Microlink screenshot service — generates a real screenshot from any URL
+// waitForTimeout: waits 1.5s after page load so JS animations (hero reveals, etc.) have time to run
 function screenshotUrl(url: string) {
-  return `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url`
+  return `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url&waitForTimeout=1500`
 }
 
 export function Works({ content: c }: { content: WorksContent }) {
